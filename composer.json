@@ -1,0 +1,74 @@
+{
+    "name": "laravel/laravel",
+    "description": "Sistema CCC",
+    "authors": [
+        {
+            "name": "Guillermo Calvetty",
+            "email": "gcalvetty@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "laravel/framework": "5.5.*@dev",
+        "laravelcollective/html": "^5.3.0",
+        "barryvdh/laravel-debugbar": "^2.3",
+        "nesbot/carbon": "^1.21",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
+        "h4cc/wkhtmltoimage-amd64": "0.12.x",
+        "dompdf/dompdf": "^0.8.0",
+        "knplabs/knp-snappy": "*",
+        "google/apiclient": "^2.1",
+        "laravel/tinker": "^1.0",
+        "davejamesmiller/laravel-breadcrumbs": "^3.0",
+        "predis/predis": "^1.1",
+        "maatwebsite/excel": "~2.0",
+        "league/flysystem": "1.0.43"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~6.0",
+        "symfony/css-selector": "3.1.*",
+        "symfony/dom-crawler": "3.1.*"
+    },
+    "autoload": {
+        "classmap": [
+            "database",
+            "app/LibreriaCCC"
+        ],
+        "psr-4": {
+            "sis_ccc\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan optimize"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev",
+    "repositories": {
+        "hooks": {
+            "type": "composer",
+            "url": "https://larapack.io"
+        }
+    }
+}

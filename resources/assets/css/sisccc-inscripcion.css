@@ -1,0 +1,58 @@
+#exTab3.nivel .tab-pane{ font-size:12px; text-align:center; }
+
+.tab-pane p, 
+.disc_est{ font-size:11px; }
+
+.form-control{ font-size:12px; }
+.table-striped td{ text-align:center;}
+.alert{-webkit-animation-duration:2s;
+       -webkit-animation-delay:5s }
+.inscrForm{ margin-top: 100px;}
+
+
+.menGECN{ margin-top: 50px; }
+.menGECN h4 b { font-family: 'Bad Script', cursive; font-size: 20px; padding: 20px 10px; }
+.menGECN .col-md-12{ padding: 10px 0 30px 0; margin-bottom: 15px; border-bottom: 1px solid lightgray; 
+}
+.menGECN button{ font-size: 12px; }
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+@media only screen and (min-width: 220px){
+ .nav-justified > li, .nav-tabs.nav-justified > li { font-size:10px; }
+ .nav-justified > li > a, .nav-tabs.nav-justified > li > a{ margin-bottom:0; }
+
+ .nav-tabs-justified > li > a, 
+ .nav-tabs.nav-justified > li > a,
+ .nav-tabs.nav-justified > .active > a,
+ .nav-tabs.nav-justified > .active > a:hover,
+ .nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a,   
+ .nav-tabs-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:hover, 
+ .nav-tabs-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:focus
+ { border-bottom:none; }	
+ 
+ #RegInsc h4{ font-size:11px; }
+ .inscrForm .tab-pane{ padding:10px; }
+
+ .form-horizontal .form-group{ margin-left:0; margin-right:0; }
+ 
+}
+@media only screen and (min-width: 481px) {
+ .nav-justified > li, .nav-tabs.nav-justified > li { display: table-cell; }
+ .nav-tabs > li > a{ border-bottom:none; }
+}
+@media only screen and (min-width: 769px) {
+ #RegInsc h4{ font-size:16px; }	
+ .inscrForm .tab-pane{ padding:20px; }	
+}
+@media only screen and (min-width: 900px) {
+}
+@media only screen and (min-width: 1000px) {
+}
+
+	
+
+
+
+
+

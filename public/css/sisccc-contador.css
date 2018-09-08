@@ -1,0 +1,54 @@
+
+#contador_crud table {
+  border: 2px solid #42b983;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+#contador_crudth {
+  background-color: #42b983;
+  color: rgba(255,255,255,0.66);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#contador_crud td {
+  background-color: #f9f9f9;
+}
+
+#contador_crud th, #contador_crud td {
+  min-width: 120px;
+  padding: 10px 20px;
+}
+
+#contador_crud th.active {
+  color: #fff;
+}
+
+#contador_crud th.active .arrow {
+  opacity: 1;
+}
+
+#contador_crud .arrow {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  opacity: 0.66;
+}
+
+#contador_crud .arrow.asc {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #fff;
+}
+
+#contador_crud .arrow.dsc {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #fff;
+}

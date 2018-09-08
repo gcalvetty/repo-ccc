@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+/* ----------------------------------- */
+body{ background-color:#EEE; }
+img, object, embed, video {
+    max-width: 100%;
+}
+/* IE 6 does not support max-width so default to width 100% */
+.ie6 img {
+    width:100%;
+}
+/* ---------------------- */
+/* ---- Home Opcion ---- */
+.menu-home {
+    .home-tit{ display:block; font-size:30px; padding:30px 0 0 50px; 
+               b{ color:#FFF; }
+    }
+}
+.menuGECN{ 
+    li > a { color:#fff !important; }
+    li > a:hover { color:#FF0; }
+
+    .dropdown-menu a{ color: #242424 !important; }
+}
+.ns {
+    border-radius: 5px;
+    background-color: #FFF;   
+
+    .titRes{ color:#FF0; }
+    .bg-aqua {
+        margin-top:-75px;
+        margin-bottom:0px;    
+        display:block;    
+        background: rgba(0,0,0,.7);
+        background: -moz-linear-gradient(left,rgba(0,0,0,.7) 0,rgba(0,0,0,.7) 100%);
+        background: -webkit-gradient(left top,right top,color-stop(0,rgba(0,0,0,.7)),color-stop(100%,rgba(0,0,0,.7)));
+        background: -webkit-linear-gradient(left,rgba(0,0,0,.7) 0,rgba(0,0,0,.7) 100%);
+        background: -o-linear-gradient(left,rgba(0,0,0,.7) 0,rgba(0,0,0,.7) 100%);
+        background: -ms-linear-gradient(left,rgba(0,0,0,.7) 0,rgba(0,0,0,.7) 100%);
+        background: linear-gradient(to right,rgba(0,0,0,.7) 0,rgba(0,0,0,.7) 100%);
+    }
+    .thumbnail{ background-color:#FFF; }
+    .caption h3{ color:#FC0; }
+    .small-box > .inner { padding: 5px; }
+    .small-box h2{ font-size: 20px; text-align:center; 
+                   margin-top: 10px; margin-bottom: 5px;}
+    /* ---- */
+    .ico-opc{ position: absolute; z-index: 1000; color:#FFF;
+              text-shadow: 0 0 0.5em #333, 0 0 0.5em #333, 0 0 0.5em #333; 
+    }
+    .small-box-footer{ 
+        background: rgba(241,231,103,0.5);
+        background: -moz-linear-gradient(top, rgba(241,231,103,0.5) 0%, rgba(249,201,82,0.62) 62%, rgba(254,182,69,0.62) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(241,231,103,0.5)), color-stop(62%, rgba(249,201,82,0.62)), color-stop(100%, rgba(254,182,69,0.62)));
+        background: -webkit-linear-gradient(top, rgba(241,231,103,0.5) 0%, rgba(249,201,82,0.62) 62%, rgba(254,182,69,0.62) 100%);
+        background: -o-linear-gradient(top, rgba(241,231,103,0.5) 0%, rgba(249,201,82,0.62) 62%, rgba(254,182,69,0.62) 100%);
+        background: -ms-linear-gradient(top, rgba(241,231,103,0.5) 0%, rgba(249,201,82,0.62) 62%, rgba(254,182,69,0.62) 100%);
+        background: linear-gradient(to bottom, rgba(241,231,103,0.5) 0%, rgba(249,201,82,0.62) 62%, rgba(254,182,69,0.62) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645', GradientType=0 );
+    }
+    .small-box-footer:hover{ color:#333; background: rgba(241,231,103,0.74);
+                             background: -moz-linear-gradient(top, rgba(241,231,103,0.74) 0%, rgba(249,201,82,0.83) 62%, rgba(254,182,69,0.83) 100%);
+                             background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(241,231,103,0.74)), color-stop(62%, rgba(249,201,82,0.83)), color-stop(100%, rgba(254,182,69,0.83)));
+                             background: -webkit-linear-gradient(top, rgba(241,231,103,0.74) 0%, rgba(249,201,82,0.83) 62%, rgba(254,182,69,0.83) 100%);
+                             background: -o-linear-gradient(top, rgba(241,231,103,0.74) 0%, rgba(249,201,82,0.83) 62%, rgba(254,182,69,0.83) 100%);
+                             background: -ms-linear-gradient(top, rgba(241,231,103,0.74) 0%, rgba(249,201,82,0.83) 62%, rgba(254,182,69,0.83) 100%);
+                             background: linear-gradient(to bottom, rgba(241,231,103,0.74) 0%, rgba(249,201,82,0.83) 62%, rgba(254,182,69,0.83) 100%);
+                             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645', GradientType=0 ); } 
+
+}
+/* ---------------------- */
+/* ---- Home Sub Opcion ---- */
+.sub_opc{}
+.sel1, .sel2, .sel3{ background-repeat:no-repeat; background-position:right top; }
+.sel1{ background-color:#008C69; background-image:url(/imagenes/home/sub-opc-01.png); }
+.sel2{ background-color:#D9A300; background-image:url(/imagenes/home/sub-opc-02.png); }
+.sel3{ background-color:#73DCFF; background-image:url(/imagenes/home/sub-opc-03.png); }
+.sel4{ background-color:#73DCFF; background-image:url(/imagenes/home/sub-opc-04.png); }
+.sel5{ background-color:#73DCFF; background-image:url(/imagenes/home/sub-opc-05.png); }
+
+.sub_opc{
+    color:#FFF; 
+    a{ margin-top:5px; text-decoration:none;  text-shadow: 0.1em 0.1em 0.1em black; } 
+    a:hover{ color:#333; text-shadow: 0.1em 0.1em 0.1em white; }
+    a{ font-size:24px; text-align:center; color:#FFF; display:block; }
+
+    .sel .info-box-content3{ padding-left:0px; }
+    .sel3 li{ list-style:none; padding:2px 10px;  }
+    .sel3 li:hover{ background-color: rgba(255,255,255,0.24); }
+    .sel3 li i{ margin-right:10px; }
+    .sel3 a{ font-size:14px; text-align:left; margin-top:0; }
+    .sel3 ul{ margin:0px; padding:0px; }
+}   
+/* --------------------- */
+/* ---- Home Contenido ----*/
+
+/* ---- Huesped ---- */
+.home-cont1{ margin-top: 100px; }
+
+/* ---- Logueado ---- */
+.home-cont2{ margin-top: 80px; margin-bottom: 20px; }
+.home-cont2 .logeado{ text-align: center; }
+
+
+/* --------------------- */
+/* ---- Footer ---- */
+.footer{
+    background-color:#242424; font-size:12px; 
+    .panel{ margin-top: 22px; }
+    .der{
+        .panel-body{ padding:8px 15px; }
+        a { font-size:14px; }
+    }
+}
+
+/* ---- Inscripcion ---- */
+.inscrForm {
+    .input-group .form-control{  }
+    .nav-tabs > li a{ color:#333; }
+    .nav-tabs > li.active > a, 
+    .nav-tabs > li.active > a:focus{ background-color:#DFF0D8; color:#5A815A; }
+    .tab-pane{ padding:30px; border:1px solid #CCC; }
+    .radio-inline{ border-right:solid #999999 1px; margin:5px 15px; padding-right: 30px; }
+    .radio-inline:last-child{ border-right:none;}
+    .enviarbtn{ margin-top:20px; text-align:right; }
+}
+.inscripcion{
+    margin-top:95px;
+    .panel-default{ margin-top:20px; }
+    .jumbotron { padding: 10px;
+                 p{ font-size:16px; }
+                 b{ font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif; color:#063; }
+    }
+    .thumbnail .caption{ background-color:#FFF; }
+}
+
+#exTab3{
+    .nav-pills > li > a { border-radius: 4px 4px 0 0 ; }
+    .tab-content { color : white; background-color: #428bca; padding : 5px 15px; }
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+.navbar-wrapper{
+    .navbar-wrapper { position: absolute; top: 0; right: 0; left: 0; z-index: 20; }    
+    > .container { padding-right: 0; padding-left: 0; }
+    .navbar { padding-right: 15px; padding-left: 15px; }
+    .navbar .container { width: auto; }
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+.carousel{
+    height: 500px; margin-bottom: 0px;
+    h1{ color:#FC0; font-family:Gotham, "Helvetica Neue";}
+    .item {
+        height: 470px; background-color: #777;
+    }
+}
+
+.carousel-caption {
+    z-index: 10;
+    background: rgba(0,0,0,.7); 
+    background: -moz-linear-gradient(left,rgba(0,0,0,.7) 0,rgba(0,0,0,.7) 100%);
+    background: -webkit-gradient(left top,right top,color-stop(0,rgba(0,0,0,.7)),color-stop(100%,rgba(0,0,0,.7)));
+    background: -webkit-linear-gradient(left,rgba(0,0,0,.7) 0,rgba(0,0,0,.7) 100%);
+    background: -o-linear-gradient(left,rgba(0,0,0,.7) 0,rgba(0,0,0,.7) 100%);
+    background: -ms-linear-gradient(left,rgba(0,0,0,.7) 0,rgba(0,0,0,.7) 100%);
+    background: linear-gradient(to right,rgba(0,0,0,.7) 0,rgba(0,0,0,.7) 100%);
+
+    border-radius: 39px 39px 39px 39px;
+    -moz-border-radius: 39px 39px 39px 39px;
+    -webkit-border-radius: 39px 39px 39px 39px;
+    border: 0px solid #000000;
+}
+.carousel-inner > .item > img {
+    position: absolute; top: 0; left: 0; min-width: 100%; height: 470px; }
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+.marketing .col-lg-4 { margin-bottom: 20px; text-align: center; }
+.marketing h2 { font-weight: normal; }
+.marketing .col-lg-4 p { margin-right: 10px; margin-left: 10px; }
+
+/* Featurettes
+------------------------- */
+.featurette-divider { margin: 80px 0; /* Space out the Bootstrap <hr> more */ }
+.featurette-heading { font-weight: 300; line-height: 1; letter-spacing: -1px; }
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+@media only screen and (min-width: 220px){
+    .gridContainer { width: 85.675%; padding-left: 1.1625%; padding-right: 1.1625%;
+                     clear: none; float: none; margin-left: auto; }
+    .ns .ico-opc{ top: -12px; left:10px; }
+    .ns .ico-opc .fa-5x{  font-size: 3em; }
+    .menu-home .home-tit{ display:block; font-size:15px; padding:30px 0 0 50px; }
+}
+@media only screen and (min-width: 481px) {
+    .gridContainer { width: 90.675%; padding-left: 1.1625%; padding-right: 1.1625%;
+                     clear: none; float: none; margin-left: auto; }
+    .menu-home .home-tit{ display:block; font-size:20px; padding:30px 0 0 50px; }
+    .ns .ico-opc .fa-5x{  font-size: 3.5em; }
+}
+@media only screen and (min-width: 769px) {
+    .gridContainer { width: 88.5%; max-width: 1232px; padding-left: 0.75%;
+                     padding-right: 0.75%; margin: auto; clear: none; float: none; margin-left: auto; }
+    .menu-home .home-tit{ display:block; font-size:30px; padding:30px 0 0 50px; }
+    .ns .ico-opc .fa-5x{  font-size: 4.5em; }
+
+    /* Navbar positioning foo */
+    .navbar-wrapper{
+        margin-top: 20px; 
+        .container { padding-right: 15px; padding-left: 15px; }
+        .navbar { padding-right: 0; padding-left: 0; }
+        .navbar { border-radius: 4px; }
+    }
+
+    /* Bump up size of carousel content */
+    .carousel-caption p { margin-bottom: 20px; font-size: 21px; line-height: 1.4; }
+    .featurette-heading { font-size: 50px; }
+}
+@media only screen and (min-width: 900px) {
+    .gridContainer { width: 86.5%; max-width: 1232px; padding-left: 0.75%; padding-right: 0.75%;
+                     margin: auto; clear: none; float: none;	margin-left: auto; }
+    .ns .ico-opc .fa-5x{  font-size: 5em; }	
+}
+
+@media only screen and (min-width: 1000px) {
+    .ns .ico-opc .fa-5x{  font-size: 5.5em; }	
+    .featurette-heading { margin-top: 120px; }
+}
+
+/* ------------------------ */
+/* ---- Administración ---- */
+.AlmInsc{
+    .tit_sec{ font-size: 12px; font-style: italic; text-align: center; border-bottom: 1px solid #ddd; margin-bottom: 10px; text-shadow: #ddd 2px 1px 1px; font-family: 'Pacifico', cursive; letter-spacing: 0.4em;  }
+    .total{z-index:1000; position:absolute;top:23px;right:12%;font-size: 38px;
+           text-shadow: #ddd 2px 2px 2px; }
+    .SexF, .SexM{ font-size:15px; } 
+    .SexF{ color: #F012BE; }
+    .SexM{ color: #428bca; }
+    .info-box{ -webkit-box-shadow: inset 0px 0px 19px -5px rgba(0,0,0,0.37);
+               -moz-box-shadow: inset 0px 0px 19px -5px rgba(0,0,0,0.37);
+               box-shadow: inset 0px 0px 19px -5px rgba(0,0,0,0.37); }
+
+}
+/* ---- Edita Registro Alumno ----*/
+.editarRegAlm .inscripcion{ margin: 0px; }
+
+
+/* ---- Administracion ---- */
+.admTra .dona .total{margin-left:10px; 
+                     z-index:1000; position:absolute;bottom:45px;right:10%;font-size: 24px;
+                     text-shadow: #000 2px 2px 2px; 
+                     font-family: 'Pacifico', cursive; letter-spacing: 0.1em; }
+
+
+
+
+
+
