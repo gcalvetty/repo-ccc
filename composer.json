@@ -8,28 +8,21 @@
         }
     ],
     "require": {
-        "php": ">=7.0", 
-        "laravel/framework": "5.5.*@dev",
-        "laravelcollective/html": "^5.3.0",
-        "barryvdh/laravel-debugbar": "^2.3",
-        "nesbot/carbon": "^1.21",
-        "h4cc/wkhtmltopdf-amd64": "0.12.x",
-        "h4cc/wkhtmltoimage-amd64": "0.12.x",
-        "dompdf/dompdf": "^0.8.0",
-        "knplabs/knp-snappy": "*",
-        "google/apiclient": "^2.1",
+        "php": "^7.1.3",
+        "fideloper/proxy": "^4.0",
+        "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-        "davejamesmiller/laravel-breadcrumbs": "^3.0",
-        "predis/predis": "^1.1",
-        "maatwebsite/excel": "~2.0",
-        "league/flysystem": "1.0.43"
+        
+        "nesbot/carbon": "^1.21",        
+        "google/apiclient": "^2.1"
     },
     "require-dev": {
-        "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~6.0",
-        "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*"
+        "beyondcode/laravel-dump-server": "^1.0",
+        "filp/whoops": "^2.0",
+        "fzaninotto/faker": "^1.4",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^2.0",
+        "phpunit/phpunit": "^7.0"
     },
     "autoload": {
         "classmap": [
@@ -40,35 +33,33 @@
             "sis_ccc\\": "app/"
         }
     },
-    "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
-    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+            ]
+        }
+    },    
     "scripts": {
         "post-root-package-install": [
-            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "php artisan key:generate"
+            "@php artisan key:generate"
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
+            "@php artisan optimize"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "@php artisan optimize"
         ]
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
     },
     "minimum-stability": "dev",
-    "repositories": {
-        "hooks": {
-            "type": "composer",
-            "url": "https://larapack.io"
-        }
-    }
+    "prefer-stable": true
 }
