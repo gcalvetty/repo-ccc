@@ -1,7 +1,19 @@
 <?php
 
+Route::get('/', function () {
+    return 'Hello World';
+});
 
+/*
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/', [
+    'as' => 'homeCCC',
+    'uses' => 'ErrorController@index']);
+*/
 
+// ------------------------------------------------
 
 Route::group(['middleware' => 'Grp_Admtr', 'prefix' => 'administracion/', 'namespace' => 'Administracion'], function () {
     require __DIR__ . '/RoutesCCC/admtracion.routes.php';

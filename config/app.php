@@ -10,9 +10,10 @@ return [
     | This value is the name of your application. This value is used when the
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
+    |
     */
 
-    'name' => 'SIS CCC',
+    'name' => env('APP_NAME', ''SIS CCC''),
 
     /*
     |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ return [
     |
     | This value determines the "environment" your application is currently
     | running in. This may determine how you prefer to configure various
-    | services your application utilizes. Set this in your ".env" file.
+    | services the application utilizes. Set this in your ".env" file.
     |
     */
 
@@ -109,24 +110,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Logging Configuration
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure the log settings for your application. Out of
-    | the box, Laravel uses the Monolog PHP logging library. This gives
-    | you a variety of powerful log handlers / formatters to utilize.
-    |
-    | Available Settings: "single", "daily", "syslog", "errorlog"
-    |
-    */
-
-    'log' => env('APP_LOG', 'daily'),
-
-    'log_level' => env('APP_LOG_LEVEL', 'debug'),
-    'log_max_files' => 365,
-
-    /*
-    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
@@ -168,29 +151,15 @@ return [
          * Package Service Providers...
          */
 
-        // --org -- Collective\Html\HtmlServiceProvider::class,
-        sis_ccc\Providers\HtmlProviderCCC::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
-
         /*
          * Application Service Providers...
          */
         sis_ccc\Providers\AppServiceProvider::class,
         sis_ccc\Providers\AuthServiceProvider::class,
-        // sis_ccc\Providers\BroadcastServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
         sis_ccc\Providers\EventServiceProvider::class,
-        sis_ccc\Providers\RouteServiceProvider::class,        
+        sis_ccc\Providers\RouteServiceProvider::class,
 
-        /*
-         * Migas de Pan
-         */
-        DaveJamesMiller\Breadcrumbs\ServiceProvider::class, 
-        /*
-         * Exel
-         */
-        Maatwebsite\Excel\ExcelServiceProvider::class,
-        
-        TCG\Voyager\VoyagerServiceProvider::class,
     ],
 
     /*
@@ -210,6 +179,7 @@ return [
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
+        'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,
         'Cache' => Illuminate\Support\Facades\Cache::class,
         'Config' => Illuminate\Support\Facades\Config::class,
@@ -239,21 +209,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,        
-        
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        
-        /*
-         * Migas de pan
-         */
-        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
-        
-        /*
-         * Excel
-         */
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class,        
     ],
 
 ];

@@ -30,26 +30,5 @@ class ForgotPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-    }    
-    /*
-     * --- Cambiar Contraseña via email
-     */
-    public function sendResetLinkEmail(Request $request)
-    {
-        $this->validateEmail($request);
-        // ---
-        $response = $this->broker()->sendResetLink(
-            $request->only('email')
-        );
-        return $response == Password::RESET_LINK_SENT
-                    ? $this->sendResetLinkResponseGUI($response,$request)
-                    : $this->sendResetLinkFailedResponse($request, $response);
-    }
-    
-    protected function sendResetLinkResponseGUI($response,$request)
-    {
-        
-        return redirect()->route('password.reset', ['token' => session('tokenGUI'), 'email' => $request->email]);        
-        //return redirect()->with('status', trans($response));
     }
 }
