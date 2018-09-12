@@ -79,11 +79,3 @@ Route::group(['middleware' => 'web'], function() {
 Route::group(['prefix' => 'ccc/', 'namespace' => 'CCC'], function () {
    // require __DIR__ . '/RoutesCCC/ccc.routes.php';
 });
-
-
-
-
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
