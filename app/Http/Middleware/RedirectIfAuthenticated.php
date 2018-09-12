@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace sis_ccc\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

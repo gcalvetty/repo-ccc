@@ -7,8 +7,8 @@ use sis_ccc\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Session;
 
-
-class LoginController extends Controller {
+class LoginController extends Controller
+{
     /*
       |--------------------------------------------------------------------------
       | Login Controller
@@ -27,9 +27,7 @@ use AuthenticatesUsers;
      *
      * @var string
      */
-    protected $redirectTo = '/hom2';
-
-    //protected $username = 'name'; // se logea con nombre de usuario
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -62,5 +60,4 @@ use AuthenticatesUsers;
         }  
         return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
     }
-
 }

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', ''SIS CCC''),
+    'name' => env('APP_NAME', 'SIS CCC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -156,7 +156,7 @@ return [
          */
         sis_ccc\Providers\AppServiceProvider::class,
         sis_ccc\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        // sis_ccc\Providers\BroadcastServiceProvider::class,
         sis_ccc\Providers\EventServiceProvider::class,
         sis_ccc\Providers\RouteServiceProvider::class,
 

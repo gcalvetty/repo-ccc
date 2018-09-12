@@ -10,15 +10,15 @@ use sis_ccc\Policies\EstuPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
-class AuthServiceProvider extends ServiceProvider {
-
+class AuthServiceProvider extends ServiceProvider
+{
     /**
      * The policy mappings for the application.
      *
      * @var array
      */
     protected $policies = [
-        //'sis_ccc\Model' => 'sis_ccc\Policies\ModelPolicy',
+        'sis_ccc\Model' => 'sis_ccc\Policies\ModelPolicy',
         RUDE::class => EstuPolicy::class,
         Nota::class => EstuPolicy::class,
     ];

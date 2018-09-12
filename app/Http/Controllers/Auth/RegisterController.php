@@ -5,6 +5,8 @@ namespace sis_ccc\Http\Controllers\Auth;
 use sis_ccc\User;
 use Validator;
 use sis_ccc\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
 
@@ -31,11 +33,11 @@ class RegisterController extends Controller
     
 
     /**
-     * Where to redirect users after login / registration.
+     * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -57,9 +59,9 @@ class RegisterController extends Controller
     {
           
         $vGECN = Validator::make($data, [
-            'name'      => 'required|max:255',
-            'email'     => 'required|email|max:255|unique:users',
-            'password'  => 'required|min:6|confirmed',            
+            'name'      => 'required|string|max:255',
+            'email'     => 'required|string|email|max:255|unique:users',
+            'password'  => 'required|string|min:6|confirmed',            
             'name'      => 'required',
             'ape1'      => 'required',
             'ape2'      => 'required',              
@@ -73,7 +75,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     * @return \sis_ccc\User
      */
     protected function create(array $data)
     {
@@ -83,20 +85,12 @@ class RegisterController extends Controller
             'ape_paterno'   => $data['ape1'],
             'ape_materno'   => $data['ape2'],
             'email'         => $data['email'],
-            'password'      => bcrypt($data['password']),            
+            'password'      => Hash::make($data['password']),            
             'tipo_Usu'      => $data['tipo_Usu'],            
             'activo'        => 'si',
             'verf_token'    => str_random(40),
             'rememberToken' => '',
-        ]);
-        /*
-        $nomComp = $vGECN->ape_paterno.' - '.$vGECN->ape_materno.' - '.$vGECN->nombre.' ';
-        $emailAux = $vGECN->email;
-        $verf_token = $vGECN->verf_token;
-        
-        Mail::to($emailAux, $nomComp)
-                ->send(new ActCuenta($nomComp, $verf_token));
-        */
+        ]);        
         return $vGECN;
         
     }
