@@ -159,6 +159,12 @@ return [
         // sis_ccc\Providers\BroadcastServiceProvider::class,
         sis_ccc\Providers\EventServiceProvider::class,
         sis_ccc\Providers\RouteServiceProvider::class,
+        
+        /* --- Adicionado por GECN --- */
+        // 1
+        sis_ccc\Providers\HtmlProviderCCC::class,
+        
+        // 2
 
     ],
 
@@ -208,6 +214,13 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        
+        /* --- Adicionado por GECN --- */
+        // 1
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,  
+        
+        // 2
 
     ],
 

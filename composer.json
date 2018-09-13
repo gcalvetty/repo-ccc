@@ -14,7 +14,11 @@
         "laravel/tinker": "^1.0",
         
         "nesbot/carbon": "^1.21",        
-        "google/apiclient": "^2.1"
+        "google/apiclient": "^2.1",
+        
+        "laravelcollective/html":"^5.4.0"
+        
+        
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
