@@ -4,9 +4,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="icon" href="{{ asset('favicon.ico') }}">
-        <title>{{ config('app.name')}} | @yield('titulo')</title>        
+        <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+        <link rel="icon" href="<?php echo e(asset('favicon.ico')); ?>">
+        <title><?php echo e(config('app.name')); ?> | <?php echo $__env->yieldContent('titulo'); ?></title>        
         <!-- Favicon -->        
         <link rel="apple-touch-icon" sizes="76x76" href="/imagenes/favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" href="/imagenes/favicon/favicon-32x32.png" sizes="32x32">
@@ -18,12 +18,19 @@
         <meta name="google-site-verification" content="TMCJ84VbGNP_H5cHT4uBHnMKj0lKeK0yYNPNw1wBgXU" />
         <!-- Styles -->
 
-        <link href="{{ elixir('/css/app.css') }}" rel="stylesheet">
-        <link href="{{ elixir('/css/sisccc.css') }}" rel="stylesheet">       
+        <link href="<?php echo e(elixir('/css/app.css')); ?>" rel="stylesheet">
+        <link href="<?php echo e(elixir('/css/sisccc.css')); ?>" rel="stylesheet">       
+
+        <?php if((Route::current()->getName() == 'rude-d.edit')or
+        (Route::current()->getName() == 'rude-ins.edit')or
+        (Route::current()->getName() == 'rude-s.edit')): ?>
+        <?php echo $__env->make('layouts_sisccc.partials.pagsis_edit_css', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php endif; ?>        
 
         <link href="/dist/css/AdminLTE.css" rel="stylesheet">          
         <link href="/dist/css/skins/_all-skins.css" rel="stylesheet">
-
+        <!-- DataTables -->
+        <link rel="stylesheet" href="/plugins/datatables/dataTables.bootstrap.css">
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -35,25 +42,22 @@
     </head>
     <body class="sidebar-mini skin-green wysihtml5-supported"> 
 
-        <div class="wrapper" id="docentes">
-            @if (Auth::guest())       		
-            @else     
-            {!! Html::menuccc() !!}
-            @endif
+        <div class="wrapper">
+            <?php if(Auth::guest()): ?>       		
+            <?php else: ?>     
+            <?php echo Html::menuccc(); ?>
+
+            <?php endif; ?>
 
 
-            @yield('sis_menu_lateral')
+            <?php echo $__env->yieldContent('sis_menu_lateral'); ?>
 
-            @yield('sis_contenido')
-
-            @yield('menu-configuracion')            
+            <?php echo $__env->yieldContent('sis_contenido'); ?>
+             
+            <?php echo $__env->yieldContent('menu-configuracion'); ?>
+            
 
         </div>      
-        <!-- jQuery 3.1.1 -->
-        <script src="/jquery/jquery-3.1.1.min.js"></script>    
-        <!-- jQuery UI 1.11.4 -->
-        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
         <!-- jQuery 3.1.1 -->
         <script src="/jquery/jquery-3.1.1.min.js"></script>    
         <!-- jQuery UI 1.11.4 -->
@@ -67,40 +71,32 @@
         <!-- FastClick -->
         <script src="/plugins/fastclick/fastclick.js"></script>
 
-
-
         <!-- Bootstrap 3.3.6 -->
         <script src="/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/dist/js/app.min.js"></script>        
-        <script src="/dist/js/ccc-escritorio.js"></script>        
-        <script src="/jquery/toastr.js" type="text/javascript"></script>        
+        <script src="/dist/js/app.min.js"></script>
+        <script src="/dist/js/ccc-escritorio.js"></script>
+
+
         <script>
             $(function () {
-            $("#example1").DataTable();
-            $('#example2').DataTable({
-            "paging": true,
+                $("#example1").DataTable();
+                $('#example2').DataTable({
+                    "paging": true,
                     "lengthChange": false,
                     "searching": false,
                     "ordering": true,
                     "info": true,
                     "autoWidth": false
+                });
             });
-            });           
-            
-            $('#EstudianteModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget)
-                    var idAlm = button.data('idalm')
-                    var nomAlm = button.data('nomalm')                    
-            var modal = $(this)
-                modal.find('.Alm').text(nomAlm)
-                modal.find('input.AlmId').val(idAlm)
-            });
-            $(document).ready(function () {
-            @if (session('success'))
-                    toastr.info('Se Elimino el Registro.', 'Reporte', {timeOut: 3000})
-                    @endif
-            });
-
-
         </script>
+
+        <?php if((Route::current()->getName() == 'rude-d.edit')or 
+        (Route::current()->getName() == 'rude-ins.edit')or
+        (Route::current()->getName() == 'rude-s.edit')): ?>
+        <?php echo $__env->make('layouts_sisccc.partials.pagsis_edit_js', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php endif; ?>               
+        <?php if((Route::current()->getName() == 'Admtr.Reg')): ?>             
+        <?php echo $__env->make('layouts_sisccc.partials.pagsis_charts_js',['some' => 'data'], \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>            
+        <?php endif; ?>
     </body>

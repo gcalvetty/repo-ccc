@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 // use sis_ccc\Notifications\MyResetPassword;
 
 
-class User extends \TCG\Voyager\Models\User {
+class User extends Authenticatable {
 
     use Notifiable;
     use FormAccessible;

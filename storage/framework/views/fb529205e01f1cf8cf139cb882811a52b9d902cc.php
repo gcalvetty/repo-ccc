@@ -1,21 +1,21 @@
-@extends('layouts_sisccc.pagsis_regente')
-@section('titulo','Regente')	
-@section('usuccc')
-{{ $usuactivo }}
-@endsection
-@section('usuico')
+<?php $__env->startSection('titulo','Regente'); ?>	
+<?php $__env->startSection('usuccc'); ?>
+<?php echo e($usuactivo); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('usuico'); ?>
 <i class="fa fa-cubes fa-2x"></i>
-@endsection
-@section('usuico-peq')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('usuico-peq'); ?>
 <i class="fa fa-cubes fa-lg"></i>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('sis_menu_lateral')
-@include('layouts_regente.partials.menu')
-@endsection
+<?php $__env->startSection('sis_menu_lateral'); ?>
+<?php echo $__env->make('layouts_regente.partials.menu', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
 
 
-@section('sis_contenido')
+<?php $__env->startSection('sis_contenido'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">    	
     <!-- Content Header (Page header) -->
@@ -51,23 +51,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($Lista as $Alumno)
+                                <?php $__currentLoopData = $Lista; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Alumno): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td>{{ $Alumno->id }}</td>  
-                                    <td>{{ $Alumno->curso }} - {{ $Alumno->aula }}</td>
-                                    <td>{{ $Alumno->nombre }} </td>
+                                    <td><?php echo e($Alumno->id); ?></td>  
+                                    <td><?php echo e($Alumno->curso); ?> - <?php echo e($Alumno->aula); ?></td>
+                                    <td><?php echo e($Alumno->nombre); ?> </td>
                                     <td>    
-                                    {{ $Alumno->ape_paterno }} {{ $Alumno->ape_materno }} </td>
+                                        <?php echo e($Alumno->ape_paterno); ?> <?php echo e($Alumno->ape_materno); ?> </td>
                                     <td>
                                         <button type="button" class="btn btn-danger" 
                                                 data-toggle="modal" 
                                                 data-target=".bs-example-modal-lg"
-                                                data-idalm="{{ $Alumno->id }}"
-                                                data-nomalm=" {{ $Alumno->nombre }} {{ $Alumno->ape_paterno }} {{ $Alumno->ape_materno }}">
+                                                data-idalm="<?php echo e($Alumno->id); ?>"
+                                                data-nomalm=" <?php echo e($Alumno->nombre); ?> <?php echo e($Alumno->ape_paterno); ?> <?php echo e($Alumno->ape_materno); ?>">
                                             <i class="fa fa-edit"></i></button>
                                     </td>
 
-                                    @endforeach    
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
                                 </tr>
 
                                 </tfoot>
@@ -84,7 +84,7 @@
 
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="EstudianteModal">
         <div class="modal-dialog" role="document" id="Comportamiento">            
-            <form v-on:submit="validateBeforeSubmit" class="form-horizontal" role="form" action="{{route('Rege.insCom')}}">    
+            <form v-on:submit="validateBeforeSubmit" class="form-horizontal" role="form" action="<?php echo e(route('Rege.insCom')); ?>">    
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -92,25 +92,25 @@
                     </div>
                     <div class="modal-body" >
                         <div class="col-lg-12">    
-                            <div class="form-group has-feedback {{ $errors->has('tip_comp') ? ' has-error' : '' }} " v-bind:class="{'': true, 'has-error': errors.has('tip_comp') }">
+                            <div class="form-group has-feedback <?php echo e($errors->has('tip_comp') ? ' has-error' : ''); ?> " v-bind:class="{'': true, 'has-error': errors.has('tip_comp') }">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">                                        
                                         <i class="fa fa-balance-scale"></i></span>
                                     <select type="text" class="form-control" id="tip_comp"  name="tip_comp" value=""  placeholder="Tipo de Comportamiento" 
-                                           v-model="tip_comp" 
-                                           v-validate.initial="tip_comp" 
-                                           data-vv-rules="required" 
-                                           data-vv-delay="500" 
-                                           v-bind:class="{'': true, 'has-error': errors.has('tip_comp') }">                                    
-                                        @foreach($ListaComp as $TipComp)
-                                        <option value="{{ $TipComp->regt_id }}">{{ $TipComp->regt_descripcion }}</option>
-                                        @endforeach 
-                                        
+                                            v-model="tip_comp" 
+                                            v-validate.initial="tip_comp" 
+                                            data-vv-rules="required" 
+                                            data-vv-delay="500" 
+                                            v-bind:class="{'': true, 'has-error': errors.has('tip_comp') }">                                    
+                                        <?php $__currentLoopData = $ListaComp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $TipComp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($TipComp->regt_id); ?>"><?php echo e($TipComp->regt_descripcion); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+
                                     </select>
                                 </div>
                                 <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_comp') }"></span>
-                                @if ($errors->has('tip_comp'))<span class="help-block"><strong>{{ $errors->first('tip_comp') }}</strong></span>
-                                @endif
+                                <?php if($errors->has('tip_comp')): ?><span class="help-block"><strong><?php echo e($errors->first('tip_comp')); ?></strong></span>
+                                <?php endif; ?>
                             </div>
                         </div>    
                         <ul class="list-group col-lg-12">
@@ -147,46 +147,34 @@
                                 </div>
                             </li>
                         </ul>
-                        <div class="col-lg-6">    
-                            <div class="form-group has-feedback {{ $errors->has('observacion') ? ' has-error' : '' }} " v-bind:class="{'': true, 'has-error': errors.has('observacion') }">
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon1">
-                                        <i class="fa fa-binoculars"></i></span>
-                                    <input type="text" class="form-control" id="observacion"  name="observacion" value=""  placeholder="Observacion" 
-                                           v-model="observacion" 
-                                           v-validate.initial="observacion" 
-                                           data-vv-rules="required|min:3|max:100" 
-                                           data-vv-delay="500" 
-                                           v-bind:class="{'': true, 'has-error': errors.has('observacion') }">
-                                    
-                                    <div id="editor">
-                                <textarea v-bind:class="{'': true, 'has-error': errors.has('observacion') } data-vv-rules="required" id="observacion"  name="observacion" rows="5" cols="80">
-                                    Ingrese su actividad!!!
-                                </textarea>
-                            </div>
-                                    
-                                    
-                                </div>
-                                <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('observacion') }"></span>
-                                @if ($errors->has('observacion'))<span class="help-block"><strong>{{ $errors->first('observacion') }}</strong></span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-lg-6">   
-                            <div class="form-group has-feedback {{ $errors->has('fec') ? ' has-error' : '' }}" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
+                        
+                        <div class="col-lg-12">   
+                            <div class="form-group has-feedback <?php echo e($errors->has('fec') ? ' has-error' : ''); ?>" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon10"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" id="fec"  name="fec" value="{{ old('fec') }}"  placeholder="Fecha DD/MM/YYYY" aria-describedby="basic-addon10" v-model="fec"  v-validate.initial="fec" data-vv-rules="required|date_format:DD/MM/YYYY" data-vv-delay="200" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
+                                    <input type="text" class="form-control" id="fec"  name="fec" value="<?php echo e(old('fec')); ?>"  placeholder="Fecha DD/MM/YYYY" aria-describedby="basic-addon10" v-model="fec"  v-validate.initial="fec" data-vv-rules="required|date_format:DD/MM/YYYY" data-vv-delay="200" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                 </div>
                                 <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
-                                @if ($errors->has('fec'))<span class="help-block"><strong>{{ $errors->first('fec') }}</strong></span>@endif
+                                <?php if($errors->has('fec')): ?><span class="help-block"><strong><?php echo e($errors->first('fec')); ?></strong></span><?php endif; ?>
                             </div>
+                        </div>
+                        
+                        <div class="col-lg-12">    
+
+                           
+                                <textarea id="editor" name="editor" rows="5" cols="80" 
+                                          v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
+                                          data-vv-rules="required" >
+                                    
+                                </textarea>
+                           
                         </div>
                         <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>                        
-                        {!! Form::submit('Guardar', ['class' => 'btn btn-primary']); !!}
+                        <?php echo Form::submit('Guardar', ['class' => 'btn btn-primary']);; ?>
+
                     </div>
                 </div>
             </form>
@@ -199,11 +187,12 @@
 </div>
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-    {!! Html::footer('siscccConfig.pie') !!}
-</footer>
-@endsection
+    <?php echo Html::footer('siscccConfig.pie'); ?>
 
-@section('menu-configuracion')
+</footer>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('menu-configuracion'); ?>
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
@@ -222,4 +211,6 @@
 <!-- Add the sidebar's background. This div must be placed
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts_sisccc.pagsis_regente', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

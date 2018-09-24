@@ -71,7 +71,7 @@
             
             <li class="hidden">
                 <a href="{{ route('register') }}">
-                    <i class="fa  fa-user-plus"></i> <span>Crear Nuevo Usuario1</span>                                        
+                    <i class="fa  fa-user-plus"></i> <span>Crear Nuevo Usuario</span>                                        
                 </a>
             </li> 
             

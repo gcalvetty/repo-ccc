@@ -35,7 +35,7 @@
     <body>       
         <div class="navbar-wrapper">
             <div class="container">
-                {!! Html::menuHome() !!}  
+                {!! Html::menuHome() !!} 
             </div>
         </div> 
         @if (Auth::guest()) 

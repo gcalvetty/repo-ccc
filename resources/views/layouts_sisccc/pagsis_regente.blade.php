@@ -33,7 +33,7 @@
             window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?>
         </script>
     </head>
-    <body class="sidebar-mini skin-green wysihtml5-supported sidebar-collapse"> 
+    <body class="sidebar-mini skin-green wysihtml5-supported"> 
 
         <div class="wrapper" id="docentes">
             @if (Auth::guest())       		
@@ -41,19 +41,11 @@
             {!! Html::menuccc() !!}
             @endif
 
-
             @yield('sis_menu_lateral')
-
             @yield('sis_contenido')
-
             @yield('menu-configuracion')            
-
         </div>      
-        <!-- jQuery 3.1.1 -->
-        <script src="/jquery/jquery-3.1.1.min.js"></script>    
-        <!-- jQuery UI 1.11.4 -->
-        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
+        
         <!-- jQuery 3.1.1 -->
         <script src="/jquery/jquery-3.1.1.min.js"></script>    
         <!-- jQuery UI 1.11.4 -->
@@ -133,8 +125,5 @@
                     toastr.info('Se Guardo el Registro.', 'Reporte', {timeOut: 3000})
                     @endif
             });
-            
-
-
         </script>
     </body>

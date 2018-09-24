@@ -4,10 +4,10 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                @yield('usuico')
+                <?php echo $__env->yieldContent('usuico'); ?>
             </div>
             <div class="pull-left info">
-                <p>@yield('usuccc')</p>
+                <p><?php echo $__env->yieldContent('usuccc'); ?></p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Conectado</a>
             </div>
         </div>        
@@ -35,7 +35,7 @@
             
             
             <li class="<?php echo ((Route::current()->getName() == 'Rege.Comp'))? "active":"";?>">            
-                <a href="{{ route('Rege.Comp')}}">
+                <a href="<?php echo e(route('Rege.Comp')); ?>">
                     <i class="fa fa-folder"></i> <span>Comportamiento</span>                    
                 </a>                
             </li> 

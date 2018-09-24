@@ -4,9 +4,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="icon" href="{{ asset('favicon.ico') }}">
-        <title>{{ config('app.name')}} | @yield('titulo')</title>        
+        <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+        <link rel="icon" href="<?php echo e(asset('favicon.ico')); ?>">
+        <title><?php echo e(config('app.name')); ?> | <?php echo $__env->yieldContent('titulo'); ?></title>        
         <!-- Favicon -->        
         <link rel="apple-touch-icon" sizes="76x76" href="/imagenes/favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" href="/imagenes/favicon/favicon-32x32.png" sizes="32x32">
@@ -18,8 +18,8 @@
         <meta name="google-site-verification" content="TMCJ84VbGNP_H5cHT4uBHnMKj0lKeK0yYNPNw1wBgXU" />
         <!-- Styles -->
 
-        <link href="{{ elixir('/css/app.css') }}" rel="stylesheet">
-        <link href="{{ elixir('/css/sisccc.css') }}" rel="stylesheet">       
+        <link href="<?php echo e(elixir('/css/app.css')); ?>" rel="stylesheet">
+        <link href="<?php echo e(elixir('/css/sisccc.css')); ?>" rel="stylesheet">       
 
         <link href="/dist/css/AdminLTE.css" rel="stylesheet">          
         <link href="/dist/css/skins/_all-skins.css" rel="stylesheet">
@@ -36,17 +36,18 @@
     <body class="sidebar-mini skin-green wysihtml5-supported"> 
 
         <div class="wrapper" id="docentes">
-            @if (Auth::guest())       		
-            @else     
-            {!! Html::menuccc() !!}
-            @endif
+            <?php if(Auth::guest()): ?>       		
+            <?php else: ?>     
+            <?php echo Html::menuccc(); ?>
+
+            <?php endif; ?>
 
 
-            @yield('sis_menu_lateral')
+            <?php echo $__env->yieldContent('sis_menu_lateral'); ?>
 
-            @yield('sis_contenido')
+            <?php echo $__env->yieldContent('sis_contenido'); ?>
 
-            @yield('menu-configuracion')            
+            <?php echo $__env->yieldContent('menu-configuracion'); ?>            
 
         </div>      
         <!-- jQuery 3.1.1 -->
@@ -96,9 +97,9 @@
                 modal.find('input.AlmId').val(idAlm)
             });
             $(document).ready(function () {
-            @if (session('success'))
+            <?php if(session('success')): ?>
                     toastr.info('Se Elimino el Registro.', 'Reporte', {timeOut: 3000})
-                    @endif
+                    <?php endif; ?>
             });
 
 

@@ -1,21 +1,21 @@
-@extends('layouts_sisccc.pagsis_regente_comportamiento')
-@section('titulo','Regente')	
-@section('usuccc')
-{{ $usuactivo }}
-@endsection
-@section('usuico')
+<?php $__env->startSection('titulo','Regente'); ?>	
+<?php $__env->startSection('usuccc'); ?>
+<?php echo e($usuactivo); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('usuico'); ?>
 <i class="fa fa-cubes fa-2x"></i>
-@endsection
-@section('usuico-peq')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('usuico-peq'); ?>
 <i class="fa fa-cubes fa-lg"></i>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('sis_menu_lateral')
-@include('layouts_regente.partials.menu')
-@endsection
+<?php $__env->startSection('sis_menu_lateral'); ?>
+<?php echo $__env->make('layouts_regente.partials.menu', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
 
 
-@section('sis_contenido')
+<?php $__env->startSection('sis_contenido'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">    	
     <!-- Content Header (Page header) -->
@@ -54,7 +54,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($Lista as $Alumno)
+                                <?php $__currentLoopData = $Lista; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Alumno): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <?php
                                 $tipTar = "";
                                 switch ($Alumno->tiptarj) {
@@ -72,23 +72,23 @@
                                         break;
                                 }
                                 ?>
-                                <tr class="{{ $tipTar }}">
-                                    <td>{{ $Alumno->id }}</td>  
-                                    <td>{{ $Alumno->tipcomp }}</td>
-                                    <td>{{ $Alumno->curso }} </td>
-                                    <td>{{ $Alumno->nombre }} {{ $Alumno->ape_paterno }} {{ $Alumno->ape_materno }} </td>                                    
-                                    <td>{{ $Alumno->tiptarj }}</td>
+                                <tr class="<?php echo e($tipTar); ?>">
+                                    <td><?php echo e($Alumno->id); ?></td>  
+                                    <td><?php echo e($Alumno->tipcomp); ?></td>
+                                    <td><?php echo e($Alumno->curso); ?> </td>
+                                    <td><?php echo e($Alumno->nombre); ?> <?php echo e($Alumno->ape_paterno); ?> <?php echo e($Alumno->ape_materno); ?> </td>                                    
+                                    <td><?php echo e($Alumno->tiptarj); ?></td>
                                     <td><?php echo html_entity_decode($Alumno->obser) ?></td>
-                                    <td>{{ $Alumno->fec }}</td>
+                                    <td><?php echo e($Alumno->fec); ?></td>
                                     <td>
                                         <button type="button" class="btn btn-danger" 
                                                 data-toggle="modal" 
                                                 data-target=".bs-example-modal-lg"
-                                                data-idalm="{{ $Alumno->id }}"
-                                                data-nomalm=" {{ $Alumno->nombre }} {{ $Alumno->ape_paterno }} {{ $Alumno->ape_materno }}">
+                                                data-idalm="<?php echo e($Alumno->id); ?>"
+                                                data-nomalm=" <?php echo e($Alumno->nombre); ?> <?php echo e($Alumno->ape_paterno); ?> <?php echo e($Alumno->ape_materno); ?>">
                                             <i class="fa fa-trash"></i></button>
                                     </td>
-                                    @endforeach    
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
                                 </tr>
                                 </tbody>
                         </table>
@@ -104,7 +104,7 @@
     <!-- /.content -->
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="EstudianteModal">
         <div class="modal-dialog" role="document" id="Comportamiento">            
-            <form v-on:submit="validateBeforeSubmit" class="form-horizontal" role="form" action="{{route('Rege.delCom')}}">    
+            <form v-on:submit="validateBeforeSubmit" class="form-horizontal" role="form" action="<?php echo e(route('Rege.delCom')); ?>">    
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -114,7 +114,8 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>                        
-                        {!! Form::submit('Aceptar', ['class' => 'btn btn-danger']); !!}
+                        <?php echo Form::submit('Aceptar', ['class' => 'btn btn-danger']);; ?>
+
                     </div>
                 </div>
             </form>
@@ -124,11 +125,12 @@
 </div>
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-    {!! Html::footer('siscccConfig.pie') !!}
-</footer>
-@endsection
+    <?php echo Html::footer('siscccConfig.pie'); ?>
 
-@section('menu-configuracion')
+</footer>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('menu-configuracion'); ?>
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
@@ -147,4 +149,6 @@
 <!-- Add the sidebar's background. This div must be placed
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts_sisccc.pagsis_regente_comportamiento', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
