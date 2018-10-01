@@ -27,13 +27,12 @@ class RegeController extends Controller {
     /*
      * ----------------------
      */
-
     public function index(Request $request) {
         $sql = new qGECN;
         $lGECN = $sql::listAlumn($request);
         $lComp = $sql::listComp();
-
-        $Niveles = Grd_Nivel::get();
+        $NivSel=$request->grd_nivel;
+        $Niveles = Grd_Nivel::find(["2", "3"]);
         $user = fGECN::obt_nombre();
 
         return view('layouts_regente/view_rege', [
@@ -41,22 +40,26 @@ class RegeController extends Controller {
             'Lista' => $lGECN,
             'ListaComp' => $lComp,
             'Niveles' => $Niveles,
+            'NivSel' => $NivSel
         ]);
     }
 
-    public function comportamiento() {
-        $sql = new qGECN;
-        $lGECN = $sql::listAlumnComportamiento();
-        $Niveles = Grd_Nivel::get();
+    public function comportamiento(Request $request) {        
+        $sql = new qGECN;        
+        $NivSel=$request->grd_nivel;  
+        $lGECN = $sql::listAlumnComportamiento($NivSel);              
+        $Niveles = Grd_Nivel::find(["2", "3"]);
         $user = fGECN::obt_nombre();
-
+        
         return view('layouts_regente/view_rege_comportamiento', [
             'usuactivo' => $user,
             'Lista' => $lGECN,            
             'Niveles' => $Niveles,
+            'NivSel' => $NivSel
         ]);
     }
     
+
     /*
      * CRUD
      */

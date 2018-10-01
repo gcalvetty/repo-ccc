@@ -142,7 +142,12 @@ order by curso asc, fec Desc
         return $lisComportamiento;
     }
 
-    public static function listAlumnComportamiento() {
+    public static function listAlumnComportamiento($grd_nivel) {
+        $grd_nivel_aux = "";
+        if($grd_nivel!= null){
+            $grd_nivel_aux ='and ge.grd_orden = '.$grd_nivel.' ';            
+        }
+        
         $lisAluComp = DB::select('select rc.reg_id as id, u.nombre, u.ape_paterno, u.ape_materno, ge.grd_nombre as curso, rtc.regt_descripcion as tipcomp, rtt.regt_descripcion as tiptarj, rc.reg_obser as obser, rc.reg_fec as fec
 from users as u
 inner join reg_comportamiento as rc on rc.user_id = u.id
@@ -150,10 +155,11 @@ left join reg_tipo_comportamiento as rtc on  rtc.regt_id = rc.reg_tipComp
 left join reg_tipo_tarjeta	as rtt on rtt.regt_id = rc.reg_tipTarj
 
 left join rude_1_gestion as rg on u.id = rg.user_id
-left join grd_escolar as ge on rg.gst_grd_escolar = ge.grd_id
-where u.tipo_Usu = "Est_ccc"
+left join grd_escolar as ge on rg.gst_grd_escolar = ge.grd_id 
+where u.tipo_Usu = "Est_ccc" '.$grd_nivel_aux.'
 order by curso ASC, fec Desc
                 ');
+        
 
         return $lisAluComp;
     }

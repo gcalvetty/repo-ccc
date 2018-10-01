@@ -15,12 +15,12 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">Menú del Regente</li>
-            <li class="<?php echo ((Route::current()->getName() == 'Rege.Reg'))? "active":"";?>">
+            <li class="<?php echo ((Route::current()->getName() == 'Rege.Reg')) ? "active" : ""; ?>">
                 <a href="/regente/">
                     <i class="fa fa-th"></i> <span>Escritorio</span>            
                 </a>
             </li>
-             <li class="treeview">
+            <li class="treeview <?php echo ((Route::current()->getName() == 'Rege.Comp')or(Route::current()->getName() == 'Rege.Comp.Nivel')) ? "active" : ""; ?>">
                 <a href="#">
                     <i class="fa fa-folder"></i> <span>Comportamiento</span>
                     <span class="pull-right-container">
@@ -28,18 +28,22 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Primaria</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Secundaria</a></li>
+                    <?php $__currentLoopData = $Niveles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Nivel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li class="<?php echo ($Nivel->grd_nivel_id == $NivSel) ? "active" : ""; ?>">
+                        <a href="<?php echo e(route('Rege.Comp.Nivel',$Nivel->grd_nivel_id)); ?>"><i class="fa fa-circle-o"></i> <?php echo e($Nivel->grd_nivel_nombre); ?></a>
+                    </li>                    
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <li class="<?php echo (Route::current()->getName() == 'Rege.Comp') ? "active" : ""; ?>">            
+                        <a href="<?php echo e(route('Rege.Comp')); ?>">
+                            <i class="fa fa-circle-o"></i> <span>Todos los grados</span>                    
+                        </a>                
+                    </li> 
                 </ul>
             </li> 
-            
-            
-            <li class="<?php echo ((Route::current()->getName() == 'Rege.Comp'))? "active":"";?>">            
-                <a href="<?php echo e(route('Rege.Comp')); ?>">
-                    <i class="fa fa-folder"></i> <span>Comportamiento</span>                    
-                </a>                
-            </li> 
-              
+
+
+
+
         </ul>
     </section>
     <!-- /.sidebar -->

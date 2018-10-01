@@ -35,7 +35,7 @@
     <body>       
         <div class="navbar-wrapper">
             <div class="container">
-                <?php echo Html::menuHome(); ?>  
+                <?php echo Html::menuHome(); ?> 
             </div>
         </div> 
         <?php if(Auth::guest()): ?> 

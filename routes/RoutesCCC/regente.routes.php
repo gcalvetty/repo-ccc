@@ -9,6 +9,10 @@ Route::get('/comportamiento',[
     'uses' => 'RegeController@comportamiento',    
 ]);
 
+Route::get('/comportamiento/lista-{grd_nivel}-alumnos/', 
+        array('uses'=> 'RegeController@comportamiento',
+              'as' => 'Rege.Comp.Nivel'))->where(['grd_nivel'=>'[0-4]']);
+
 /*
  * CRUD
  */

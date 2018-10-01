@@ -70,10 +70,6 @@ class Google_Service_CloudTalentSolution extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'type' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'scope' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -91,6 +87,10 @@ class Google_Service_CloudTalentSolution extends Google_Service
                   'type' => 'string',
                 ),
                 'languageCode' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'type' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -226,6 +226,10 @@ class Google_Service_CloudTalentSolution extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
@@ -235,10 +239,6 @@ class Google_Service_CloudTalentSolution extends Google_Service
                   'type' => 'string',
                 ),
                 'jobView' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
