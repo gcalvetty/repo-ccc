@@ -381,6 +381,7 @@ order by u.ape_paterno asc, u.ape_materno asc, u.nombre asc');
                 ->orderBy('nombre', 'asc')
                 ->orderBy('g.gst_aula', 'Desc')
                 ->get();
+                
         return $lisAlumno;
     }
 

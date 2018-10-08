@@ -63,10 +63,10 @@
             <?php echo $__env->renderComponent(); ?>
         </div>
         <?php $__env->startComponent('layouts_sisccc.pag_home_footer'); ?> 
-
         <?php echo $__env->renderComponent(); ?>
 
         <?php endif; ?>
+        
         <!-- jQuery 3.1.1 -->
         <script src="/jquery/jquery-3.1.1.min.js"></script>    
         <!-- jQuery UI 1.11.4 -->

@@ -63,10 +63,10 @@
             @endcomponent
         </div>
         @component('layouts_sisccc.pag_home_footer') 
-
         @endcomponent
 
         @endif
+        
         <!-- jQuery 3.1.1 -->
         <script src="/jquery/jquery-3.1.1.min.js"></script>    
         <!-- jQuery UI 1.11.4 -->

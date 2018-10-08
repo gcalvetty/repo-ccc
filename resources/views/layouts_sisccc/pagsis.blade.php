@@ -56,7 +56,8 @@
             @yield('menu-configuracion')
             
 
-        </div>      
+        </div>
+        <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=tjcHah7sB34YguDSZ8X4JxpC77rb3bQ4P8C4ujVW6W4G62t3N98vnkXKWzs6"></script></span>
         <!-- jQuery 3.1.1 -->
         <script src="/jquery/jquery-3.1.1.min.js"></script>    
         <!-- jQuery UI 1.11.4 -->

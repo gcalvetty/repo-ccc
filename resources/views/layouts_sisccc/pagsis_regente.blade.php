@@ -40,12 +40,11 @@
             @else     
             {!! Html::menuccc() !!}
             @endif
-
             @yield('sis_menu_lateral')
             @yield('sis_contenido')
             @yield('menu-configuracion')            
         </div>      
-        
+
         <!-- jQuery 3.1.1 -->
         <script src="/jquery/jquery-3.1.1.min.js"></script>    
         <!-- jQuery UI 1.11.4 -->
@@ -59,8 +58,6 @@
         <!-- FastClick -->
         <script src="/plugins/fastclick/fastclick.js"></script>
 
-
-
         <!-- Bootstrap 3.3.6 -->
         <script src="/bootstrap/js/bootstrap.min.js"></script>
         <script src="/dist/js/app.min.js"></script>        
@@ -70,60 +67,61 @@
         <script src="/jquery/vee-validate.js" type="text/javascript"></script>
         <script src="/jquery/toastr.js" type="text/javascript"></script>
         <!-- TextArea -->
-        <script src="/jquery/ckeditor/ckeditor.js"></script>
+        <script src="/jquery/ckeditor/ckeditor.js"></script>          
         <script src="/jquery/ckeditor/js/sample.js"></script>        
         <script>
-            $(function () {
-            $("#example1").DataTable();
-            $('#example2').DataTable({
-            "paging": true,
+            $(function () {                
+                $("#example1").DataTable();
+                $('#example2').DataTable({
+                    "paging": true,
                     "lengthChange": false,
                     "searching": false,
                     "ordering": true,
                     "info": true,
                     "autoWidth": false
-            });
+                });
             });
             const config = {
-            errorBagName: 'errors',
-                    delay: 1000,
-                    messages: null,
-                    strict: true
+                errorBagName: 'errors',
+                delay: 1000,
+                messages: null,
+                strict: true
             };
             Vue.use(VeeValidate, config);
             const app = new Vue({
-            el: '#Comportamiento',
-                    validator: null,
-                    data() {
-            return {
-            // ------------- 
-            tip_comp: "",
-            observacion: "",
-                    fec: ""}
-            },
-                    methods: {
+                el: '#Comportamiento',
+                validator: null,
+                data() {
+                    return {
+                        // ------------- 
+                        tip_comp: "",
+                        observacion: "",
+                        fec: ""}
+                },
+                methods: {
                     // --------------
                     validateBeforeSubmit(e) {
-                    this.$validator.validateAll();
-                    if (this.errors.any()) {
-                    e.preventDefault();
+                        this.$validator.validateAll();
+                        if (this.errors.any()) {
+                            e.preventDefault();
+                        }
                     }
-                    }
-                    }
+                }
             });
             $('#EstudianteModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget)
-                    var idAlm = button.data('idalm')
-                    var nomAlm = button.data('nomalm')                    
-            var modal = $(this)
+                var button = $(event.relatedTarget)
+                var idAlm = button.data('idalm')
+                var nomAlm = button.data('nomalm')
+                var modal = $(this)
                 modal.find('.Alm').text(nomAlm)
                 modal.find('input.AlmId').val(idAlm)
             });
+
             $(document).ready(function () {
                 initSample();
-            @if (session('success'))
-                    toastr.info('Se Guardo el Registro.', 'Reporte', {timeOut: 3000})
-                    @endif
+                        @if (session('success'))
+                toastr.info('Se Guardo el Registro.', 'Reporte', {timeOut: 3000})
+                @endif
             });
         </script>
     </body>

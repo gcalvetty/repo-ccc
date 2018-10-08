@@ -15,7 +15,7 @@
         </div>
         <div class="login-box-body">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 col-md-push-0 col-sm-6 col-sm-push-3 col-xs-12">
                     <div class="panel panel-success">
                         <div class="panel-heading">@lang('auth.titLogin')</div>
                         <div class="panel-body">
@@ -62,14 +62,14 @@
                                 <hr/>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        <div class="col-md-6 text-center">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 text-center">
                                             <a href="{{ route('homeCCC') }}" target="_blank" >
                                                 <button type="button" class="btn btn-success" >
                                                     <i class="fa fa-reply"></i> @lang('auth.botVolIni')
                                                 </button>
                                             </a>
                                         </div>
-                                        <div class="col-md-6 text-center">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 text-center">
                                             <button type="submit" class="btn btn-primary">
                                                 <i class="fa fa-external-link"></i> <b>@lang('auth.botAcs')</b>
                                             </button>

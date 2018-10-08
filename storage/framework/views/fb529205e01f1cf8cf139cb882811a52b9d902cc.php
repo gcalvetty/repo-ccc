@@ -32,28 +32,26 @@
 
     <section class="content">
         <div class="row">
-            <div class="col-xs-12">
-
+            <div class="col-md-8 col-md-push-2">
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Lista de Alumnos</h3>                        
                     </div>
                     <!-- /.box-header -->
-                    <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                    <div class="box-body ">
+                        <table id="example1" class="table table-bordered table-striped ">
                             <thead>
-                                <tr>
-                                    <th>ID</th>
+                                <tr>                                    
                                     <th>Curso</th>
-                                    <th>Alumno Nombre</th> 
-                                    <th>Alumno Apellido</th> 
-                                    <th>Conducta</th>                                    
+                                    <th>Nombre</th> 
+                                    <th>Apellido</th> 
+                                    <th>Conducta</th> 
+                                    <th>Reporte</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $__currentLoopData = $Lista; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Alumno): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <tr>
-                                    <td><?php echo e($Alumno->id); ?></td>  
+                                <tr>                                    
                                     <td><?php echo e($Alumno->curso); ?> - <?php echo e($Alumno->aula); ?></td>
                                     <td><?php echo e($Alumno->nombre); ?> </td>
                                     <td>    
@@ -65,6 +63,13 @@
                                                 data-idalm="<?php echo e($Alumno->id); ?>"
                                                 data-nomalm=" <?php echo e($Alumno->nombre); ?> <?php echo e($Alumno->ape_paterno); ?> <?php echo e($Alumno->ape_materno); ?>">
                                             <i class="fa fa-edit"></i></button>
+                                    </td>
+                                    <td>
+                                        <a href="{ route('rep.alumnos') }" target="_blank">
+                                            <button type="button" class="btn btn-success" >
+                                                <i class="fa fa-file-excel-o"></i>
+                                            </button>
+                                        </a> 
                                     </td>
 
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
@@ -104,8 +109,7 @@
                                             v-bind:class="{'': true, 'has-error': errors.has('tip_comp') }">                                    
                                         <?php $__currentLoopData = $ListaComp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $TipComp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($TipComp->regt_id); ?>"><?php echo e($TipComp->regt_descripcion); ?></option>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
-
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
                                 <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_comp') }"></span>
@@ -113,41 +117,115 @@
                                 <?php endif; ?>
                             </div>
                         </div>    
-                        <ul class="list-group col-lg-12">
-                            <li class="list-group-item list-group-item-success col-lg-6">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="tipTarj" id="optionsRadios1" value="1" checked>
-                                        Sin Tarjeta
-                                    </label>
+
+                        <div class="col-md-12">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#trj0">Sin tarjeta</a></li>
+                                <li><a data-toggle="tab" href="#trj1">Tarjeta Blanca</a></li>
+                                <li><a data-toggle="tab" href="#trj2">Tarjeta Amarilla</a></li>
+                                <li><a data-toggle="tab" href="#trj3">Tarjeta Rojas</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="trj0" class="tab-pane fade in active">
+                                    <div class="radio bg-success">                                        
+                                        <label>
+                                            <input type="radio" name="tipTarj" id="optionsRadios1" value="1" checked>
+                                            Sin Tarjeta
+                                        </label>
+                                    </div>
                                 </div>
-                            </li>
-                            <li class="list-group-item list-group-item-info col-lg-6">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="tipTarj" id="optionsRadios2" value="2" >
-                                        Tarjeta Blanca
-                                    </label>
+                                <div id="trj1" class="tab-pane fade bg-info">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="tipTarj" id="optionsRadios2" value="2" >
+                                            Tarjeta Blanca
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-12">    
+                                        <div class="form-group has-feedback <?php echo e($errors->has('tip_compB') ? ' has-error' : ''); ?> " v-bind:class="{'': true, 'has-error': errors.has('tip_compB') }">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon1">                                        
+                                                    <i class="fa fa-balance-scale"></i></span>
+                                                <select type="text" class="form-control" id="tip_compB"  name="tip_compB" value=""  placeholder="Tipo de Comportamiento" 
+                                                        v-model="tip_compB" 
+                                                        v-validate.initial="tip_compB" 
+                                                        data-vv-rules="required" 
+                                                        data-vv-delay="500" 
+                                                        v-bind:class="{'': true, 'has-error': errors.has('tip_compB') }">                                    
+                                                    <?php $__currentLoopData = $ListaComp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $TipComp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($TipComp->regt_id); ?>"><?php echo e($TipComp->regt_descripcion); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </select>
+                                            </div>
+                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_compB') }"></span>
+                                            <?php if($errors->has('tip_compB')): ?><span class="help-block"><strong><?php echo e($errors->first('tip_compB')); ?></strong></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div> 
                                 </div>
-                            </li>
-                            <li class="list-group-item list-group-item-warning col-lg-6">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="tipTarj" id="optionsRadios3" value="3">
-                                        Tarjeta Amarrilla
-                                    </label>
+                                <div id="trj2" class="tab-pane fade bg-warning">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="tipTarj" id="optionsRadios3" value="3">
+                                            Tarjeta Amarrilla
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-12">    
+                                        <div class="form-group has-feedback <?php echo e($errors->has('tip_compA') ? ' has-error' : ''); ?> " v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon1">                                        
+                                                    <i class="fa fa-balance-scale"></i></span>
+                                                <select type="text" class="form-control" id="tip_compA"  name="tip_compA" value=""  placeholder="Tipo de Comportamiento" 
+                                                        v-model="tip_compA" 
+                                                        v-validate.initial="tip_compA" 
+                                                        data-vv-rules="required" 
+                                                        data-vv-delay="500" 
+                                                        v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">                                    
+                                                    <?php $__currentLoopData = $ListaComp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $TipComp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($TipComp->regt_id); ?>"><?php echo e($TipComp->regt_descripcion); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </select>
+                                            </div>
+                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_compA') }"></span>
+                                            <?php if($errors->has('tip_compA')): ?><span class="help-block"><strong><?php echo e($errors->first('tip_compA')); ?></strong></span>
+                                            <?php endif; ?>
+                                        </div>
+                                                </div>
+                                        </div>
+                                <div id="trj3" class="tab-pane fade bg-danger">                                    
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="tipTarj" id="optionsRadios4" value="4" >
+                                            Tarjeta Roja
+                                        </label>
+                                        <div class="col-lg-12">    
+                                        <div class="form-group has-feedback <?php echo e($errors->has('tip_compA') ? ' has-error' : ''); ?> " v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="basic-addon1">                                        
+                                                    <i class="fa fa-balance-scale"></i></span>
+                                                <select type="text" class="form-control" id="tip_compA"  name="tip_compA" value=""  placeholder="Tipo de Comportamiento" 
+                                                        v-model="tip_compA" 
+                                                        v-validate.initial="tip_compA" 
+                                                        data-vv-rules="required" 
+                                                        data-vv-delay="500" 
+                                                        v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">                                    
+                                                    <?php $__currentLoopData = $ListaComp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $TipComp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($TipComp->regt_id); ?>"><?php echo e($TipComp->regt_descripcion); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </select>
+                                            </div>
+                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_compA') }"></span>
+                                            <?php if($errors->has('tip_compA')): ?><span class="help-block"><strong><?php echo e($errors->first('tip_compA')); ?></strong></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    </div>
                                 </div>
-                            </li>
-                            <li class="list-group-item list-group-item-danger col-lg-6">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="tipTarj" id="optionsRadios4" value="4" >
-                                        Tarjeta Roja
-                                    </label>
-                                </div>
-                            </li>
-                        </ul>
-                        
+                            </div>
+                        </div>
+
+
                         <div class="col-lg-12">   
                             <div class="form-group has-feedback <?php echo e($errors->has('fec') ? ' has-error' : ''); ?>" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                 <div class="input-group">
@@ -158,16 +236,15 @@
                                 <?php if($errors->has('fec')): ?><span class="help-block"><strong><?php echo e($errors->first('fec')); ?></strong></span><?php endif; ?>
                             </div>
                         </div>
-                        
+
                         <div class="col-lg-12">    
 
-                           
-                                <textarea id="editor" name="editor" rows="5" cols="80" 
-                                          v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
-                                          data-vv-rules="required" >
-                                    
-                                </textarea>
-                           
+
+                            <textarea id="editor" name="editor" rows="5" cols="80" 
+                                      v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
+                                      data-vv-rules="required" >
+                            </textarea>
+
                         </div>
                         <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true">
                     </div>
