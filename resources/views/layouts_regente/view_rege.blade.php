@@ -95,28 +95,18 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="exampleModalLabel">Comportamiento del Alumn@: <span class="Alm"></span></h4>
                     </div>
-                    <div class="modal-body" >
-                        <div class="col-lg-12">    
-                            <div class="form-group has-feedback {{ $errors->has('tip_comp') ? ' has-error' : '' }} " v-bind:class="{'': true, 'has-error': errors.has('tip_comp') }">
+                    <div class="modal-body" >                        
+                        
+                        <div class="col-lg-12">   
+                            <div class="form-group has-feedback {{ $errors->has('fec') ? ' has-error' : '' }}" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                 <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon1">                                        
-                                        <i class="fa fa-balance-scale"></i></span>
-                                    <select type="text" class="form-control" id="tip_comp"  name="tip_comp" value=""  placeholder="Tipo de Comportamiento" 
-                                            v-model="tip_comp" 
-                                            v-validate.initial="tip_comp" 
-                                            data-vv-rules="required" 
-                                            data-vv-delay="500" 
-                                            v-bind:class="{'': true, 'has-error': errors.has('tip_comp') }">                                    
-                                        @foreach($ListaComp as $TipComp)
-                                        <option value="{{ $TipComp->regt_id }}">{{ $TipComp->regt_descripcion }}</option>
-                                        @endforeach
-                                    </select>
+                                    <span class="input-group-addon" id="basic-addon10"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" id="fec"  name="fec" value="{{ old('fec') }}"  placeholder="Fecha DD/MM/YYYY" aria-describedby="basic-addon10" v-model="fec"  v-validate.initial="fec" data-vv-rules="required|date_format:DD/MM/YYYY" data-vv-delay="200" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                 </div>
-                                <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_comp') }"></span>
-                                @if ($errors->has('tip_comp'))<span class="help-block"><strong>{{ $errors->first('tip_comp') }}</strong></span>
-                                @endif
+                                <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
+                                @if ($errors->has('fec'))<span class="help-block"><strong>{{ $errors->first('fec') }}</strong></span>@endif
                             </div>
-                        </div>    
+                        </div>
 
                         <div class="col-md-12">
                             <ul class="nav nav-tabs">
@@ -128,21 +118,23 @@
 
                             <div class="tab-content">
                                 <div id="trj0" class="tab-pane fade in active">
-                                    <div class="radio bg-success">                                        
-                                        <label>
-                                            <input type="radio" name="tipTarj" id="optionsRadios1" value="1" checked>
-                                            Sin Tarjeta
-                                        </label>
+                                    <div class="col-lg-12 bg-success">
+                                        <div class="radio">                                        
+                                            <label>
+                                                <input type="radio" name="tipTarj" id="optionsRadios1" value="1" checked>
+                                                Sin Tarjeta
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div id="trj1" class="tab-pane fade bg-info">
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="tipTarj" id="optionsRadios2" value="2" >
-                                            Tarjeta Blanca
-                                        </label>
-                                    </div>
-                                    <div class="col-lg-12">    
+                                <div id="trj1" class="tab-pane fade">
+                                    <div class="col-lg-12 bg-info">  
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="tipTarj" id="optionsRadios2" value="2" >
+                                                Tarjeta Blanca
+                                            </label>
+                                        </div>
                                         <div class="form-group has-feedback {{ $errors->has('tip_compB') ? ' has-error' : '' }} " v-bind:class="{'': true, 'has-error': errors.has('tip_compB') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
@@ -154,7 +146,9 @@
                                                         data-vv-delay="500" 
                                                         v-bind:class="{'': true, 'has-error': errors.has('tip_compB') }">                                    
                                                     @foreach($ListaComp as $TipComp)
+                                                    @if ($TipComp->regt_tt_id == 2)
                                                     <option value="{{ $TipComp->regt_id }}">{{ $TipComp->regt_descripcion }}</option>
+                                                    @endif
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -164,14 +158,14 @@
                                         </div>
                                     </div> 
                                 </div>
-                                <div id="trj2" class="tab-pane fade bg-warning">
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="tipTarj" id="optionsRadios3" value="3">
-                                            Tarjeta Amarrilla
-                                        </label>
-                                    </div>
-                                    <div class="col-lg-12">    
+                                <div id="trj2" class="tab-pane fade">
+                                    <div class="col-lg-12 bg-warning">   
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="tipTarj" id="optionsRadios3" value="3">
+                                                Tarjeta Amarrilla
+                                            </label>
+                                        </div>
                                         <div class="form-group has-feedback {{ $errors->has('tip_compA') ? ' has-error' : '' }} " v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
@@ -183,7 +177,9 @@
                                                         data-vv-delay="500" 
                                                         v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">                                    
                                                     @foreach($ListaComp as $TipComp)
+                                                    @if ($TipComp->regt_tt_id == 3)
                                                     <option value="{{ $TipComp->regt_id }}">{{ $TipComp->regt_descripcion }}</option>
+                                                    @endif
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -191,15 +187,17 @@
                                             @if ($errors->has('tip_compA'))<span class="help-block"><strong>{{ $errors->first('tip_compA') }}</strong></span>
                                             @endif
                                         </div>
-                                                </div>
-                                        </div>
-                                <div id="trj3" class="tab-pane fade bg-danger">                                    
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="tipTarj" id="optionsRadios4" value="4" >
-                                            Tarjeta Roja
-                                        </label>
-                                        <div class="col-lg-12">    
+                                    </div>
+                                </div>
+                                <div id="trj3" class="tab-pane fade">                                    
+
+                                    <div class="col-lg-12 bg-danger"> 
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="tipTarj" id="optionsRadios4" value="4" >
+                                                Tarjeta Roja
+                                            </label>
+                                        </div> 
                                         <div class="form-group has-feedback {{ $errors->has('tip_compA') ? ' has-error' : '' }} " v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
@@ -211,7 +209,9 @@
                                                         data-vv-delay="500" 
                                                         v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">                                    
                                                     @foreach($ListaComp as $TipComp)
+                                                    @if ($TipComp->regt_tt_id == 4)
                                                     <option value="{{ $TipComp->regt_id }}">{{ $TipComp->regt_descripcion }}</option>
+                                                    @endif
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -220,22 +220,12 @@
                                             @endif
                                         </div>
                                     </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
 
 
-                        <div class="col-lg-12">   
-                            <div class="form-group has-feedback {{ $errors->has('fec') ? ' has-error' : '' }}" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon10"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" id="fec"  name="fec" value="{{ old('fec') }}"  placeholder="Fecha DD/MM/YYYY" aria-describedby="basic-addon10" v-model="fec"  v-validate.initial="fec" data-vv-rules="required|date_format:DD/MM/YYYY" data-vv-delay="200" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
-                                </div>
-                                <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
-                                @if ($errors->has('fec'))<span class="help-block"><strong>{{ $errors->first('fec') }}</strong></span>@endif
-                            </div>
-                        </div>
+                        
 
                         <div class="col-lg-12">    
 

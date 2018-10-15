@@ -18,7 +18,8 @@
         </div>
     </div><!-- /row -->
     <div class="row">
-        <p class="center-block">
+        <p class="center-block">Casa7
+            
         <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=tjcHah7sB34YguDSZ8X4JxpC77rb3bQ4P8C4ujVW6W4G62t3N98vnkXKWzs6"></script></span>
         </p>
     </div>
