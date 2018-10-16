@@ -95,19 +95,21 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="exampleModalLabel">Comportamiento del Alumn@: <span class="Alm"></span></h4>
                     </div>
-                    <div class="modal-body" >                        
-                        
-                        <div class="col-lg-12">   
+                    <div class="modal-body" >
+                        <div class="col-md-12">
                             <div class="form-group has-feedback {{ $errors->has('fec') ? ' has-error' : '' }}" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon10"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" id="fec"  name="fec" value="{{ old('fec') }}"  placeholder="Fecha DD/MM/YYYY" aria-describedby="basic-addon10" v-model="fec"  v-validate.initial="fec" data-vv-rules="required|date_format:DD/MM/YYYY" data-vv-delay="200" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
+                                    <vuejs-datepicker id="fec" name="fec" 
+                                                      :disabledDates="state.disabledDates" 
+                                                      :value="state.date"
+                                                      :language="es"
+                                                      :format="customFormatter"></vuejs-datepicker>
                                 </div>
                                 <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
                                 @if ($errors->has('fec'))<span class="help-block"><strong>{{ $errors->first('fec') }}</strong></span>@endif
                             </div>
                         </div>
-
                         <div class="col-md-12">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a data-toggle="tab" href="#trj0">Sin tarjeta</a></li>
@@ -142,7 +144,7 @@
                                                 <select type="text" class="form-control" id="tip_compB"  name="tip_compB" value=""  placeholder="Tipo de Comportamiento" 
                                                         v-model="tip_compB" 
                                                         v-validate.initial="tip_compB" 
-                                                        data-vv-rules="required" 
+                                                        data-vv-rules="" 
                                                         data-vv-delay="500" 
                                                         v-bind:class="{'': true, 'has-error': errors.has('tip_compB') }">                                    
                                                     @foreach($ListaComp as $TipComp)
@@ -173,7 +175,7 @@
                                                 <select type="text" class="form-control" id="tip_compA"  name="tip_compA" value=""  placeholder="Tipo de Comportamiento" 
                                                         v-model="tip_compA" 
                                                         v-validate.initial="tip_compA" 
-                                                        data-vv-rules="required" 
+                                                        data-vv-rules="" 
                                                         data-vv-delay="500" 
                                                         v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">                                    
                                                     @foreach($ListaComp as $TipComp)
@@ -205,7 +207,7 @@
                                                 <select type="text" class="form-control" id="tip_compA"  name="tip_compA" value=""  placeholder="Tipo de Comportamiento" 
                                                         v-model="tip_compA" 
                                                         v-validate.initial="tip_compA" 
-                                                        data-vv-rules="required" 
+                                                        data-vv-rules="" 
                                                         data-vv-delay="500" 
                                                         v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">                                    
                                                     @foreach($ListaComp as $TipComp)
@@ -223,20 +225,13 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        
-
-                        <div class="col-lg-12">    
-
-
+                        <div class="col-lg-12"> 
                             <textarea id="editor" name="editor" rows="5" cols="80" 
                                       v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
                                       data-vv-rules="required" >
                             </textarea>
-
-                        </div>
-                        <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true">
+                            <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true" />
+                        </div>                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>                        

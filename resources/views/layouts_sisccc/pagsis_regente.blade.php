@@ -64,13 +64,15 @@
         <script src="/dist/js/ccc-escritorio.js"></script>
         <script src="/jquery/moment.js" type="text/javascript"></script>
         <script src="/jquery/vue.js" type="text/javascript"></script>        
-        <script src="/jquery/vee-validate.js" type="text/javascript"></script>
+        <script src="/jquery/vee-validate.js" type="text/javascript"></script>              
+        <script src="/jquery/vue-datepicker/vuejs-datepicker.min.js" type="text/javascript"></script>
         <script src="/jquery/toastr.js" type="text/javascript"></script>
         <!-- TextArea -->
         <script src="/jquery/ckeditor/ckeditor.js"></script>          
-        <script src="/jquery/ckeditor/js/sample.js"></script>        
-        <script>
-            $(function () {                
+        <script src="/jquery/ckeditor/js/sample.js"></script>
+        <script type="module">
+            import esGECN from '/jquery/vue-datepicker/es.js';
+            $(function () {
                 $("#example1").DataTable();
                 $('#example2').DataTable({
                     "paging": true,
@@ -87,16 +89,32 @@
                 messages: null,
                 strict: true
             };
+            /* ----- */
+
+            /* ----- */
             Vue.use(VeeValidate, config);
+            
             const app = new Vue({
                 el: '#Comportamiento',
+                components: {
+                    vuejsDatepicker
+                },
                 validator: null,
                 data() {
                     return {
                         // ------------- 
+                        fec: "",
                         tip_comp: "",
+                        tip_compA: "",
+                        tip_compB: "",
+                        tip_compC: "",
                         observacion: "",
-                        fec: ""}
+                        es: esGECN,
+                        state: {
+                            date: new Date(<?php echo date("Y,n,d"); ?>),                          
+                            disabledDates:{ days: [1,2,3,4,5,0] }
+                        },
+                    }
                 },
                 methods: {
                     // --------------
@@ -105,7 +123,10 @@
                         if (this.errors.any()) {
                             e.preventDefault();
                         }
-                    }
+                    },
+                    customFormatter(date) {
+                        return moment(date).format('D/MM/YYYY');
+                    },
                 }
             });
             $('#EstudianteModal').on('show.bs.modal', function (event) {
