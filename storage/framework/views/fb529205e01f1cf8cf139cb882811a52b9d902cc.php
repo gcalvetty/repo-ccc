@@ -97,7 +97,9 @@
                     </div>
                     <div class="modal-body" >
                         <div class="col-md-12">
-                           
+                            <div class="form-group has-feedback <?php echo e($errors->has('fec') ? ' has-error' : ''); ?>" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
+                                
+                            </div>
                         </div>
                         <div class="col-md-12">
                             <ul class="nav nav-tabs">
@@ -214,7 +216,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12"> 
+                        <div class="col-md-12"> 
                             <textarea id="editor" name="editor" rows="5" cols="80" 
                                       v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
                                       data-vv-rules="required" >

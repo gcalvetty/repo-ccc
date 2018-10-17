@@ -100,11 +100,7 @@
                             <div class="form-group has-feedback {{ $errors->has('fec') ? ' has-error' : '' }}" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon10"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                    <vuejs-datepicker id="fec" name="fec" 
-                                                      :disabledDates="state.disabledDates" 
-                                                      :value="state.date"
-                                                      :language="es"
-                                                      :format="customFormatter"></vuejs-datepicker>
+                                    <vuejs-datepicker id="fec" name="fec" :value="state.date" :format="customFormatter"></vuejs-datepicker>
                                 </div>
                                 <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
                                 @if ($errors->has('fec'))<span class="help-block"><strong>{{ $errors->first('fec') }}</strong></span>@endif
@@ -117,13 +113,16 @@
                                 <li><a data-toggle="tab" href="#trj2">Tarjeta Amarilla</a></li>
                                 <li><a data-toggle="tab" href="#trj3">Tarjeta Rojas</a></li>
                             </ul>
-
                             <div class="tab-content">
                                 <div id="trj0" class="tab-pane fade in active">
                                     <div class="col-lg-12 bg-success">
                                         <div class="radio">                                        
                                             <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios1" value="1" checked>
+                                                <input type="radio" name="tipTarj" id="optionsRadios1" 
+                                                       v-bind:value="1" 
+                                                       v-model="tipTar" 
+                                                       v-on:click ="tta.tar=null"
+                                                       checked>
                                                 Sin Tarjeta
                                             </label>
                                         </div>
@@ -133,7 +132,7 @@
                                     <div class="col-lg-12 bg-info">  
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios2" value="2" >
+                                                <input type="radio" name="tipTarj" id="optionsRadios2" v-bind:value="2" v-model="tipTar">
                                                 Tarjeta Blanca
                                             </label>
                                         </div>
@@ -164,7 +163,7 @@
                                     <div class="col-lg-12 bg-warning">   
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios3" value="3">
+                                                <input type="radio" name="tipTarj" id="optionsRadios3" v-bind:value="3" v-model="tipTar">
                                                 Tarjeta Amarrilla
                                             </label>
                                         </div>
@@ -196,7 +195,7 @@
                                     <div class="col-lg-12 bg-danger"> 
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios4" value="4" >
+                                                <input type="radio" name="tipTarj" id="optionsRadios4" v-bind:value="4" v-model="tipTar">
                                                 Tarjeta Roja
                                             </label>
                                         </div> 
@@ -225,7 +224,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12"> 
+                        <div class="col-md-12"> 
                             <textarea id="editor" name="editor" rows="5" cols="80" 
                                       v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
                                       data-vv-rules="required" >
@@ -272,3 +271,58 @@
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
 @endsection
+
+<script src="https://unpkg.com/marked@0.3.6"></script>
+<script src="https://unpkg.com/lodash@4.16.0"></script>
+
+<div id="app">
+    <div>
+      <input type="radio" id="one" v-bind:value="1" v-model="ttar.tar" v-on:click="cambTar">
+      <label for="one">One</label>
+      <div v-if="ttar.tar==1">
+          <select v-model="ttar.mem">
+            <option disabled value="">Please select one</option>
+            <option>A1</option>
+            <option>B1</option>
+            <option>C1</option>
+          </select>          
+      </div>
+    </div> 
+    
+    <div>
+      <input type="radio" id="two" v-bind:value="2" v-model="ttar.tar" v-on:click="cambTar">
+      <label for="two">Two</label>
+      <div v-if="ttar.tar==2">
+        <select v-model="ttar.mem">
+          <option disabled value="">Please select one</option>
+          <option>A2</option>
+          <option>B2</option>
+          <option>C2</option>
+        </select>        
+      </div>
+    </div>
+    
+    
+    {{ $data }}
+    
+</div>
+
+
+
+
+
+new Vue({
+  el: '#app', 
+  data: {
+    ttar:{
+    	tar:null,
+      mem:null,
+    }
+  },
+  methods: {
+    cambTar:function(event){
+     this.ttar.mem = null
+      
+    }
+  }
+})

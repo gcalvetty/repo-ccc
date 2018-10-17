@@ -104,10 +104,7 @@
                     return {
                         // ------------- 
                         fec: "",
-                        tip_comp: "",
-                        tip_compA: "",
-                        tip_compB: "",
-                        tip_compC: "",
+                        ttar:{   tar:null,   mem:null, },
                         observacion: "",
                         es: esGECN,
                         state: {

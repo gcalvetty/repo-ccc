@@ -1,0 +1,44 @@
+<div id="app">
+    <div>
+      <input type="radio" id="one" v-bind:value="1" v-model="ttar.tar" v-on:click="ttar.mem=null">
+      <label for="one">One</label>
+      <div v-if="ttar.tar==1">
+          <select v-model="ttar.mem">
+            <option disabled value="">Please select one</option>
+            <option>A1</option>
+            <option>B1</option>
+            <option>C1</option>
+          </select>          
+      </div>
+    </div> 
+    
+    <div>
+      <input type="radio" id="two" v-bind:value="2" v-model="ttar.tar" v-on:click="ttar.mem=null">
+      <label for="two">Two</label>
+      <div v-if="ttar.tar==2">
+        <select v-model="ttar.mem">
+          <option disabled value="">Please select one</option>
+          <option>A2</option>
+          <option>B2</option>
+          <option>C2</option>
+        </select>        
+      </div>
+    </div>
+    
+    
+    {{ $data }}
+    
+</div>
+
+<script>
+new Vue({
+  el: '#app', 
+  data: {
+    ttar:{
+    	tar:null,
+      mem:null,
+    }
+  } 
+})
+
+</script>
