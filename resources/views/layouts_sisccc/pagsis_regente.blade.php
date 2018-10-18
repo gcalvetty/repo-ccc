@@ -99,31 +99,34 @@
                 components: {
                     vuejsDatepicker
                 },
+   
                 validator: null,
                 data() {
                     return {
                         // ------------- 
-                        fec: "",
-                        ttar:{   tar:null,   mem:null, },
+                        fec: "",                        
+                        ttar:{   tar:1,   mem:0, },
                         observacion: "",
                         es: esGECN,
                         state: {
-                            date: new Date(<?php echo date("Y,n,d"); ?>),                          
-                            disabledDates:{ days: [1,2,3,4,5,0] }
+                            date: new Date(<?php echo date("Y,n-1,d"); ?>),                          
+                            disabledDates:{ days:[0] }
                         },
                     }
                 },
                 methods: {
                     // --------------
-                    validateBeforeSubmit(e) {
-                        this.$validator.validateAll();
-                        if (this.errors.any()) {
-                            e.preventDefault();
-                        }
+                    validateBeforeSubmit(e) {                    
+                            this.$validator.validateAll();
+                            if (this.errors.any()) {
+                                e.preventDefault();
+                            }                    
                     },
                     customFormatter(date) {
                         return moment(date).format('D/MM/YYYY');
                     },
+                    cambTar:function(event){
+                        this.ttar.mem = 0; },
                 }
             });
             $('#EstudianteModal').on('show.bs.modal', function (event) {

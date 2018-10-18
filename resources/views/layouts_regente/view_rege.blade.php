@@ -100,7 +100,7 @@
                             <div class="form-group has-feedback {{ $errors->has('fec') ? ' has-error' : '' }}" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon10"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                    <vuejs-datepicker id="fec" name="fec" :value="state.date" :format="customFormatter"></vuejs-datepicker>
+                                    <vuejs-datepicker id="fec" name="fec" :value="state.date" :format="customFormatter" :language="es" v-model="fec"></vuejs-datepicker>
                                 </div>
                                 <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
                                 @if ($errors->has('fec'))<span class="help-block"><strong>{{ $errors->first('fec') }}</strong></span>@endif
@@ -119,10 +119,7 @@
                                         <div class="radio">                                        
                                             <label>
                                                 <input type="radio" name="tipTarj" id="optionsRadios1" 
-                                                       v-bind:value="1" 
-                                                       v-model="tipTar" 
-                                                       v-on:click ="tta.tar=null"
-                                                       checked>
+                                                       v-bind:value="1" v-model="ttar.tar" v-on:click="cambTar">
                                                 Sin Tarjeta
                                             </label>
                                         </div>
@@ -132,16 +129,18 @@
                                     <div class="col-lg-12 bg-info">  
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios2" v-bind:value="2" v-model="tipTar">
+                                                <input type="radio" name="tipTarj" id="optionsRadios2"
+                                                        v-bind:value="2" v-model="ttar.tar" v-on:click="cambTar">
                                                 Tarjeta Blanca
                                             </label>
                                         </div>
-                                        <div class="form-group has-feedback {{ $errors->has('tip_compB') ? ' has-error' : '' }} " v-bind:class="{'': true, 'has-error': errors.has('tip_compB') }">
+                                        <div class="form-group has-feedback {{ $errors->has('tip_compB') ? ' has-error' : '' }} " v-if="ttar.tar==2" v-bind:class="{'': true, 'has-error': errors.has('tip_compB') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
                                                     <i class="fa fa-balance-scale"></i></span>
-                                                <select type="text" class="form-control" id="tip_compB"  name="tip_compB" value=""  placeholder="Tipo de Comportamiento" 
-                                                        v-model="tip_compB" 
+                                                <select type="text" class="form-control" placeholder="Tipo de Comportamiento"
+                                                        id="tip_compB"  name="tip_compB" 
+                                                        v-model="ttar.mem"
                                                         v-validate.initial="tip_compB" 
                                                         data-vv-rules="" 
                                                         data-vv-delay="500" 
@@ -163,17 +162,18 @@
                                     <div class="col-lg-12 bg-warning">   
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios3" v-bind:value="3" v-model="tipTar">
+                                                <input type="radio" name="tipTarj" id="optionsRadios3"
+                                                       v-bind:value="3" v-model="ttar.tar" v-on:click="cambTar">
                                                 Tarjeta Amarrilla
                                             </label>
                                         </div>
-                                        <div class="form-group has-feedback {{ $errors->has('tip_compA') ? ' has-error' : '' }} " v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">
+                                        <div class="form-group has-feedback {{ $errors->has('tip_compA') ? ' has-error' : '' }} " v-if="ttar.tar==3" v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
                                                     <i class="fa fa-balance-scale"></i></span>
-                                                <select type="text" class="form-control" id="tip_compA"  name="tip_compA" value=""  placeholder="Tipo de Comportamiento" 
-                                                        v-model="tip_compA" 
-                                                        v-validate.initial="tip_compA" 
+                                                <select type="text" class="form-control" placeholder="Tipo de Comportamiento" 
+                                                        v-model="ttar.mem" 
+                                                        v-validate.initial="ttar.mem" 
                                                         data-vv-rules="" 
                                                         data-vv-delay="500" 
                                                         v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">                                    
@@ -195,20 +195,21 @@
                                     <div class="col-lg-12 bg-danger"> 
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios4" v-bind:value="4" v-model="tipTar">
+                                                <input type="radio" name="tipTarj" id="optionsRadios4"
+                                                       v-bind:value="4" v-model="ttar.tar" v-on:click="cambTar">
                                                 Tarjeta Roja
                                             </label>
                                         </div> 
-                                        <div class="form-group has-feedback {{ $errors->has('tip_compA') ? ' has-error' : '' }} " v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">
+                                        <div class="form-group has-feedback {{ $errors->has('tip_compR') ? ' has-error' : '' }} " v-if="ttar.tar==4" v-bind:class="{'': true, 'has-error': errors.has('tip_compR') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
                                                     <i class="fa fa-balance-scale"></i></span>
-                                                <select type="text" class="form-control" id="tip_compA"  name="tip_compA" value=""  placeholder="Tipo de Comportamiento" 
-                                                        v-model="tip_compA" 
-                                                        v-validate.initial="tip_compA" 
+                                                <select type="text" class="form-control" placeholder="Tipo de Comportamiento" 
+                                                        v-model="ttar.mem" 
+                                                        v-validate.initial="ttar.mem" 
                                                         data-vv-rules="" 
                                                         data-vv-delay="500" 
-                                                        v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">                                    
+                                                        v-bind:class="{'': true, 'has-error': errors.has('tip_compR') }">                                    
                                                     @foreach($ListaComp as $TipComp)
                                                     @if ($TipComp->regt_tt_id == 4)
                                                     <option value="{{ $TipComp->regt_id }}">{{ $TipComp->regt_descripcion }}</option>
@@ -216,8 +217,8 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_compA') }"></span>
-                                            @if ($errors->has('tip_compA'))<span class="help-block"><strong>{{ $errors->first('tip_compA') }}</strong></span>
+                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_compR') }"></span>
+                                            @if ($errors->has('tip_compR'))<span class="help-block"><strong>{{ $errors->first('tip_compR') }}</strong></span>
                                             @endif
                                         </div>
                                     </div>
@@ -227,6 +228,7 @@
                         <div class="col-md-12"> 
                             <textarea id="editor" name="editor" rows="5" cols="80" 
                                       v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
+                                      v-model="observacion"
                                       data-vv-rules="required" >
                             </textarea>
                             <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true" />
@@ -271,58 +273,3 @@
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
 @endsection
-
-<script src="https://unpkg.com/marked@0.3.6"></script>
-<script src="https://unpkg.com/lodash@4.16.0"></script>
-
-<div id="app">
-    <div>
-      <input type="radio" id="one" v-bind:value="1" v-model="ttar.tar" v-on:click="cambTar">
-      <label for="one">One</label>
-      <div v-if="ttar.tar==1">
-          <select v-model="ttar.mem">
-            <option disabled value="">Please select one</option>
-            <option>A1</option>
-            <option>B1</option>
-            <option>C1</option>
-          </select>          
-      </div>
-    </div> 
-    
-    <div>
-      <input type="radio" id="two" v-bind:value="2" v-model="ttar.tar" v-on:click="cambTar">
-      <label for="two">Two</label>
-      <div v-if="ttar.tar==2">
-        <select v-model="ttar.mem">
-          <option disabled value="">Please select one</option>
-          <option>A2</option>
-          <option>B2</option>
-          <option>C2</option>
-        </select>        
-      </div>
-    </div>
-    
-    
-    {{ $data }}
-    
-</div>
-
-
-
-
-
-new Vue({
-  el: '#app', 
-  data: {
-    ttar:{
-    	tar:null,
-      mem:null,
-    }
-  },
-  methods: {
-    cambTar:function(event){
-     this.ttar.mem = null
-      
-    }
-  }
-})

@@ -98,7 +98,12 @@
                     <div class="modal-body" >
                         <div class="col-md-12">
                             <div class="form-group has-feedback <?php echo e($errors->has('fec') ? ' has-error' : ''); ?>" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
-                                
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon10"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                    <vuejs-datepicker id="fec" name="fec" :value="state.date" :format="customFormatter" :language="es" v-model="fec"></vuejs-datepicker>
+                                </div>
+                                <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
+                                <?php if($errors->has('fec')): ?><span class="help-block"><strong><?php echo e($errors->first('fec')); ?></strong></span><?php endif; ?>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -108,13 +113,13 @@
                                 <li><a data-toggle="tab" href="#trj2">Tarjeta Amarilla</a></li>
                                 <li><a data-toggle="tab" href="#trj3">Tarjeta Rojas</a></li>
                             </ul>
-
                             <div class="tab-content">
                                 <div id="trj0" class="tab-pane fade in active">
                                     <div class="col-lg-12 bg-success">
                                         <div class="radio">                                        
                                             <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios1" value="1" checked>
+                                                <input type="radio" name="tipTarj" id="optionsRadios1" 
+                                                       v-bind:value="1" v-model="ttar.tar" v-on:click="cambTar">
                                                 Sin Tarjeta
                                             </label>
                                         </div>
@@ -124,17 +129,18 @@
                                     <div class="col-lg-12 bg-info">  
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios2" value="2" >
+                                                <input type="radio" name="tipTarj" id="optionsRadios2"
+                                                        v-bind:value="2" v-model="ttar.tar" v-on:click="cambTar">
                                                 Tarjeta Blanca
                                             </label>
                                         </div>
-                                        <div class="form-group has-feedback <?php echo e($errors->has('tip_compB') ? ' has-error' : ''); ?> " v-bind:class="{'': true, 'has-error': errors.has('tip_compB') }">
+                                        <div class="form-group has-feedback <?php echo e($errors->has('tip_compB') ? ' has-error' : ''); ?> " v-if="ttar.tar==2" v-bind:class="{'': true, 'has-error': errors.has('tip_compB') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
                                                     <i class="fa fa-balance-scale"></i></span>
-                                                <select type="text" class="form-control" id="tip_compB"  name="tip_compB" value=""  placeholder="Tipo de Comportamiento" 
-                                                        v-model="tip_compB" 
-                                                        v-validate.initial="tip_compB" 
+                                                <select type="text" class="form-control" placeholder="Tipo de Comportamiento" 
+                                                        v-model="ttar.mem"
+                                                        v-validate.initial="ttar.mem" 
                                                         data-vv-rules="" 
                                                         data-vv-delay="500" 
                                                         v-bind:class="{'': true, 'has-error': errors.has('tip_compB') }">                                    
@@ -155,17 +161,18 @@
                                     <div class="col-lg-12 bg-warning">   
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios3" value="3">
+                                                <input type="radio" name="tipTarj" id="optionsRadios3"
+                                                       v-bind:value="3" v-model="ttar.tar" v-on:click="cambTar">
                                                 Tarjeta Amarrilla
                                             </label>
                                         </div>
-                                        <div class="form-group has-feedback <?php echo e($errors->has('tip_compA') ? ' has-error' : ''); ?> " v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">
+                                        <div class="form-group has-feedback <?php echo e($errors->has('tip_compA') ? ' has-error' : ''); ?> " v-if="ttar.tar==3" v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
                                                     <i class="fa fa-balance-scale"></i></span>
-                                                <select type="text" class="form-control" id="tip_compA"  name="tip_compA" value=""  placeholder="Tipo de Comportamiento" 
-                                                        v-model="tip_compA" 
-                                                        v-validate.initial="tip_compA" 
+                                                <select type="text" class="form-control" placeholder="Tipo de Comportamiento" 
+                                                        v-model="ttar.mem" 
+                                                        v-validate.initial="ttar.mem" 
                                                         data-vv-rules="" 
                                                         data-vv-delay="500" 
                                                         v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">                                    
@@ -187,20 +194,21 @@
                                     <div class="col-lg-12 bg-danger"> 
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios4" value="4" >
+                                                <input type="radio" name="tipTarj" id="optionsRadios4"
+                                                       v-bind:value="4" v-model="ttar.tar" v-on:click="cambTar">
                                                 Tarjeta Roja
                                             </label>
                                         </div> 
-                                        <div class="form-group has-feedback <?php echo e($errors->has('tip_compA') ? ' has-error' : ''); ?> " v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">
+                                        <div class="form-group has-feedback <?php echo e($errors->has('tip_compR') ? ' has-error' : ''); ?> " v-if="ttar.tar==4" v-bind:class="{'': true, 'has-error': errors.has('tip_compR') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
                                                     <i class="fa fa-balance-scale"></i></span>
-                                                <select type="text" class="form-control" id="tip_compA"  name="tip_compA" value=""  placeholder="Tipo de Comportamiento" 
-                                                        v-model="tip_compA" 
-                                                        v-validate.initial="tip_compA" 
+                                                <select type="text" class="form-control" placeholder="Tipo de Comportamiento" 
+                                                        v-model="ttar.mem" 
+                                                        v-validate.initial="ttar.mem" 
                                                         data-vv-rules="" 
                                                         data-vv-delay="500" 
-                                                        v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">                                    
+                                                        v-bind:class="{'': true, 'has-error': errors.has('tip_compR') }">                                    
                                                     <?php $__currentLoopData = $ListaComp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $TipComp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <?php if($TipComp->regt_tt_id == 4): ?>
                                                     <option value="<?php echo e($TipComp->regt_id); ?>"><?php echo e($TipComp->regt_descripcion); ?></option>
@@ -208,8 +216,8 @@
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </select>
                                             </div>
-                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_compA') }"></span>
-                                            <?php if($errors->has('tip_compA')): ?><span class="help-block"><strong><?php echo e($errors->first('tip_compA')); ?></strong></span>
+                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_compR') }"></span>
+                                            <?php if($errors->has('tip_compR')): ?><span class="help-block"><strong><?php echo e($errors->first('tip_compR')); ?></strong></span>
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -219,6 +227,7 @@
                         <div class="col-md-12"> 
                             <textarea id="editor" name="editor" rows="5" cols="80" 
                                       v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
+                                      v-model="observacion"
                                       data-vv-rules="required" >
                             </textarea>
                             <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true" />
