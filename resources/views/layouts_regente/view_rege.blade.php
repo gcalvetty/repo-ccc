@@ -106,45 +106,41 @@
                                 @if ($errors->has('fec'))<span class="help-block"><strong>{{ $errors->first('fec') }}</strong></span>@endif
                             </div>
                         </div>
+                        @{{ $data.ttar }}
+                        
                         <div class="col-md-12">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#trj0">Sin tarjeta</a></li>
-                                <li><a data-toggle="tab" href="#trj1">Tarjeta Blanca</a></li>
-                                <li><a data-toggle="tab" href="#trj2">Tarjeta Amarilla</a></li>
-                                <li><a data-toggle="tab" href="#trj3">Tarjeta Rojas</a></li>
+                                <li class="active"><a data-toggle="tab" href="#trj1">Sin tarjeta</a></li>
+                                <li><a data-toggle="tab" href="#trj2">Tarjeta Blanca</a></li>
+                                <li><a data-toggle="tab" href="#trj3">Tarjeta Amarilla</a></li>
+                                <li><a data-toggle="tab" href="#trj4">Tarjeta Rojas</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div id="trj0" class="tab-pane fade in active">
+                                <div id="trj1" class="tab-pane fade in active">
                                     <div class="col-lg-12 bg-success">
                                         <div class="radio">                                        
-                                            <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios1" 
-                                                       v-bind:value="1" v-model="ttar.tar" v-on:click="cambTar">
-                                                Sin Tarjeta
-                                            </label>
+                                            <label><input type="radio" id="tar1" v-bind:value="1" v-model="ttar.tar" v-on:change="cambTar">
+                                            Sin Tarjeta</label>
                                         </div>
                                     </div>
                                 </div>
-                                <div id="trj1" class="tab-pane fade">
+                                <div id="trj2" class="tab-pane fade">
                                     <div class="col-lg-12 bg-info">  
                                         <div class="radio">
-                                            <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios2"
-                                                        v-bind:value="2" v-model="ttar.tar" v-on:click="cambTar">
-                                                Tarjeta Blanca
-                                            </label>
+                                            <label><input type="radio" id="tar2" v-bind:value="2" v-model="ttar.tar" v-on:change="cambTar">
+                                            Tarjeta Blanca</label>
                                         </div>
-                                        <div class="form-group has-feedback {{ $errors->has('tip_compB') ? ' has-error' : '' }} " v-if="ttar.tar==2" v-bind:class="{'': true, 'has-error': errors.has('tip_compB') }">
+                                        <div class="form-group has-feedback {{ $errors->has('TB') ? ' has-error' : '' }} " v-show="ttar.tar==2" v-bind:class="{'': true, 'has-error': errors.has('TB') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
                                                     <i class="fa fa-balance-scale"></i></span>
                                                 <select type="text" class="form-control" placeholder="Tipo de Comportamiento"
-                                                        id="tip_compB"  name="tip_compB" 
-                                                        v-model="ttar.mem"
-                                                        v-validate.initial="tip_compB" 
+                                                        id="TB"  name="TB" v-on:change='cambMem' 
+                                                        v-model="TB"
+                                                        v-validate.initial="TB" 
                                                         data-vv-rules="" 
                                                         data-vv-delay="500" 
-                                                        v-bind:class="{'': true, 'has-error': errors.has('tip_compB') }">                                    
+                                                        v-bind:class="{'': true, 'has-error': errors.has('TB') }">                                    
                                                     @foreach($ListaComp as $TipComp)
                                                     @if ($TipComp->regt_tt_id == 2)
                                                     <option value="{{ $TipComp->regt_id }}">{{ $TipComp->regt_descripcion }}</option>
@@ -152,79 +148,76 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_compB') }"></span>
-                                            @if ($errors->has('tip_compB'))<span class="help-block"><strong>{{ $errors->first('tip_compB') }}</strong></span>
+                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('TB') }"></span>
+                                            @if ($errors->has('TB'))<span class="help-block"><strong>{{ $errors->first('TB') }}</strong></span>
                                             @endif
                                         </div>
                                     </div> 
                                 </div>
-                                <div id="trj2" class="tab-pane fade">
+                                <div id="trj3" class="tab-pane fade">
                                     <div class="col-lg-12 bg-warning">   
                                         <div class="radio">
-                                            <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios3"
-                                                       v-bind:value="3" v-model="ttar.tar" v-on:click="cambTar">
-                                                Tarjeta Amarrilla
-                                            </label>
+                                            <label><input type="radio" id="tar3" v-bind:value="3" v-model="ttar.tar" v-on:change="cambTar">
+                                            Tarjeta Amarilla</label>
                                         </div>
-                                        <div class="form-group has-feedback {{ $errors->has('tip_compA') ? ' has-error' : '' }} " v-if="ttar.tar==3" v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">
+                                        <div class="form-group has-feedback {{ $errors->has('TA') ? ' has-error' : '' }} " v-show="ttar.tar==3" v-bind:class="{'': true, 'has-error': errors.has('TA') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
                                                     <i class="fa fa-balance-scale"></i></span>
-                                                <select type="text" class="form-control" placeholder="Tipo de Comportamiento" 
-                                                        v-model="ttar.mem" 
-                                                        v-validate.initial="ttar.mem" 
+                                                <select type="text" class="form-control" placeholder="Tipo de Comportamiento"
+                                                        id="TA"  name="TA" v-on:change='cambMem' 
+                                                        v-model="TA"
+                                                        v-validate.initial="TA" 
                                                         data-vv-rules="" 
                                                         data-vv-delay="500" 
-                                                        v-bind:class="{'': true, 'has-error': errors.has('tip_compA') }">                                    
+                                                        v-bind:class="{'': true, 'has-error': errors.has('TA') }">                                    
                                                     @foreach($ListaComp as $TipComp)
-                                                    @if ($TipComp->regt_tt_id == 3)
+                                                    @if ($TipComp->regt_tt_id == 2)
                                                     <option value="{{ $TipComp->regt_id }}">{{ $TipComp->regt_descripcion }}</option>
                                                     @endif
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_compA') }"></span>
-                                            @if ($errors->has('tip_compA'))<span class="help-block"><strong>{{ $errors->first('tip_compA') }}</strong></span>
+                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('TA') }"></span>
+                                            @if ($errors->has('TA'))<span class="help-block"><strong>{{ $errors->first('TA') }}</strong></span>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
-                                <div id="trj3" class="tab-pane fade">                                    
+                                <div id="trj4" class="tab-pane fade">                                    
 
                                     <div class="col-lg-12 bg-danger"> 
                                         <div class="radio">
-                                            <label>
-                                                <input type="radio" name="tipTarj" id="optionsRadios4"
-                                                       v-bind:value="4" v-model="ttar.tar" v-on:click="cambTar">
-                                                Tarjeta Roja
-                                            </label>
+                                            <label><input type="radio" id="tar4" v-bind:value="4" v-model="ttar.tar" v-on:click="cambTar">
+                                            Sin Tarjeta</label>
                                         </div> 
-                                        <div class="form-group has-feedback {{ $errors->has('tip_compR') ? ' has-error' : '' }} " v-if="ttar.tar==4" v-bind:class="{'': true, 'has-error': errors.has('tip_compR') }">
+                                        <div class="form-group has-feedback {{ $errors->has('TR') ? ' has-error' : '' }} " v-show="ttar.tar==4" v-bind:class="{'': true, 'has-error': errors.has('TR') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
                                                     <i class="fa fa-balance-scale"></i></span>
-                                                <select type="text" class="form-control" placeholder="Tipo de Comportamiento" 
-                                                        v-model="ttar.mem" 
-                                                        v-validate.initial="ttar.mem" 
+                                                <select type="text" class="form-control" placeholder="Tipo de Comportamiento"
+                                                        id="TR"  name="TR" v-on:change='cambMem' 
+                                                        v-model="TR"
+                                                        v-validate.initial="TR" 
                                                         data-vv-rules="" 
                                                         data-vv-delay="500" 
-                                                        v-bind:class="{'': true, 'has-error': errors.has('tip_compR') }">                                    
+                                                        v-bind:class="{'': true, 'has-error': errors.has('TR') }">                                    
                                                     @foreach($ListaComp as $TipComp)
-                                                    @if ($TipComp->regt_tt_id == 4)
+                                                    @if ($TipComp->regt_tt_id == 2)
                                                     <option value="{{ $TipComp->regt_id }}">{{ $TipComp->regt_descripcion }}</option>
                                                     @endif
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('tip_compR') }"></span>
-                                            @if ($errors->has('tip_compR'))<span class="help-block"><strong>{{ $errors->first('tip_compR') }}</strong></span>
+                                            <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('TR') }"></span>
+                                            @if ($errors->has('TR'))<span class="help-block"><strong>{{ $errors->first('TR') }}</strong></span>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-12"> 
                             <textarea id="editor" name="editor" rows="5" cols="80" 
                                       v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 

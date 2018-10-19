@@ -92,8 +92,7 @@
             /* ----- */
 
             /* ----- */
-            Vue.use(VeeValidate, config);
-            
+            Vue.use(VeeValidate, config);                
             const app = new Vue({
                 el: '#Comportamiento',
                 components: {
@@ -103,9 +102,10 @@
                 validator: null,
                 data() {
                     return {
-                        // ------------- 
-                        fec: "",                        
-                        ttar:{   tar:1,   mem:0, },
+                        // -------------
+                        TB: "",TA: "",TR: "",
+                        ttar:{ tar:0, mem:0 },
+                        fec: "",                                                
                         observacion: "",
                         es: esGECN,
                         state: {
@@ -115,7 +115,7 @@
                     }
                 },
                 methods: {
-                    // --------------
+                    // --------------                    
                     validateBeforeSubmit(e) {                    
                             this.$validator.validateAll();
                             if (this.errors.any()) {
@@ -125,8 +125,15 @@
                     customFormatter(date) {
                         return moment(date).format('D/MM/YYYY');
                     },
-                    cambTar:function(event){
-                        this.ttar.mem = 0; },
+                    cambTar:function(){                        
+                               this.ttar.mem = 0;
+                               $("select").val([]);
+                               //$("#TA").val([]);
+                               // $("#TR").val([]);
+                           },
+                    cambMem:function(event){                        
+                                this.ttar.mem = event.target.value;
+                           },        
                 }
             });
             $('#EstudianteModal').on('show.bs.modal', function (event) {
