@@ -119,7 +119,7 @@
                                 <div id="trj1" class="tab-pane fade in active">
                                     <div class="col-lg-12 bg-success">
                                         <div class="radio">                                        
-                                            <label><input type="radio" id="tar1" v-bind:value="1" v-model="ttar.tar" v-on:change="cambTar">
+                                            <label><input type="radio" id="tar1" v-bind:value="1" v-model="ttar.tar" v-on:select="cambTar">
                                             Sin Tarjeta</label>
                                         </div>
                                     </div>
