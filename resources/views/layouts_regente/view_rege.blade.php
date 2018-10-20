@@ -125,11 +125,7 @@
                                     </div>
                                 </div>
                                 <div id="trj2" class="tab-pane fade">
-                                    <div class="col-lg-12 bg-info">  
-                                        <div class="radio">
-                                            <label><input type="radio" id="tar2" v-bind:value="2" v-model="ttar.tar" v-on:change="cambTar">
-                                            Tarjeta Blanca</label>
-                                        </div>
+                                    <div class="col-lg-12 bg-info">                                         
                                         <div class="form-group has-feedback {{ $errors->has('TB') ? ' has-error' : '' }} " v-show="ttar.tar==2" v-bind:class="{'': true, 'has-error': errors.has('TB') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
@@ -155,11 +151,7 @@
                                     </div> 
                                 </div>
                                 <div id="trj3" class="tab-pane fade">
-                                    <div class="col-lg-12 bg-warning">   
-                                        <div class="radio">
-                                            <label><input type="radio" id="tar3" v-bind:value="3" v-model="ttar.tar" v-on:change="cambTar">
-                                            Tarjeta Amarilla</label>
-                                        </div>
+                                    <div class="col-lg-12 bg-warning">                                           
                                         <div class="form-group has-feedback {{ $errors->has('TA') ? ' has-error' : '' }} " v-show="ttar.tar==3" v-bind:class="{'': true, 'has-error': errors.has('TA') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
@@ -187,10 +179,7 @@
                                 <div id="trj4" class="tab-pane fade">                                    
 
                                     <div class="col-lg-12 bg-danger"> 
-                                        <div class="radio">
-                                            <label><input type="radio" id="tar4" v-bind:value="4" v-model="ttar.tar" v-on:click="cambTar">
-                                            Sin Tarjeta</label>
-                                        </div> 
+                                        
                                         <div class="form-group has-feedback {{ $errors->has('TR') ? ' has-error' : '' }} " v-show="ttar.tar==4" v-bind:class="{'': true, 'has-error': errors.has('TR') }">
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="basic-addon1">                                        
