@@ -138,7 +138,7 @@
                             </div>
 
                             <div class="btn-group">
-                                <button v-on:click="cambTar(4);" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarjeta Amarilla</button>
+                                <button v-on:click="cambTar(3);" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarjeta Amarilla</button>
                                 <button v-on:click="cambTar(3);" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="caret"></span>
                                     <span class="sr-only">Toggle Dropdown</span>
@@ -176,6 +176,9 @@
                                       data-vv-rules="required" >
                             </textarea>
                             <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true" />
+                            <input class="tarSel" id="tarSel" name="tarSel" v-model="ttar.tarAct" hidden="true" />
+                            <input class="tarSelMem" id="tarSelMem" name="tarSelMem" v-model="ttar.mem" hidden="true" />
+                            
                         </div>                        
 
                         <div class="modal-footer">

@@ -67,12 +67,14 @@
         <script src="/jquery/vue.js" type="text/javascript"></script>        
         <script src="/jquery/vee-validate.js" type="text/javascript"></script>              
         <script src="/jquery/vue-datepicker/vuejs-datepicker.min.js" type="text/javascript"></script>
+     
+       
         <script src="/jquery/toastr.js" type="text/javascript"></script>
         <!-- TextArea -->
         <script src="/jquery/ckeditor/ckeditor.js"></script>          
         <script src="/jquery/ckeditor/js/sample.js"></script>
         <script type="module">
-            import esGECN from '/jquery/vue-datepicker/es.js';
+            import esGECN from '/jquery/vue-datepicker/es.js';            
             $(function () {
                 $("#example1").DataTable();
                 $('#example2').DataTable({
@@ -104,8 +106,48 @@
                 data() {
                     return {
                         // -------------
-                        TB: "",TA: "",TR: "",
-                        ttar:{ tar:0, mem:0 },
+                        TB:0,tarSel:{},tarSel2:"",
+                        moSel:"",moSelDes:"",
+                        ttarClass:"",
+                        ttar:{ tar:0, tarAct:0, mem:0  },
+                        
+                        tT:{ ts:[ 
+                                <?php
+                                foreach($ListaComp as $TipComp){
+                                if ($TipComp->regt_tt_id == 1){
+                                echo "{id:".$TipComp->regt_id.",txt:'".$TipComp->regt_descripcion."'},";    
+                                }
+                                }
+                                ?>
+                                ],
+                             tb:[ 
+                                <?php
+                                foreach($ListaComp as $TipComp){
+                                if ($TipComp->regt_tt_id == 2){
+                                echo "{id:".$TipComp->regt_id.",txt:'".$TipComp->regt_descripcion."'},";    
+                                }
+                                }
+                                ?>
+                                ], 
+                             ta:[
+                            <?php
+                                foreach($ListaComp as $TipComp){
+                                if ($TipComp->regt_tt_id == 3){
+                                echo "{id:".$TipComp->regt_id.",txt:'".$TipComp->regt_descripcion."'},";    
+                                }
+                                }
+                                ?>
+                        ] , 
+                             tr:[
+                            <?php
+                                foreach($ListaComp as $TipComp){
+                                if ($TipComp->regt_tt_id == 4){
+                                echo "{id:".$TipComp->regt_id.",txt:'".$TipComp->regt_descripcion."'},";    
+                                }
+                                }
+                                ?>
+                                ],
+                           },    
                         fec: "",                                                
                         observacion: "",
                         es: esGECN,
@@ -126,15 +168,35 @@
                     customFormatter(date) {
                         return moment(date).format('D/MM/YYYY');
                     },
-                    cambTar:function(){                        
-                               this.ttar.mem = 0;
-                               $("select").val([]);
-                               //$("#TA").val([]);
-                               // $("#TR").val([]);
+                    cambTar:function(opcSel){                               
+                               this.ttar.tar = opcSel;
+                               if(this.ttar.tar == 1) this.tarSel = this.tT.ts;
+                               if(this.ttar.tar == 2) this.tarSel = this.tT.tb;
+                               if(this.ttar.tar == 3) this.tarSel = this.tT.ta;
+                               if(this.ttar.tar == 4) this.tarSel = this.tT.tr;                               
                            },
                     cambMem:function(event){                        
                                 this.ttar.mem = event.target.value;
-                           },        
+                                this.ttar.tarAct = this.ttar.tar;
+                           },
+                           
+                    cambMem2:function(opc,txt){                        
+                                this.ttar.mem = opc;
+                                this.ttar.tarAct = this.ttar.tar;
+                                this.moSel = this.cambTar2(this.ttar.tar);
+                                this.moSelDes = txt;
+                           },       
+                    cambTar2:function(opc){
+                        if(opc == 1) {this.ttarClass="panel-primary"; return "Sin Tarjeta"};
+                        if(opc == 2) {this.ttarClass="panel-info"; return "Tarjeta Blanca"};
+                        if(opc == 3) {this.ttarClass="panel-warning"; return "Tarjeta Amarilla"};
+                        if(opc == 4) {this.ttarClass="panel-danger"; return "Tarjeta Roja"};                        
+                    },       
+                    iniVal:function(event){
+                        
+                        this.ttar.tar=0;this.ttar.tarAct=0;this.ttar.mem=0;
+                        toastr.warning('Se cancelo', 'Mensaje', {timeOut: 2000})
+                    }       
                 }
             });
             $('#EstudianteModal').on('show.bs.modal', function (event) {
