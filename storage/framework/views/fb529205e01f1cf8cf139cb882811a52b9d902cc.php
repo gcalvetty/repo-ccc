@@ -176,8 +176,8 @@
                                       data-vv-rules="required" >
                             </textarea>
                             <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true" />
-                            <input class="tarSel" id="tarSel" name="tarSel" v-model="ttar.tarAct" hidden="true" />
-                            <input class="tarSelMem" id="tarSelMem" name="tarSelMem" v-model="ttar.mem" hidden="true" />
+                            <input class="tarSel" id="tarSel" name="tarSel" v-model="ttar.tarAct" hidden="true" data-vv-rules="required" />
+                            <input class="tarSelMem" id="tarSelMem" name="tarSelMem" v-model="ttar.mem" hidden="true" data-vv-rules="required"/>
                             
                         </div>                        
 

@@ -100,7 +100,11 @@
                             <div class="form-group has-feedback {{ $errors->has('fec') ? ' has-error' : '' }}" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon10"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                    <vuejs-datepicker id="fec" name="fec" :value="state.date" :format="customFormatter" :language="es" v-model="fec"></vuejs-datepicker>
+                                    <vuejs-datepicker id="fec" name="fec" 
+                                                      :value="state.date" 
+                                                      :format="customFormatter" 
+                                                      :language="es" 
+                                                      v-model="fec"></vuejs-datepicker>
                                 </div>
                                 <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
                                 @if ($errors->has('fec'))<span class="help-block"><strong>{{ $errors->first('fec') }}</strong></span>@endif
@@ -176,8 +180,8 @@
                                       data-vv-rules="required" >
                             </textarea>
                             <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true" />
-                            <input class="tarSel" id="tarSel" name="tarSel" v-model="ttar.tarAct" hidden="true" />
-                            <input class="tarSelMem" id="tarSelMem" name="tarSelMem" v-model="ttar.mem" hidden="true" />
+                            <input class="tarSel" id="tarSel" name="tarSel" v-model="ttar.tarAct" hidden="true" data-vv-rules="required" />
+                            <input class="tarSelMem" id="tarSelMem" name="tarSelMem" v-model="ttar.mem" hidden="true" data-vv-rules="required"/>
                             
                         </div>                        
 
