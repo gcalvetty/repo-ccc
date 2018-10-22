@@ -1,21 +1,21 @@
-@extends('layouts_sisccc.pagsis_regente')
-@section('titulo','Regente')	
-@section('usuccc')
-{{ $usuactivo }}
-@endsection
-@section('usuico')
+<?php $__env->startSection('titulo','Regente'); ?>	
+<?php $__env->startSection('usuccc'); ?>
+<?php echo e($usuactivo); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('usuico'); ?>
 <i class="fa fa-cubes fa-2x"></i>
-@endsection
-@section('usuico-peq')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('usuico-peq'); ?>
 <i class="fa fa-cubes fa-lg"></i>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('sis_menu_lateral')
-@include('layouts_regente.partials.menu')
-@endsection
+<?php $__env->startSection('sis_menu_lateral'); ?>
+<?php echo $__env->make('layouts_regente.partials.menu', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
 
 
-@section('sis_contenido')
+<?php $__env->startSection('sis_contenido'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">    	
     <!-- Content Header (Page header) -->
@@ -50,18 +50,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($Lista as $Alumno)
+                                <?php $__currentLoopData = $Lista; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Alumno): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>                                    
-                                    <td>{{ $Alumno->curso }} - {{ $Alumno->aula }}</td>
-                                    <td>{{ $Alumno->nombre }} </td>
+                                    <td><?php echo e($Alumno->curso); ?> - <?php echo e($Alumno->aula); ?></td>
+                                    <td><?php echo e($Alumno->nombre); ?> </td>
                                     <td>    
-                                        {{ $Alumno->ape_paterno }} {{ $Alumno->ape_materno }} </td>
+                                        <?php echo e($Alumno->ape_paterno); ?> <?php echo e($Alumno->ape_materno); ?> </td>
                                     <td>
                                         <button type="button" class="btn btn-danger" 
                                                 data-toggle="modal" 
                                                 data-target=".bs-example-modal-lg"
-                                                data-idalm="{{ $Alumno->id }}"
-                                                data-nomalm=" {{ $Alumno->nombre }} {{ $Alumno->ape_paterno }} {{ $Alumno->ape_materno }}">
+                                                data-idalm="<?php echo e($Alumno->id); ?>"
+                                                data-nomalm=" <?php echo e($Alumno->nombre); ?> <?php echo e($Alumno->ape_paterno); ?> <?php echo e($Alumno->ape_materno); ?>">
                                             <i class="fa fa-edit"></i></button>
                                     </td>
                                     <td>
@@ -72,7 +72,7 @@
                                         </a> 
                                     </td>
 
-                                    @endforeach    
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
                                 </tr>
 
                                 </tfoot>
@@ -89,7 +89,7 @@
 
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="EstudianteModal">
         <div class="modal-dialog" role="document" id="Comportamiento">            
-            <form v-on:submit="validateBeforeSubmit" class="form-horizontal" role="form" action="{{route('Rege.insCom')}}">    
+            <form v-on:submit="validateBeforeSubmit" class="form-horizontal" role="form" action="<?php echo e(route('Rege.insCom')); ?>">    
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -97,13 +97,13 @@
                     </div>
                     <div class="modal-body" >
                         <div class="col-md-12">
-                            <div class="form-group has-feedback {{ $errors->has('fec') ? ' has-error' : '' }}" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
+                            <div class="form-group has-feedback <?php echo e($errors->has('fec') ? ' has-error' : ''); ?>" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon10"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
                                     <vuejs-datepicker id="fec" name="fec" :value="state.date" :format="customFormatter" :language="es" v-model="fec"></vuejs-datepicker>
                                 </div>
                                 <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
-                                @if ($errors->has('fec'))<span class="help-block"><strong>{{ $errors->first('fec') }}</strong></span>@endif
+                                <?php if($errors->has('fec')): ?><span class="help-block"><strong><?php echo e($errors->first('fec')); ?></strong></span><?php endif; ?>
                             </div>
                         </div>
                         <div class="col-lg-12 " style="margin: 10px 0;">
@@ -122,7 +122,7 @@
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li v-for="option in tT.ts"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">@{{ option.txt }}</a></li>                                    
+                                    <li v-for="option in tT.ts"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">{{ option.txt }}</a></li>                                    
                                 </ul>
                             </div>
 
@@ -133,7 +133,7 @@
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li v-for="option in tT.tb"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">@{{ option.txt }}</a></li>                                    
+                                    <li v-for="option in tT.tb"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">{{ option.txt }}</a></li>                                    
                                 </ul>
                             </div>
 
@@ -144,7 +144,7 @@
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li v-for="option in tT.ta"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">@{{ option.txt }}</a></li>                                    
+                                    <li v-for="option in tT.ta"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">{{ option.txt }}</a></li>                                    
                                 </ul>
                             </div>
 
@@ -155,7 +155,7 @@
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li v-for="option in tT.tr"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">@{{ option.txt }}</a></li>                                    
+                                    <li v-for="option in tT.tr"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">{{ option.txt }}</a></li>                                    
                                 </ul>
                             </div>
                         </div>
@@ -163,14 +163,14 @@
                         <div class="col-lg-12 ">
                             <div class="panel " v-bind:class="[ttarClass]" v-show="ttar.tarAct>0">
                                 <div class="panel-heading">
-                                    @{{ $data.moSel }}
+                                    {{ $data.moSel }}
                                 </div>
-                                <div class="panel-body">@{{ $data.moSelDes }}</div>
+                                <div class="panel-body">{{ $data.moSelDes }}</div>
                             </div>
                         </div>
 
                         <div class="col-lg-12 hidden">     
-                            <div class="form-group has-feedback {{ $errors->has('TB') ? ' has-error' : '' }} " v-bind:class="{'': true, 'has-error': errors.has('TB') }">
+                            <div class="form-group has-feedback <?php echo e($errors->has('TB') ? ' has-error' : ''); ?> " v-bind:class="{'': true, 'has-error': errors.has('TB') }">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">                                        
                                         <i class="fa fa-balance-scale"></i></span>
@@ -182,13 +182,13 @@
                                             data-vv-delay="500" 
                                             v-bind:class="{'': true, 'has-error': errors.has('TB') }">                                    
                                         <option v-for="option in tarSel" v-bind:value="option.id">
-                                            @{{ option.txt }}
+                                            {{ option.txt }}
                                         </option>
                                     </select>
                                 </div>
                                 <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('TB') }"></span>
-                                @if ($errors->has('TB'))<span class="help-block"><strong>{{ $errors->first('TB') }}</strong></span>
-                                @endif
+                                <?php if($errors->has('TB')): ?><span class="help-block"><strong><?php echo e($errors->first('TB')); ?></strong></span>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -204,7 +204,8 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="iniVal">Cerrar</button>                        
-                            {!! Form::submit('Guardar', ['class' => 'btn btn-primary']); !!}
+                            <?php echo Form::submit('Guardar', ['class' => 'btn btn-primary']);; ?>
+
                         </div>
                     </div>
             </form>
@@ -217,11 +218,12 @@
 </div>
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-    {!! Html::footer('siscccConfig.pie') !!}
-</footer>
-@endsection
+    <?php echo Html::footer('siscccConfig.pie'); ?>
 
-@section('menu-configuracion')
+</footer>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('menu-configuracion'); ?>
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
@@ -240,4 +242,6 @@
 <!-- Add the sidebar's background. This div must be placed
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts_sisccc.pagsis_regente', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

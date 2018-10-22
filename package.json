@@ -20,6 +20,7 @@
     "vue": "^2.5.7"
   },
   "dependencies": {
+    "vue-button-effect": "0.0.3",
     "vuejs-datepicker": "^0.9.29"
   }
 }
