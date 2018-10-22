@@ -169,30 +169,6 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-12 hidden">     
-                            <div class="form-group has-feedback {{ $errors->has('TB') ? ' has-error' : '' }} " v-bind:class="{'': true, 'has-error': errors.has('TB') }">
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon1">                                        
-                                        <i class="fa fa-balance-scale"></i></span>
-                                    <select type="text" class="form-control" placeholder="Tipo de Comportamiento"
-                                            id="TB"  name="TB" v-on:change='cambMem' 
-                                            v-model="TB"
-                                            v-validate.initial="TB" 
-                                            data-vv-rules="" 
-                                            data-vv-delay="500" 
-                                            v-bind:class="{'': true, 'has-error': errors.has('TB') }">                                    
-                                        <option v-for="option in tarSel" v-bind:value="option.id">
-                                            @{{ option.txt }}
-                                        </option>
-                                    </select>
-                                </div>
-                                <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('TB') }"></span>
-                                @if ($errors->has('TB'))<span class="help-block"><strong>{{ $errors->first('TB') }}</strong></span>
-                                @endif
-                            </div>
-                        </div>
-
-
                         <div class="col-md-12"> 
                             <textarea id="editor" name="editor" rows="5" cols="80" 
                                       v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
