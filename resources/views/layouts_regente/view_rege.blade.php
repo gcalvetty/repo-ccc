@@ -89,109 +89,105 @@
 
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="EstudianteModal">
         <div class="modal-dialog" role="document" id="Comportamiento">            
-            <form v-on:submit="validateBeforeSubmit" class="form-horizontal" role="form" action="{{route('Rege.insCom')}}">    
+            <form id="formComp" v-on:submit="validateBeforeSubmit" class="form-horizontal" role="form" action="{{route('Rege.insCom')}}">    
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="exampleModalLabel">Comportamiento del Alumn@: <span class="Alm"></span></h4>
                     </div>
                     <div class="modal-body" >
-                        <div class="col-md-12">
-                            <div class="form-group has-feedback {{ $errors->has('fec') ? ' has-error' : '' }}" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon10"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                    <vuejs-datepicker id="fec" name="fec" 
-                                                      :value="state.date" 
-                                                      :format="customFormatter" 
-                                                      :language="es"
-                                                      
-                                                      v-model="fec"></vuejs-datepicker>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback {{ $errors->has('fec') ? ' has-error' : '' }}" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon10"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                        <vuejs-datepicker id="fec" name="fec" 
+                                                          :value="state.date" 
+                                                          :format="customFormatter" 
+                                                          :language="es"                                                      
+                                                          v-model="fec"></vuejs-datepicker>
+                                    </div>
+                                    <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
+                                    @if ($errors->has('fec'))<span class="help-block"><strong>{{ $errors->first('fec') }}</strong></span>@endif
                                 </div>
-                                <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
-                                @if ($errors->has('fec'))<span class="help-block"><strong>{{ $errors->first('fec') }}</strong></span>@endif
                             </div>
-                        </div>
-                        <div class="col-lg-12 " style="margin: 10px 0;">
+                            <div class="col-md-12 " style="margin: 10px 0;">
 
-                            <div class="btn-group col-lg-12 hidden" role="group" aria-label="...">
-                                <button type="button" class="btn btn-primary"   v-on:click="cambTar(1);">Sin</button>
-                                <button type="button" class="btn btn-info"      v-on:click="cambTar(2);">Blanca</button>
-                                <button type="button" class="btn btn-warning"   v-on:click="cambTar(3);">Amarrilla</button>
-                                <button type="button" class="btn btn-danger"    v-on:click="cambTar(4);">Roja</button>
-                            </div> 
+                                <div class="btn-group col-lg-12 hidden" role="group" aria-label="...">
+                                    <button type="button" class="btn btn-primary"   v-on:click="cambTar(1);">Sin</button>
+                                    <button type="button" class="btn btn-info"      v-on:click="cambTar(2);">Blanca</button>
+                                    <button type="button" class="btn btn-warning"   v-on:click="cambTar(3);">Amarrilla</button>
+                                    <button type="button" class="btn btn-danger"    v-on:click="cambTar(4);">Roja</button>
+                                </div> 
 
-                            <div class="btn-group">
-                                <button v-on:click="cambTar(1);" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sin Tarjeta</button>
-                                <button v-on:click="cambTar(1);" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li v-for="option in tT.ts"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">@{{ option.txt }}</a></li>                                    
-                                </ul>
-                            </div>
-
-                            <div class="btn-group">
-                                <button v-on:click="cambTar(2);" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarjeta Blanca</button>
-                                <button v-on:click="cambTar(2);" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li v-for="option in tT.tb"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">@{{ option.txt }}</a></li>                                    
-                                </ul>
-                            </div>
-
-                            <div class="btn-group">
-                                <button v-on:click="cambTar(3);" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarjeta Amarilla</button>
-                                <button v-on:click="cambTar(3);" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li v-for="option in tT.ta"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">@{{ option.txt }}</a></li>                                    
-                                </ul>
-                            </div>
-
-                            <div class="btn-group">
-                                <button v-on:click="cambTar(4);" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarjeta Roja</button>
-                                <button v-on:click="cambTar(4);" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li v-for="option in tT.tr"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">@{{ option.txt }}</a></li>                                    
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12 ">
-                            <div class="panel " v-bind:class="[ttarClass]" v-show="ttar.tarAct>0">
-                                <div class="panel-heading">
-                                    @{{ $data.moSel }}
+                                <div class="btn-group">
+                                    <button v-on:click="cambTar(1);" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sin Tarjeta</button>
+                                    <button v-on:click="cambTar(1);" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li v-for="option in tT.ts"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">@{{ option.txt }}</a></li>                                    
+                                    </ul>
                                 </div>
-                                <div class="panel-body">@{{ $data.moSelDes }}</div>
+
+                                <div class="btn-group">
+                                    <button v-on:click="cambTar(2);" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarjeta Blanca</button>
+                                    <button v-on:click="cambTar(2);" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li v-for="option in tT.tb"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">@{{ option.txt }}</a></li>                                    
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group">
+                                    <button v-on:click="cambTar(3);" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarjeta Amarilla</button>
+                                    <button v-on:click="cambTar(3);" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li v-for="option in tT.ta"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">@{{ option.txt }}</a></li>                                    
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group">
+                                    <button v-on:click="cambTar(4);" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarjeta Roja</button>
+                                    <button v-on:click="cambTar(4);" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li v-for="option in tT.tr"><a href="#" v-bind:value="option.id" v-on:click="cambMem2(option.id,option.txt)">@{{ option.txt }}</a></li>                                    
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                            <div class="col-md-12 ">
+                                <div class="panel " v-bind:class="[ttarClass]" v-show="ttar.tarAct>0">
+                                    <div class="panel-heading">
+                                        @{{ $data.moSel }}
+                                    </div>
+                                    <div class="panel-body">@{{ $data.moSelDes }}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-12"> 
+                                <textarea id="editor" name="editor" rows="5" cols="80" 
+                                          v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
+                                          v-model="observacion"
+                                          data-vv-rules="required">
+                                </textarea>
+                                <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true" />
+                                <input class="tarSel" id="tarSel" name="tarSel" v-model="ttar.tarAct" hidden="true" data-vv-rules="required"/>
+                                <input class="tarSelMem" id="tarSelMem" name="tarSelMem" v-model="ttar.mem" hidden="true" data-vv-rules="required"/>
 
-                        <div class="col-md-12"> 
-                            <textarea id="editor" name="editor" rows="5" cols="80" 
-                                      v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
-                                      v-model="observacion"
-                                      data-vv-rules="required" >
-                            </textarea>
-                            <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true" />
-                            <input class="tarSel" id="tarSel" name="tarSel" v-model="ttar.tarAct" hidden="true" data-vv-rules="required"/>
-                            <input class="tarSelMem" id="tarSelMem" name="tarSelMem" v-model="ttar.mem" hidden="true" data-vv-rules="required"/>
-                            
-                        </div>                        
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="iniVal">Cerrar</button>                                                    
-                            <button type="submit" class="btn btn-primary" v-bind:disabled="ttar.tarAct==0">Guardar</button>                                                    
-                            {!! Form::submit('Guardar', ['class' => 'btn btn-primary']); !!}
-                            
-                        </div>
+                            </div>  
+                        </div>    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="iniVal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" v-bind:disabled="ttar.tarAct==0">Guardar</button>
                     </div>
             </form>
         </div>
