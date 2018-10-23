@@ -92,8 +92,6 @@
                 strict: true
             };
             /* ----- */
-
-            /* ----- */
             Vue.use(VeeValidate, config);                
             const app = new Vue({
                 el: '#Comportamiento',

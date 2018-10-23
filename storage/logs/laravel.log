@@ -5559,3 +5559,4 @@ esbot\\carbon\\src\\Carbon\\Carbon.php:909)
 #60 D:\\CCC\\sitio\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #61 {main}
 "} 
+[2018-10-23 03:31:09] local.INFO: El Usuario regencia@ccc.edu.bo Logeado!!!   

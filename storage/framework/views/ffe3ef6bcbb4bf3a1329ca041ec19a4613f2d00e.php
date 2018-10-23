@@ -100,7 +100,12 @@
                             <div class="form-group has-feedback <?php echo e($errors->has('fec') ? ' has-error' : ''); ?>" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon10"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                    <vuejs-datepicker id="fec" name="fec" :value="state.date" :format="customFormatter" :language="es" v-model="fec"></vuejs-datepicker>
+                                    <vuejs-datepicker id="fec" name="fec" 
+                                                      :value="state.date" 
+                                                      :format="customFormatter" 
+                                                      :language="es"
+                                                      
+                                                      v-model="fec"></vuejs-datepicker>
                                 </div>
                                 <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
                                 <?php if($errors->has('fec')): ?><span class="help-block"><strong><?php echo e($errors->first('fec')); ?></strong></span><?php endif; ?>
@@ -138,7 +143,7 @@
                             </div>
 
                             <div class="btn-group">
-                                <button v-on:click="cambTar(4);" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarjeta Amarilla</button>
+                                <button v-on:click="cambTar(3);" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarjeta Amarilla</button>
                                 <button v-on:click="cambTar(3);" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="caret"></span>
                                     <span class="sr-only">Toggle Dropdown</span>
@@ -169,30 +174,6 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-12 hidden">     
-                            <div class="form-group has-feedback <?php echo e($errors->has('TB') ? ' has-error' : ''); ?> " v-bind:class="{'': true, 'has-error': errors.has('TB') }">
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon1">                                        
-                                        <i class="fa fa-balance-scale"></i></span>
-                                    <select type="text" class="form-control" placeholder="Tipo de Comportamiento"
-                                            id="TB"  name="TB" v-on:change='cambMem' 
-                                            v-model="TB"
-                                            v-validate.initial="TB" 
-                                            data-vv-rules="" 
-                                            data-vv-delay="500" 
-                                            v-bind:class="{'': true, 'has-error': errors.has('TB') }">                                    
-                                        <option v-for="option in tarSel" v-bind:value="option.id">
-                                            {{ option.txt }}
-                                        </option>
-                                    </select>
-                                </div>
-                                <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('TB') }"></span>
-                                <?php if($errors->has('TB')): ?><span class="help-block"><strong><?php echo e($errors->first('TB')); ?></strong></span>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-
-
                         <div class="col-md-12"> 
                             <textarea id="editor" name="editor" rows="5" cols="80" 
                                       v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
@@ -200,12 +181,17 @@
                                       data-vv-rules="required" >
                             </textarea>
                             <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true" />
+                            <input class="tarSel" id="tarSel" name="tarSel" v-model="ttar.tarAct" hidden="true" data-vv-rules="required"/>
+                            <input class="tarSelMem" id="tarSelMem" name="tarSelMem" v-model="ttar.mem" hidden="true" data-vv-rules="required"/>
+                            
                         </div>                        
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="iniVal">Cerrar</button>                        
+                            <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="iniVal">Cerrar</button>                                                    
+                            <button type="submit" class="btn btn-primary" v-bind:disabled="ttar.tarAct==0">Guardar</button>                                                    
                             <?php echo Form::submit('Guardar', ['class' => 'btn btn-primary']);; ?>
 
+                            
                         </div>
                     </div>
             </form>

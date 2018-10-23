@@ -103,7 +103,8 @@
                                     <vuejs-datepicker id="fec" name="fec" 
                                                       :value="state.date" 
                                                       :format="customFormatter" 
-                                                      :language="es" 
+                                                      :language="es"
+                                                      
                                                       v-model="fec"></vuejs-datepicker>
                                 </div>
                                 <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
@@ -180,14 +181,16 @@
                                       data-vv-rules="required" >
                             </textarea>
                             <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true" />
-                            <input class="tarSel" id="tarSel" name="tarSel" v-model="ttar.tarAct" hidden="true" data-vv-rules="required" />
+                            <input class="tarSel" id="tarSel" name="tarSel" v-model="ttar.tarAct" hidden="true" data-vv-rules="required"/>
                             <input class="tarSelMem" id="tarSelMem" name="tarSelMem" v-model="ttar.mem" hidden="true" data-vv-rules="required"/>
                             
                         </div>                        
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="iniVal">Cerrar</button>                        
+                            <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="iniVal">Cerrar</button>                                                    
+                            <button type="submit" class="btn btn-primary" v-bind:disabled="ttar.tarAct==0">Guardar</button>                                                    
                             {!! Form::submit('Guardar', ['class' => 'btn btn-primary']); !!}
+                            
                         </div>
                     </div>
             </form>
