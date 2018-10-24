@@ -60,7 +60,6 @@ Route::group(['middleware' => 'Grp_Tut', 'prefix' => 'tutor/', 'namespace' => 'T
 /**
  * fin del SIS CCC
  */
-
 /*
  * Detenido 24-10-2018
  * 
