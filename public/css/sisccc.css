@@ -49,6 +49,14 @@
 }
 @media only screen and (min-width: 1000px) {
 }
+
+	
+
+
+
+
+
+
 @font-face{font-family:"Ionicons";
            src:url("/font-icons/ionicons.eot?v=2.0.0");
            src:url("/font-icons/ionicons.eot?v=2.0.0#iefix") 
@@ -5986,3 +5994,5 @@ button.toast-close-button {
 }
 
 
+
+#regente_frm #fec{ padding: 0 10px 0 10px; }

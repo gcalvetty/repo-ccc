@@ -9,12 +9,13 @@ mix.scripts([
    'resources/assets/js/toastr.js',
    'resources/assets/js/app.js'   
 ], 'public/js/app.js')
-   .styles([
+   .styles([   
    'resources/assets/css/sisccc-inscripcion.css',
    'resources/assets/css/ionicons.min.css',
    'resources/assets/css/font-awesome.css',
    'resources/assets/css/animate.css',
-   'resources/assets/css/toastr.css'
+   'resources/assets/css/toastr.css',
+   'resources/assets/css/sisccc-regente.css'
 ], 'public/css/sisccc.css');
 
 /*-- DataTables --*/
