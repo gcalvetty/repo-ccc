@@ -4,14 +4,6 @@ Route::get('/', function () {
     return 'Hello World';
 });
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/', [
-    'as' => 'homeCCC',
-    'uses' => 'ErrorController@index']);
-*/
 
 // ------------------------------------------------
 
@@ -65,13 +57,13 @@ Route::group(['middleware' => 'Grp_Tut', 'prefix' => 'tutor/', 'namespace' => 'T
     require __DIR__ . '/RoutesCCC/tutor.routes.php';
 });
 
-
-
 /**
  * fin del SIS CCC
  */
 
-
+/*
+ * Detenido 24-10-2018
+ * 
 Route::group(['middleware' => 'web'], function() {
     require __DIR__ . '/RoutesCCC/web.routes.php';
 });
@@ -79,3 +71,6 @@ Route::group(['middleware' => 'web'], function() {
 Route::group(['prefix' => 'ccc/', 'namespace' => 'CCC'], function () {
    // require __DIR__ . '/RoutesCCC/ccc.routes.php';
 });
+ * 
+ * 
+ */

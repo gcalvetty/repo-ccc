@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use sis_ccc\libreriaCCC\queryCCC as qGECN;
 use sis_ccc\libreriaCCC\fncCCC as fGECN;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
+
 
 class DirController extends Controller {
 
