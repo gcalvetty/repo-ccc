@@ -147,7 +147,7 @@
                                 ],
                            },    
                         fec: "",                                                
-                        observacion: "",
+                        editor: "",
                         es: esGECN,
                         state: {
                             date: new Date(<?php echo date("Y,n-1,d"); ?>),                          
@@ -185,7 +185,7 @@
                                 this.moSelDes = txt;
                            },       
                     cambTar2:function(opc){
-                        if(opc == 1) {this.ttarClass="panel-primary"; return "Sin Tarjeta"};
+                        if(opc == 1) {this.ttarClass="panel-success"; return "Sin Tarjeta"};
                         if(opc == 2) {this.ttarClass="panel-info"; return "Tarjeta Blanca"};
                         if(opc == 3) {this.ttarClass="panel-warning"; return "Tarjeta Amarilla"};
                         if(opc == 4) {this.ttarClass="panel-danger"; return "Tarjeta Roja"};                        

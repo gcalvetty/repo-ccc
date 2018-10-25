@@ -57,9 +57,7 @@ class RegeController extends Controller {
             'Niveles' => $Niveles,
             'NivSel' => $NivSel
         ]);
-    }
-    
-
+    }  
     /*
      * CRUD
      */

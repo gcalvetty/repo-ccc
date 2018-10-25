@@ -1,12 +1,4 @@
 <?php
-
-Route::get('/', function () {
-    return 'Hello World';
-});
-
-
-// ------------------------------------------------
-
 Route::group(['middleware' => 'Grp_Admtr', 'prefix' => 'administracion/', 'namespace' => 'Administracion'], function () {
     require __DIR__ . '/RoutesCCC/admtracion.routes.php';
 });
@@ -60,12 +52,16 @@ Route::group(['middleware' => 'Grp_Tut', 'prefix' => 'tutor/', 'namespace' => 'T
 /**
  * fin del SIS CCC
  */
-/*
- * Detenido 24-10-2018
- * 
+
 Route::group(['middleware' => 'web'], function() {
     require __DIR__ . '/RoutesCCC/web.routes.php';
 });
+
+
+/*
+ * Detenido 24-10-2018
+ * 
+
 
 Route::group(['prefix' => 'ccc/', 'namespace' => 'CCC'], function () {
    // require __DIR__ . '/RoutesCCC/ccc.routes.php';

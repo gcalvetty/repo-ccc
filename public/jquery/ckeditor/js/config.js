@@ -1,4 +1,8 @@
 CKEDITOR.editorConfig = function( config ) {
+        config.language = 'es';
+	config.uiColor = '#F7B42C';
+	config.height = 80;
+	config.toolbarCanCollapse = false;
 	config.toolbarGroups = [
 		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
 		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },

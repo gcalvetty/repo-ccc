@@ -111,18 +111,10 @@
                                     @if ($errors->has('fec'))<span class="help-block"><strong>{{ $errors->first('fec') }}</strong></span>@endif
                                 </div>
                             </div>
-                            <div class="col-md-12 " style="margin: 10px 0;">
-
-                                <div class="btn-group col-lg-12 hidden" role="group" aria-label="...">
-                                    <button type="button" class="btn btn-primary"   v-on:click="cambTar(1);">Sin</button>
-                                    <button type="button" class="btn btn-info"      v-on:click="cambTar(2);">Blanca</button>
-                                    <button type="button" class="btn btn-warning"   v-on:click="cambTar(3);">Amarrilla</button>
-                                    <button type="button" class="btn btn-danger"    v-on:click="cambTar(4);">Roja</button>
-                                </div> 
-
+                            <div class="col-md-12 btn-tarjeta">                                
                                 <div class="btn-group">
-                                    <button v-on:click="cambTar(1);" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sin Tarjeta</button>
-                                    <button v-on:click="cambTar(1);" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button v-on:click="cambTar(1);" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sin Tarjeta</button>
+                                    <button v-on:click="cambTar(1);" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="caret"></span>
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
@@ -174,8 +166,8 @@
                             </div>
                             <div class="col-md-12"> 
                                 <textarea id="editor" name="editor" rows="5" cols="80" 
-                                          v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
-                                          v-model="observacion"
+                                          v-bind:class="{'': true, 'has-error': errors.has('editor') }" 
+                                          v-model="editor"
                                           data-vv-rules="required">
                                 </textarea>
                                 <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true" />
