@@ -62,12 +62,12 @@ class RegeController extends Controller {
      * CRUD
      */
     public function insComportamiento(Request $req) {
-        $data = $req->all();
+        $data = $req->all();        
         $dateBD = $this->setDateAttribute($data['fec']);
         DB::Table('reg_comportamiento')->insert(
                 ['user_id' => $data['AlmId'],
                     'reg_tipComp' => $data['tarSelMem'],
-                    'reg_tipTarj' => $data['tarSelMem'],
+                    'reg_tipTarj' => $data['tarSel'],
                     'reg_obser' => $data['editor'],
                     'reg_fec' => $dateBD
                 ]

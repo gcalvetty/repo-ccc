@@ -85,7 +85,7 @@ left join grd_escolar as ge on rg.gst_grd_escolar = ge.grd_id
 where u.tipo_Usu = "Est_ccc" and u.id=' . $Alm . '
 order by curso asc, fec Desc
 ' . $limAux . '
-                ');
+                ');        
         return $lisAluComp;
     }
 

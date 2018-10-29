@@ -1,20 +1,20 @@
-@extends('layouts_sisccc.pagsis_estudiante')
-@section('titulo','Estudiante')
-@section('usuccc')
-{{ $usuactivo }}
-@endsection
-@section('usuico')
+<?php $__env->startSection('titulo','Estudiante'); ?>
+<?php $__env->startSection('usuccc'); ?>
+<?php echo e($usuactivo); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('usuico'); ?>
 <i class="fa fa-graduation-cap fa-2x"></i>
-@endsection
-@section('usuico-peq')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('usuico-peq'); ?>
 <i class="fa fa-graduation-cap fa-lg"></i>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('sis_menu_lateral')
-@include('layouts_estudiante.partials.menu')
-@endsection	
+<?php $__env->startSection('sis_menu_lateral'); ?>
+<?php echo $__env->make('layouts_estudiante.partials.menu', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>	
 
-@section('sis_contenido')
+<?php $__env->startSection('sis_contenido'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">    	
     <!-- Content Header (Page header) -->
@@ -29,7 +29,7 @@
     </section>
 
     <!-- Main content -->    
-    @if ($VerCont=="Inscrito")
+    <?php if($VerCont=="Inscrito"): ?>
     <section class="content">
         <div class="row">
             <section class="col-lg-6 connectedSortable ui-sortable">
@@ -49,14 +49,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($ListaC as $Comu)
+                                <?php $__currentLoopData = $ListaC; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Comu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td>{{ $Comu->com_id }}</td>  
-                                    <td>{{ $Comu->com_titulo }}</td>
-                                    <td>{{ $Comu->com_desc }}</td>                                    
-                                    <td>{{ $Comu->com_fec }}</td> 
+                                    <td><?php echo e($Comu->com_id); ?></td>  
+                                    <td><?php echo e($Comu->com_titulo); ?></td>
+                                    <td><?php echo e($Comu->com_desc); ?></td>                                    
+                                    <td><?php echo e($Comu->com_fec); ?></td> 
                                 </tr>                                
-                                @endforeach 
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
 
                             </tbody>
                         </table>
@@ -79,13 +79,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($ListaA as $Act)
+                                <?php $__currentLoopData = $ListaA; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Act): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td>{{ $Act->act_id }}</td>  
-                                    <td>{{ $Act->act_titulo }}</td>                                    
-                                    <td>{{ $Act->act_fec }}</td> 
+                                    <td><?php echo e($Act->act_id); ?></td>  
+                                    <td><?php echo e($Act->act_titulo); ?></td>                                    
+                                    <td><?php echo e($Act->act_fec); ?></td> 
                                 </tr>                                
-                                @endforeach 
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
 
                             </tbody>
                         </table>
@@ -116,17 +116,17 @@
                                 </thead>
                                 <tbody>
                                     <?php $cont = 1 ?>
-                                    @foreach($tareas as $Alumno)
+                                    <?php $__currentLoopData = $tareas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Alumno): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>                   
-                                        <td>{{ $cont++ }}</td> 
-                                        <td>{{ $Alumno->tar_fec_ini }}</td> 
-                                        <td>{{ $Alumno->tar_materia }}</td>
-                                        <td class="tar_desc">{{ $Alumno->tar_desc }}</td>                                                               
+                                        <td><?php echo e($cont++); ?></td> 
+                                        <td><?php echo e($Alumno->tar_fec_ini); ?></td> 
+                                        <td><?php echo e($Alumno->tar_materia); ?></td>
+                                        <td class="tar_desc"><?php echo e($Alumno->tar_desc); ?></td>                                                               
                                     </tr>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <td  class="verReg" colspan="4">
-                                            <a href="{{ route("est.Tareas")}}">Ver Todas las Tareas <i class="fa fa-angle-double-right"></i></a>
+                                            <a href="<?php echo e(route("est.Tareas")); ?>">Ver Todas las Tareas <i class="fa fa-angle-double-right"></i></a>
                                         </td>
                                     </tr>                 
                                     </tfoot>                 
@@ -153,7 +153,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>                                    
-                                    @foreach($comp as $Alumno)
+                                    <?php $__currentLoopData = $comp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Alumno): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php
                                     $tipTar = "";
                                     switch ($Alumno->tiptarj) {
@@ -171,16 +171,16 @@
                                             break;
                                     }
                                     ?>
-                                    <tr class="{{ $tipTar }}">                                        
-                                        <td>{{ $Alumno->fec }}</td>                                          
-                                        <td style="text-align:left;"><span class="label label-{{ $tipTar }}"><span class="glyphicon glyphicon-tag {{ $tipTar }}" aria-hidden="true"></span> </span>
-                                                {{ $Alumno->tipcomp }}</td>                                        
-                                        <td>{{ strip_tags($Alumno->obser) }}</td>                                                                               
-                                        @endforeach    
+                                    <tr class="<?php echo e($tipTar); ?>">                                        
+                                        <td><?php echo e($Alumno->fec); ?></td>                                          
+                                        <td style="text-align:left;"><span class="label label-<?php echo e($tipTar); ?>"><span class="glyphicon glyphicon-tag <?php echo e($tipTar); ?>" aria-hidden="true"></span> </span>
+                                                <?php echo e($Alumno->tipcomp); ?></td>                                        
+                                        <td><?php echo e(strip_tags($Alumno->obser)); ?></td>                                                                               
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
                                     </tr>
                                     <tr>
                                         <td class="verReg" colspan="5">
-                                            <a href="{{ route("est.Compor")}}">Ver Todos las llamadas de Atención <i class="fa fa-angle-double-right"></i></a>
+                                            <a href="<?php echo e(route("est.Compor")); ?>">Ver Todos las llamadas de Atención <i class="fa fa-angle-double-right"></i></a>
                                         </td>
                                     </tr>                 
                                 </tbody>                 
@@ -203,16 +203,16 @@
                                 <h3 class="box-title">Libreta Escolar</h3>
                                 <span class="label label-primary pull-right"><i class="fa fa-html5"></i></span>
                             </div><!-- /.box-header -->
-                            @if(( $libreta =='libreta.pdf') || ($libreta == ''))
+                            <?php if(( $libreta =='libreta.pdf') || ($libreta == '')): ?>
                             <div class="alert alert-danger" role="alert">            
                                 <p>No tienen acceso para ver la libreta escolar del 3er Parcial!!!</p>                        
                             </div><!-- /.box-body -->
-                            @else
+                            <?php else: ?>
                             <div class="box-body">            
                                 <p>Puedes Vizualizar la libreta del estudiante ingresando a este enlace.</p>            
-                                <a href="{{ route('libreta') }}" class="btn btn-primary" target="_blank"><i class="fa fa-download"></i> Ver Libreta</a>
+                                <a href="<?php echo e(route('libreta')); ?>" class="btn btn-primary" target="_blank"><i class="fa fa-download"></i> Ver Libreta</a>
                             </div><!-- /.box-body -->
-                            @endif
+                            <?php endif; ?>
                         </div><!-- /.box -->
                     </div><!-- /.col -->    
                 </div><!-- /.row -->  
@@ -220,9 +220,9 @@
         </div>
         <!-- /.box-body -->
     </section>
-    @else
-        @yield('est_pago')
-    @endif
+    <?php else: ?>
+        <?php echo $__env->yieldContent('est_pago'); ?>
+    <?php endif; ?>
 </div>
 
 <!-- /.content -->
@@ -230,11 +230,12 @@
 </div>
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-    {!! Html::footer('siscccConfig.pie') !!}
-</footer>
-@endsection
+    <?php echo Html::footer('siscccConfig.pie'); ?>
 
-@section('est_pago')
+</footer>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('est_pago'); ?>
 <section class="content">
     <div id="contador_crud" class="row">
         <div class="col-xs-12">
@@ -246,7 +247,7 @@
                         <!-- Add the bg color to the header using any of the bg-* classes -->
                         <div class="widget-user-header bg-yellow" >
                             <h1 class="widget-user-desc">Pensiones Adeudadas!!!</h1>
-                            <h3 class="widget-user-username" >{{$usuactivo}}</h3> 
+                            <h3 class="widget-user-username" ><?php echo e($usuactivo); ?></h3> 
 
                         </div>
                         <div class="widget-user-image">
@@ -283,6 +284,8 @@
     </div>
     <!-- /.col -->
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
+
+<?php echo $__env->make('layouts_sisccc.pagsis_estudiante', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
