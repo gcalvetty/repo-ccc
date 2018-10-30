@@ -39,7 +39,8 @@
                         <h3 class="box-title">Comunicado - Estudiantes</h3>
                     </div>
                     <div class="box-body">
-                        <table class="table table-bordered table-striped">
+                        <div class="tarea">
+                        <table class="table table-condensed table-hover table-striped">
                             <thead>
                                 <tr>
                                     <th>#</th>                                         
@@ -51,15 +52,16 @@
                             <tbody>
                                 <?php $__currentLoopData = $ListaC; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Comu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td><?php echo e($Comu->com_id); ?></td>  
-                                    <td><?php echo e($Comu->com_titulo); ?></td>
-                                    <td><?php echo e($Comu->com_desc); ?></td>                                    
-                                    <td><?php echo e($Comu->com_fec); ?></td> 
+                                    <td class="col-md-1"><?php echo e($Comu->com_id); ?></td>  
+                                    <td class="col-md-1"><?php echo e($Comu->com_titulo); ?></td>
+                                    <td class="col-md-1"><?php echo e($Comu->com_desc); ?></td>                                    
+                                    <td class="col-md-1"><?php echo e($Comu->com_fec); ?></td> 
                                 </tr>                                
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
 
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -70,25 +72,27 @@
                         <h3 class="box-title">Actividades</h3>
                     </div>
                     <div class="box-body">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>                                         
-                                    <th>Titulo</th>                                     
-                                    <th>Fecha</th>                                                                          
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $__currentLoopData = $ListaA; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Act): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <tr>
-                                    <td><?php echo e($Act->act_id); ?></td>  
-                                    <td><?php echo e($Act->act_titulo); ?></td>                                    
-                                    <td><?php echo e($Act->act_fec); ?></td> 
-                                </tr>                                
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+                        <div class="tarea">
+                            <table class="table table-condensed table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>                                         
+                                        <th>Titulo</th>                                     
+                                        <th>Fecha</th>                                                                          
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $__currentLoopData = $ListaA; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Act): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <tr>
+                                        <td class="col-md-1"><?php echo e($Act->act_id); ?></td>  
+                                        <td class="col-md-8"><?php echo e($Act->act_titulo); ?></td>                                    
+                                        <td class="col-md-3"><?php echo e($Act->act_fec); ?></td> 
+                                    </tr>                                
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -101,7 +105,6 @@
                     <div class="box-header ui-sortable-handle" style="cursor: move;">
                         <i class="fa fa-tasks"></i>
                         <h3 class="box-title">Tareas</h3>
-
                     </div>
                     <div class="box-body">    
                         <div class="tarea">
@@ -109,19 +112,19 @@
                                 <thead>
                                     <tr>                                
                                         <th>#</th>
-                                        <th class="col-lg-2">Fecha</th>
-                                        <th class="col-lg-3">Materia</th>
-                                        <th class="col-lg-7">Descripción</th>                                
+                                        <th>Fecha</th>
+                                        <th>Materia</th>
+                                        <th>Descripción</th>                                
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $cont = 1 ?>
                                     <?php $__currentLoopData = $tareas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Alumno): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>                   
-                                        <td><?php echo e($cont++); ?></td> 
-                                        <td><?php echo e($Alumno->tar_fec_ini); ?></td> 
-                                        <td><?php echo e($Alumno->tar_materia); ?></td>
-                                        <td class="tar_desc"><?php echo e($Alumno->tar_desc); ?></td>                                                               
+                                        <td class="col-md-1"><?php echo e($cont++); ?></td> 
+                                        <td class="col-md-2"><?php echo e($Alumno->tar_fec_ini); ?></td> 
+                                        <td class="col-md-3"><?php echo e($Alumno->tar_materia); ?></td>
+                                        <td class="col-md-6 tar_desc"><?php echo e($Alumno->tar_desc); ?></td>                                                               
                                     </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
@@ -147,6 +150,7 @@
                             <table class="table table-condensed table-hover table-striped">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Fecha</th>
                                         <th>Comportamiento</th>
                                         <th>Observación</th>                                
@@ -156,33 +160,44 @@
                                     <?php $__currentLoopData = $comp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Alumno): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php
                                     $tipTar = "";
+                                    $tipMen = "";
                                     switch ($Alumno->tiptarj) {
                                         case "Sin Tarjeta":
+                                            $tipMem = "Sin Tarjeta";
                                             $tipTar = "success";
                                             break;
                                         case "Tarjeta Blanca":
+                                            $tipMem = "Tarjeta Blanca";
                                             $tipTar = "info";
                                             break;
                                         case "Tarjeta Amarilla":
+                                            $tipMem = "Tarjeta Amarilla";
                                             $tipTar = "warning";
                                             break;
                                         case "Tarjeta Roja":
+                                            $tipMem = "Tarjeta Roja";
                                             $tipTar = "danger";
                                             break;
                                     }
                                     ?>
-                                    <tr class="<?php echo e($tipTar); ?>">                                        
-                                        <td><?php echo e($Alumno->fec); ?></td>                                          
-                                        <td style="text-align:left;"><span class="label label-<?php echo e($tipTar); ?>"><span class="glyphicon glyphicon-tag <?php echo e($tipTar); ?>" aria-hidden="true"></span> </span>
-                                                <?php echo e($Alumno->tipcomp); ?></td>                                        
-                                        <td><?php echo e(strip_tags($Alumno->obser)); ?></td>                                                                               
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
-                                    </tr>
-                                    <tr>
-                                        <td class="verReg" colspan="5">
-                                            <a href="<?php echo e(route("est.Compor")); ?>">Ver Todos las llamadas de Atención <i class="fa fa-angle-double-right"></i></a>
-                                        </td>
-                                    </tr>                 
+                                                <tr class="<?php echo e($tipTar); ?>" data-toggle="tooltip" data-placement="top" title="<?php echo e($tipMem); ?>">                                                                                                                                                                             
+                                                                                                                                                            <td class="col-md-1">
+                                                                <span class="label label-<?php echo e($tipTar); ?>">
+                                                                    <span class="glyphicon glyphicon-tag <?php echo e($tipTar); ?>" aria-hidden="true"></span> 
+                                                                </span>
+                                                            </td>
+                                                            <td class="col-md-2"><?php echo e($Alumno->fec); ?></td>                                          
+                                                            <td class="col-md-4" style="text-align:left;">
+
+                                                                <?php echo e($Alumno->tipcomp); ?></td>                                        
+                                                            <td class="col-md-5"><?php echo e(strip_tags($Alumno->obser)); ?></td>
+                                                </tr>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+                                                <tr>
+                                                    <td class="verReg" colspan="5">
+                                                        <a href="<?php echo e(route("est.Compor")); ?>">Ver Todos las llamadas de Atención <i class="fa fa-angle-double-right"></i></a>
+                                                    </td>
+                                                </tr>                 
                                 </tbody>                 
                             </table>
                         </div>
@@ -221,7 +236,7 @@
         <!-- /.box-body -->
     </section>
     <?php else: ?>
-        <?php echo $__env->yieldContent('est_pago'); ?>
+    <?php echo $__env->yieldContent('est_pago'); ?>
     <?php endif; ?>
 </div>
 

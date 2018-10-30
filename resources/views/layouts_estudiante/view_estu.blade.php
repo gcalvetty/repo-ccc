@@ -39,27 +39,29 @@
                         <h3 class="box-title">Comunicado - Estudiantes</h3>
                     </div>
                     <div class="box-body">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>                                         
-                                    <th>Titulo</th>
-                                    <th>Descripción</th> 
-                                    <th>Fecha</th>                                                                          
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($ListaC as $Comu)
-                                <tr>
-                                    <td>{{ $Comu->com_id }}</td>  
-                                    <td>{{ $Comu->com_titulo }}</td>
-                                    <td>{{ $Comu->com_desc }}</td>                                    
-                                    <td>{{ $Comu->com_fec }}</td> 
-                                </tr>                                
-                                @endforeach 
+                        <div class="tarea">
+                            <table class="table table-condensed table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>                                         
+                                        <th>Titulo</th>
+                                        <th>Descripción</th> 
+                                        <th>Fecha</th>                                                                          
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($ListaC as $Comu)
+                                    <tr>
+                                        <td class="col-md-1">{{ $Comu->com_id }}</td>  
+                                        <td class="col-md-4">{{ $Comu->com_titulo }}</td>
+                                        <td class="col-md-4 txt-just">{{ $Comu->com_desc }}</td>                                    
+                                        <td class="col-md-3">{{ $Comu->com_fec }}</td> 
+                                    </tr>                                
+                                    @endforeach 
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -70,25 +72,27 @@
                         <h3 class="box-title">Actividades</h3>
                     </div>
                     <div class="box-body">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>                                         
-                                    <th>Titulo</th>                                     
-                                    <th>Fecha</th>                                                                          
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($ListaA as $Act)
-                                <tr>
-                                    <td>{{ $Act->act_id }}</td>  
-                                    <td>{{ $Act->act_titulo }}</td>                                    
-                                    <td>{{ $Act->act_fec }}</td> 
-                                </tr>                                
-                                @endforeach 
+                        <div class="tarea">
+                            <table class="table table-condensed table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>                                         
+                                        <th>Titulo</th>                                     
+                                        <th>Fecha</th>                                                                          
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($ListaA as $Act)
+                                    <tr>
+                                        <td class="col-md-1">{{ $Act->act_id }}</td>  
+                                        <td class="col-md-8">{{ $Act->act_titulo }}</td>                                    
+                                        <td class="col-md-3">{{ $Act->act_fec }}</td> 
+                                    </tr>                                
+                                    @endforeach 
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -101,7 +105,6 @@
                     <div class="box-header ui-sortable-handle" style="cursor: move;">
                         <i class="fa fa-tasks"></i>
                         <h3 class="box-title">Tareas</h3>
-
                     </div>
                     <div class="box-body">    
                         <div class="tarea">
@@ -109,19 +112,19 @@
                                 <thead>
                                     <tr>                                
                                         <th>#</th>
-                                        <th class="col-lg-2">Fecha</th>
-                                        <th class="col-lg-3">Materia</th>
-                                        <th class="col-lg-7">Descripción</th>                                
+                                        <th>Fecha</th>
+                                        <th>Materia</th>
+                                        <th>Descripción</th>                                
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $cont = 1 ?>
                                     @foreach($tareas as $Alumno)
                                     <tr>                   
-                                        <td>{{ $cont++ }}</td> 
-                                        <td>{{ $Alumno->tar_fec_ini }}</td> 
-                                        <td>{{ $Alumno->tar_materia }}</td>
-                                        <td class="tar_desc">{{ $Alumno->tar_desc }}</td>                                                               
+                                        <td class="col-md-1">{{ $cont++ }}</td> 
+                                        <td class="col-md-2">{{ $Alumno->tar_fec_ini }}</td> 
+                                        <td class="col-md-3">{{ $Alumno->tar_materia }}</td>
+                                        <td class="col-md-6 tar_desc txt-just">{{ $Alumno->tar_desc }}</td>                                                               
                                     </tr>
                                     @endforeach
                                     <tr>
@@ -147,6 +150,7 @@
                             <table class="table table-condensed table-hover table-striped">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Fecha</th>
                                         <th>Comportamiento</th>
                                         <th>Observación</th>                                
@@ -156,28 +160,39 @@
                                     @foreach($comp as $Alumno)
                                     <?php
                                     $tipTar = "";
+                                    $tipMen = "";
                                     switch ($Alumno->tiptarj) {
                                         case "Sin Tarjeta":
+                                            $tipMem = "Sin Tarjeta";
                                             $tipTar = "success";
                                             break;
                                         case "Tarjeta Blanca":
+                                            $tipMem = "Tarjeta Blanca";
                                             $tipTar = "info";
                                             break;
                                         case "Tarjeta Amarilla":
+                                            $tipMem = "Tarjeta Amarilla";
                                             $tipTar = "warning";
                                             break;
                                         case "Tarjeta Roja":
+                                            $tipMem = "Tarjeta Roja";
                                             $tipTar = "danger";
                                             break;
                                     }
                                     ?>
-                                    <tr class="{{ $tipTar }}">                                        
-                                        <td>{{ $Alumno->fec }}</td>                                          
-                                        <td style="text-align:left;"><span class="label label-{{ $tipTar }}"><span class="glyphicon glyphicon-tag {{ $tipTar }}" aria-hidden="true"></span> </span>
-                                                {{ $Alumno->tipcomp }}</td>                                        
-                                        <td>{{ strip_tags($Alumno->obser) }}</td>                                                                               
-                                        @endforeach    
+                                    <tr class="{{ $tipTar }}" data-toggle="tooltip" data-placement="top" title="{{ $tipMem }}">                                                                                                                                                                             
+                                        <td class="col-md-1">
+                                            <span class="label label-{{ $tipTar }}">
+                                                <span class="glyphicon glyphicon-tag {{ $tipTar }}" aria-hidden="true"></span> 
+                                            </span>
+                                        </td>
+                                        <td class="col-md-2">{{ $Alumno->fec }}</td>                                          
+                                        <td class="col-md-4" style="text-align:left;">
+
+                                            {{ $Alumno->tipcomp }}</td>                                        
+                                        <td class="col-md-5 txt-just">{{ strip_tags($Alumno->obser) }}</td>
                                     </tr>
+                                    @endforeach  
                                     <tr>
                                         <td class="verReg" colspan="5">
                                             <a href="{{ route("est.Compor")}}">Ver Todos las llamadas de Atención <i class="fa fa-angle-double-right"></i></a>
@@ -221,7 +236,7 @@
         <!-- /.box-body -->
     </section>
     @else
-        @yield('est_pago')
+    @yield('est_pago')
     @endif
 </div>
 
