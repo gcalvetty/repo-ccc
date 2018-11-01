@@ -10,6 +10,7 @@ mix.scripts([
    'resources/assets/js/app.js'   
 ], 'public/js/app.js')
    .styles([   
+   'resources/assets/css/sisccc-gecn.css',
    'resources/assets/css/sisccc-inscripcion.css',
    'resources/assets/css/ionicons.min.css',
    'resources/assets/css/font-awesome.css',

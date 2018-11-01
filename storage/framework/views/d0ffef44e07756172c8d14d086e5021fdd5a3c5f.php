@@ -21,12 +21,6 @@
         <link href="<?php echo e(elixir('/css/app.css')); ?>" rel="stylesheet">
         <link href="<?php echo e(elixir('/css/sisccc.css')); ?>" rel="stylesheet">       
 
-        <?php if((Route::current()->getName() == 'rude-d.edit')or
-        (Route::current()->getName() == 'rude-ins.edit')or
-        (Route::current()->getName() == 'rude-s.edit')): ?>
-        <?php echo $__env->make('layouts_sisccc.partials.pagsis_edit_css', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        <?php endif; ?>        
-
         <link href="/dist/css/AdminLTE.css" rel="stylesheet">          
         <link href="/dist/css/skins/_all-skins.css" rel="stylesheet">
         <!-- DataTables -->
@@ -36,6 +30,13 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <!-- Scripts -->
+
+        <!-- datagrip -->
+        <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" >
+        <!-- fullCalendar 2.2.5-->               
+        <link rel="stylesheet" href="../plugins/fullcalendar/fullcalendar.min.css">
+        <link rel="stylesheet" href="../plugins/fullcalendar/fullcalendar.print.css" media="print">
+
         <script>
             window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?>
         </script>
@@ -48,56 +49,27 @@
             <?php echo Html::menuccc(); ?>
 
             <?php endif; ?>
-
-
             <?php echo $__env->yieldContent('sis_menu_lateral'); ?>
-
             <?php echo $__env->yieldContent('sis_contenido'); ?>
-             
-            <?php echo $__env->yieldContent('menu-configuracion'); ?>
-            
+            <?php echo $__env->yieldContent('menu-configuracion'); ?>            
+        </div>      
 
-        </div>
-        <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=tjcHah7sB34YguDSZ8X4JxpC77rb3bQ4P8C4ujVW6W4G62t3N98vnkXKWzs6"></script></span>
+
         <!-- jQuery 3.1.1 -->
         <script src="/jquery/jquery-3.1.1.min.js"></script>    
         <!-- jQuery UI 1.11.4 -->
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
-        <!-- DataTables -->
-        <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
-        <!-- SlimScroll -->
-        <script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-        <!-- FastClick -->
-        <script src="/plugins/fastclick/fastclick.js"></script>
+        <script src="/plugins/jQueryUI/jquery-ui.js" type="text/javascript"></script>
 
         <!-- Bootstrap 3.3.6 -->
         <script src="/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/dist/js/app.min.js"></script>
-        <script src="/dist/js/ccc-escritorio.js"></script>
+        <script src="/jquery/vue.js"></script>
+        <script src="/jquery/axios.js"></script>
+        <script src="/jquery/toastr.js" type="text/javascript"></script>
 
-
-        <script>
-            $(function () {
-                $("#example1").DataTable();
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false
-                });
-            });
-        </script>
-
-        <?php if((Route::current()->getName() == 'rude-d.edit')or 
-        (Route::current()->getName() == 'rude-ins.edit')or
-        (Route::current()->getName() == 'rude-s.edit')): ?>
-        <?php echo $__env->make('layouts_sisccc.partials.pagsis_edit_js', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        <?php endif; ?>               
-        <?php if((Route::current()->getName() == 'Admtr.Reg')): ?>             
-        <?php echo $__env->make('layouts_sisccc.partials.pagsis_charts_js',['some' => 'data'], \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>            
-        <?php endif; ?>
+        <?php if((Route::current()->getName() == 'Secr.actividades')): ?>        
+            <script src="/jquery/moment.js" type="text/javascript"></script>                   
+            <script src="/jquery/vee-validate.js" type="text/javascript"></script>
+            <script src="/jquery/ccc-secretaria-actividad.js" type="text/javascript"></script>            
+        <?php endif; ?>    
     </body>

@@ -150,7 +150,7 @@
                         editor: "",
                         es: esGECN,
                         state: {
-                            date: new Date(<?php echo date("Y,n-1,d"); ?>),                          
+                            date: new Date(),                          
                             disabledDates:{ days:[0] }
                         },
                     }

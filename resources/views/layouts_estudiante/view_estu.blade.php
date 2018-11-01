@@ -54,7 +54,7 @@
                                     <tr>
                                         <td class="col-md-1">{{ $Comu->com_id }}</td>  
                                         <td class="col-md-4">{{ $Comu->com_titulo }}</td>
-                                        <td class="col-md-4 txt-just">{{ $Comu->com_desc }}</td>                                    
+                                        <td class="col-md-4 text-justify">{{ $Comu->com_desc }}</td>                                    
                                         <td class="col-md-3">{{ $Comu->com_fec }}</td> 
                                     </tr>                                
                                     @endforeach 
@@ -124,7 +124,7 @@
                                         <td class="col-md-1">{{ $cont++ }}</td> 
                                         <td class="col-md-2">{{ $Alumno->tar_fec_ini }}</td> 
                                         <td class="col-md-3">{{ $Alumno->tar_materia }}</td>
-                                        <td class="col-md-6 tar_desc txt-just">{{ $Alumno->tar_desc }}</td>                                                               
+                                        <td class="col-md-6 tar_desc text-justify">{{ $Alumno->tar_desc }}</td>                                                               
                                     </tr>
                                     @endforeach
                                     <tr>
@@ -190,7 +190,7 @@
                                         <td class="col-md-4" style="text-align:left;">
 
                                             {{ $Alumno->tipcomp }}</td>                                        
-                                        <td class="col-md-5 txt-just">{{ strip_tags($Alumno->obser) }}</td>
+                                        <td class="col-md-5 text-md-justify">{{ strip_tags($Alumno->obser) }}</td>
                                     </tr>
                                     @endforeach  
                                     <tr>
