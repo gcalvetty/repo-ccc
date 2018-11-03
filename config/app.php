@@ -164,7 +164,8 @@ return [
         // 1
         sis_ccc\Providers\HtmlProviderCCC::class,
         
-        // 2
+        // 2 para poner en PDF
+        Barryvdh\DomPDF\ServiceProvider::class,       
 
     ],
 
@@ -220,8 +221,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,  
         
-        // 2
-
+        // 2 para poner en PDF
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

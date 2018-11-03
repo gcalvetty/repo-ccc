@@ -1,4 +1,6 @@
 <?php
+
+ 
 Route::group(['middleware' => 'Grp_Admtr', 'prefix' => 'administracion/', 'namespace' => 'Administracion'], function () {
     require __DIR__ . '/RoutesCCC/admtracion.routes.php';
 });

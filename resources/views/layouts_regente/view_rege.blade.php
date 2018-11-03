@@ -65,7 +65,7 @@
                                             <i class="fa fa-edit"></i></button>
                                     </td>
                                     <td>
-                                        <a href="{ route('rep.alumnos') }" target="_blank">
+                                        <a href="{{ route('Rege.PDFCom',$Alumno->id) }}" target="_blank">
                                             <button type="button" class="btn btn-success" >
                                                 <i class="fa fa-file-excel-o"></i>
                                             </button>

@@ -24,3 +24,9 @@ Route::get('/delComportamiento',[
     'as' => 'Rege.delCom',
     'uses' => 'RegeController@delComportamiento',    
 ]);
+
+Route::get('/PDFComportamiento/alum-{idAlm}-ccc',[
+    'as' => 'Rege.PDFCom',
+    'uses' => 'RegeController@PDFComportamiento',    
+])->where(['idAlm'=>'[0-9]+']);
+

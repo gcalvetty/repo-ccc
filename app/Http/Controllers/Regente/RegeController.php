@@ -3,7 +3,7 @@
 namespace sis_ccc\Http\Controllers\Regente;
 
 use Illuminate\Http\Request;
-use sis_ccc\Http\Requests;
+use PDF;
 use sis_ccc\Http\Controllers\Controller;
 use sis_ccc\ModeloCCC\Grd_Nivel;
 use sis_ccc\libreriaCCC\queryCCC as qGECN;
@@ -27,11 +27,12 @@ class RegeController extends Controller {
     /*
      * ----------------------
      */
+
     public function index(Request $request) {
         $sql = new qGECN;
         $lGECN = $sql::listAlumn($request);
         $lComp = $sql::listComp();
-        $NivSel=$request->grd_nivel;
+        $NivSel = $request->grd_nivel;
         $Niveles = Grd_Nivel::find(["2", "3"]);
         $user = fGECN::obt_nombre();
 
@@ -44,25 +45,27 @@ class RegeController extends Controller {
         ]);
     }
 
-    public function comportamiento(Request $request) {        
-        $sql = new qGECN;        
-        $NivSel=$request->grd_nivel;  
-        $lGECN = $sql::listAlumnComportamiento($NivSel);              
+    public function comportamiento(Request $request) {
+        $sql = new qGECN;
+        $NivSel = $request->grd_nivel;
+        $lGECN = $sql::listAlumnComportamiento($NivSel);
         $Niveles = Grd_Nivel::find(["2", "3"]);
         $user = fGECN::obt_nombre();
-        
+
         return view('layouts_regente/view_rege_comportamiento', [
             'usuactivo' => $user,
-            'Lista' => $lGECN,            
+            'Lista' => $lGECN,
             'Niveles' => $Niveles,
             'NivSel' => $NivSel
         ]);
-    }  
+    }
+
     /*
      * CRUD
      */
+
     public function insComportamiento(Request $req) {
-        $data = $req->all();        
+        $data = $req->all();
         $dateBD = $this->setDateAttribute($data['fec']);
         DB::Table('reg_comportamiento')->insert(
                 ['user_id' => $data['AlmId'],
@@ -74,14 +77,20 @@ class RegeController extends Controller {
         );
         return redirect()->route('Rege.Reg')->withSuccess('OK');
     }
-    
+
     public function delComportamiento(Request $req) {
         $data = $req->all();
-
         $eliDocente = DB::delete('Delete '
                         . ' From reg_comportamiento'
-                        . ' where reg_id=' . $req->AlmId);        
+                        . ' where reg_id=' . $req->AlmId);
         return redirect()->route('Rege.Comp')->withSuccess('OK');
+    }
+
+    public function PDFComportamiento(Request $req) {
+        //$data = $req->all();        
+        //' where reg_id=' . $req->AlmId); 
+        $pdf = PDF::loadHTML('welcome2');
+        return $pdf->download();
     }
 
     /**
