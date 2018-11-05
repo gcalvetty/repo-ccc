@@ -67,7 +67,7 @@
                                     <td>
                                         <a href="<?php echo e(route('Rege.PDFCom',$Alumno->id)); ?>" target="_blank">
                                             <button type="button" class="btn btn-success" >
-                                                <i class="fa fa-file-excel-o"></i>
+                                                <i class="fa fa-file-pdf-o"></i>
                                             </button>
                                         </a> 
                                     </td>

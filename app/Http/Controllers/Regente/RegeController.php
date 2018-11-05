@@ -86,11 +86,13 @@ class RegeController extends Controller {
         return redirect()->route('Rege.Comp')->withSuccess('OK');
     }
 
-    public function PDFComportamiento(Request $req) {
-        //$data = $req->all();        
+    public function PDFComportamiento(Request $req) {                      
         //' where reg_id=' . $req->AlmId); 
-        $pdf = PDF::loadHTML('welcome2');
-        return $pdf->download();
+        // $pdf = PDF::loadHTML('welcome2')->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf');
+        $pdf = PDF::loadView("layouts_regente.view_rege_pdf", [
+            'alumno' => $req->AlmId,            
+        ]);        
+        return $pdf->stream(); // download - stream
     }
 
     /**
