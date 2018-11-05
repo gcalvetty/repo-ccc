@@ -10,9 +10,6 @@
         <!-- Styles -->        
         <link rel="stylesheet" href="<?php echo e(asset('bootstrap/css/bootstrap_repo.css')); ?>"> 
         <link rel="stylesheet" href="<?php echo e(asset('css/sisccc-pdf.css')); ?>">       
-
-        <!-- DataTables -->
-        <link rel="stylesheet" href="/plugins/datatables/dataTables.bootstrap.css">
     </head>
     <body> 
         <?php echo $__env->yieldContent('sis_contenido'); ?>

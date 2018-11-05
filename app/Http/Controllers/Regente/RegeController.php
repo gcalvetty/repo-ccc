@@ -89,7 +89,7 @@ class RegeController extends Controller {
     public function PDFComportamiento(Request $req) {                      
         //' where reg_id=' . $req->AlmId); 
         // $pdf = PDF::loadHTML('welcome2')->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf');
-        $pdf = PDF::loadView("layouts_regente.view_rege_pdf", [
+        $pdf = PDF::loadView("layouts_reportes.pagsis_comportamiento_pdf", [
             'alumno' => $req->AlmId,            
         ]);        
         return $pdf->stream(); // download - stream

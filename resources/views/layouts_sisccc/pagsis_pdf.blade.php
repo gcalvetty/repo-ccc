@@ -10,9 +10,6 @@
         <!-- Styles -->        
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap_repo.css') }}"> 
         <link rel="stylesheet" href="{{ asset('css/sisccc-pdf.css') }}">       
-
-        <!-- DataTables -->
-        <link rel="stylesheet" href="/plugins/datatables/dataTables.bootstrap.css">
     </head>
     <body> 
         @yield('sis_contenido')
