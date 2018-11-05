@@ -59,7 +59,7 @@ class EstuController extends Controller {
         $this->__get(1);
         return view('layouts_estudiante/view_estu_comportamiento', [
             'usuactivo' => $this->user,
-            'comp'   => $this->comprt, 
+            'comp'   => qGECN::listCompEst($this->alum,0), 
             'VerCont'   => $this->almAct,
         ]);
     }

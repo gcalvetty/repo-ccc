@@ -25,6 +25,4 @@ class fncCCC {
     public static function setDateAttribute($value) {
         return Carbon::createFromFormat('d/m/Y', $value)->toDateString();
     }
-
-
 }

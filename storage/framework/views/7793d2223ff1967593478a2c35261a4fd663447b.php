@@ -186,9 +186,8 @@
                                                 <span class="glyphicon glyphicon-tag <?php echo e($tipTar); ?>" aria-hidden="true"></span> 
                                             </span>
                                         </td>
-                                        <td class="col-md-2"><?php echo e($Alumno->fec); ?></td>                                          
+                                        <td class="col-md-2"><?php echo e(sis_ccc\libreriaCCC\fncCCC::getDateAttribute($Alumno->fec)); ?></td>                                          
                                         <td class="col-md-4" style="text-align:left;">
-
                                             <?php echo e($Alumno->tipcomp); ?></td>                                        
                                         <td class="col-md-5 text-md-justify"><?php echo e(strip_tags($Alumno->obser)); ?></td>
                                     </tr>

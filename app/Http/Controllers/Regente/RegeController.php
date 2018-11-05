@@ -10,12 +10,14 @@ use sis_ccc\libreriaCCC\queryCCC as qGECN;
 use sis_ccc\libreriaCCC\fncCCC as fGECN;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use sis_ccc\User;
+
+
 
 class RegeController extends Controller {
     /*
      * Obtener fecha para la BD
      */
-
     public function getDateAttribute($value) {
         return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
     }
@@ -87,13 +89,17 @@ class RegeController extends Controller {
     }
 
     public function PDFComportamiento(Request $req) {                      
-        //' where reg_id=' . $req->AlmId); 
+        
         // $pdf = PDF::loadHTML('welcome2')->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf');
+        $comprt = qGECN::listCompEst($req->AlmId,0);
+        $datAlm = User::find($req->AlmId);
+        
         $pdf = PDF::loadView("layouts_reportes.pagsis_comportamiento_pdf", [
-            'alumno' => $req->AlmId,            
+            'alumno' => $datAlm->nombre." ".$datAlm->ape_paterno." ".$datAlm->ape_materno,
+            'comp'   => $comprt,            
         ]);        
         return $pdf->stream(); // download - stream
-    }
+    }   
 
     /**
      * Show the form for creating a new resource.
