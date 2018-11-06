@@ -65,13 +65,17 @@
                                             <i class="fa fa-edit"></i></button>
                                     </td>
                                     <td>
+                                        <?php $val = sis_ccc\Http\Controllers\Regente\RegeController::haveComportamiento($Alumno->id) ?>
+                                        @if ($val>0)
                                         <a href="{{ route('Rege.PDFCom',$Alumno->id) }}" target="_blank">
                                             <button type="button" class="btn btn-success" >
-                                                <i class="fa fa-file-pdf-o"></i>
+                                                <span class="badge"><i class="fa fa-file-pdf-o"></i> {{ $val }}</span>                                                 
                                             </button>
                                         </a> 
+                                        @else
+                                        <i class="fa fa-file-pdf-o"></i>
+                                        @endif
                                     </td>
-
                                     @endforeach    
                                 </tr>
 

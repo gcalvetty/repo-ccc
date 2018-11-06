@@ -65,13 +65,17 @@
                                             <i class="fa fa-edit"></i></button>
                                     </td>
                                     <td>
+                                        <?php $val = sis_ccc\Http\Controllers\Regente\RegeController::haveComportamiento($Alumno->id) ?>
+                                        <?php if($val>0): ?>
                                         <a href="<?php echo e(route('Rege.PDFCom',$Alumno->id)); ?>" target="_blank">
                                             <button type="button" class="btn btn-success" >
-                                                <i class="fa fa-file-pdf-o"></i>
+                                                <span class="badge"><i class="fa fa-file-pdf-o"></i> <?php echo e($val); ?></span>                                                 
                                             </button>
                                         </a> 
+                                        <?php else: ?>
+                                        <i class="fa fa-file-pdf-o"></i>
+                                        <?php endif; ?>
                                     </td>
-
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
                                 </tr>
 

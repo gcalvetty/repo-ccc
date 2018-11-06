@@ -87,7 +87,14 @@ class RegeController extends Controller {
                         . ' where reg_id=' . $req->AlmId);
         return redirect()->route('Rege.Comp')->withSuccess('OK');
     }
-
+    
+    static function haveComportamiento($AlmId){
+        
+        $comprt = qGECN::listCompEst($AlmId,0);
+        $totReg = count($comprt);        
+        return $totReg;        
+        
+    }
     public function PDFComportamiento(Request $req) {                      
         
         // $pdf = PDF::loadHTML('welcome2')->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf');

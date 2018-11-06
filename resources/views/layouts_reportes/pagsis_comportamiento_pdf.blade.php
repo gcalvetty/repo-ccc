@@ -65,7 +65,9 @@
                             </td>                                          
                             <td class="col-md-2" style="text-align:left;">
                                 {{ $Alumno->tipcomp }}</td>                                        
-                            <td class="col-md-4 text-md-justify">{{ strip_tags($Alumno->obser) }}</td>
+                            <td class="col-md-4 text-md-justify">
+                                {{ strip_tags($Alumno->obser) }}
+                            </td>
                         </tr>
                         @endforeach                                  
                     </tbody>                 

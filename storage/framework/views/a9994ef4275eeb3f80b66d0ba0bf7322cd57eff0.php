@@ -66,7 +66,10 @@
                             </td>                                          
                             <td class="col-md-2" style="text-align:left;">
                                 <?php echo e($Alumno->tipcomp); ?></td>                                        
-                            <td class="col-md-4 text-md-justify"><?php echo e(strip_tags($Alumno->obser)); ?></td>
+                            <td class="col-md-4 text-md-justify">
+                                <?php echo e(strip_tags($Alumno->obser)); ?>
+
+                            </td>
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                                  
                     </tbody>                 
