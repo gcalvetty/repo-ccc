@@ -65,13 +65,17 @@
                                             <i class="fa fa-edit"></i></button>
                                     </td>
                                     <td>
-                                        <a href="{ route('rep.alumnos') }" target="_blank">
+                                        <?php $val = sis_ccc\Http\Controllers\Regente\RegeController::haveComportamiento($Alumno->id) ?>
+                                        <?php if($val>0): ?>
+                                        <a href="<?php echo e(route('Rege.PDFCom',$Alumno->id)); ?>" target="_blank">
                                             <button type="button" class="btn btn-success" >
-                                                <i class="fa fa-file-excel-o"></i>
+                                                <span class="badge"><i class="fa fa-file-pdf-o"></i> <?php echo e($val); ?></span>                                                 
                                             </button>
                                         </a> 
+                                        <?php else: ?>
+                                        <i class="fa fa-file-pdf-o"></i>
+                                        <?php endif; ?>
                                     </td>
-
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
                                 </tr>
 
@@ -111,18 +115,10 @@
                                     <?php if($errors->has('fec')): ?><span class="help-block"><strong><?php echo e($errors->first('fec')); ?></strong></span><?php endif; ?>
                                 </div>
                             </div>
-                            <div class="col-md-12 " style="margin: 10px 0;">
-
-                                <div class="btn-group col-lg-12 hidden" role="group" aria-label="...">
-                                    <button type="button" class="btn btn-primary"   v-on:click="cambTar(1);">Sin</button>
-                                    <button type="button" class="btn btn-info"      v-on:click="cambTar(2);">Blanca</button>
-                                    <button type="button" class="btn btn-warning"   v-on:click="cambTar(3);">Amarrilla</button>
-                                    <button type="button" class="btn btn-danger"    v-on:click="cambTar(4);">Roja</button>
-                                </div> 
-
+                            <div class="col-md-12 btn-tarjeta">                                
                                 <div class="btn-group">
-                                    <button v-on:click="cambTar(1);" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sin Tarjeta</button>
-                                    <button v-on:click="cambTar(1);" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button v-on:click="cambTar(1);" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sin Tarjeta</button>
+                                    <button v-on:click="cambTar(1);" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="caret"></span>
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
@@ -174,8 +170,8 @@
                             </div>
                             <div class="col-md-12"> 
                                 <textarea id="editor" name="editor" rows="5" cols="80" 
-                                          v-bind:class="{'': true, 'has-error': errors.has('observacion') }" 
-                                          v-model="observacion"
+                                          v-bind:class="{'': true, 'has-error': errors.has('editor') }" 
+                                          v-model="editor"
                                           data-vv-rules="required">
                                 </textarea>
                                 <input class="AlmId" id="AlmId" name="AlmId" value="" hidden="true" />
