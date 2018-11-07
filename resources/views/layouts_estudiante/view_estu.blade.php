@@ -53,8 +53,8 @@
                                     @foreach($ListaC as $Comu)
                                     <tr>
                                         <td class="col-md-1">{{ $Comu->com_id }}</td>  
-                                        <td class="col-md-4">{{ $Comu->com_titulo }}</td>
-                                        <td class="col-md-4 text-justify">{{ $Comu->com_desc }}</td>                                    
+                                        <td class="col-md-4"><p class="text-justify">{{ $Comu->com_titulo }}</p></td>
+                                        <td class="col-md-4"><p class="text-justify">{{ $Comu->com_desc }}</p></td>                                    
                                         <td class="col-md-3">{{ $Comu->com_fec }}</td> 
                                     </tr>                                
                                     @endforeach 
@@ -85,7 +85,7 @@
                                     @foreach($ListaA as $Act)
                                     <tr>
                                         <td class="col-md-1">{{ $Act->act_id }}</td>  
-                                        <td class="col-md-8">{{ $Act->act_titulo }}</td>                                    
+                                        <td class="col-md-8"><p class="text-justify">{{ $Act->act_titulo }}</p></td>                                    
                                         <td class="col-md-3">{{ $Act->act_fec }}</td> 
                                     </tr>                                
                                     @endforeach 
@@ -124,7 +124,7 @@
                                         <td class="col-md-1">{{ $cont++ }}</td> 
                                         <td class="col-md-2">{{ $Alumno->tar_fec_ini }}</td> 
                                         <td class="col-md-3">{{ $Alumno->tar_materia }}</td>
-                                        <td class="col-md-6 tar_desc text-justify">{{ $Alumno->tar_desc }}</td>                                                               
+                                        <td class="col-md-6"><p class="text-justify">{{ $Alumno->tar_desc }}</p></td>                                                               
                                     </tr>
                                     @endforeach
                                     <tr>
@@ -189,7 +189,7 @@
                                         <td class="col-md-2">{{ sis_ccc\libreriaCCC\fncCCC::getDateAttribute($Alumno->fec) }}</td>                                          
                                         <td class="col-md-4" style="text-align:left;">
                                             {{ $Alumno->tipcomp }}</td>                                        
-                                        <td class="col-md-5 text-md-justify">{{ strip_tags($Alumno->obser) }}</td>
+                                        <td class="col-md-5 text-md-justify"><p class="text-justify">{{ strip_tags($Alumno->obser) }}</p></td>
                                     </tr>
                                     @endforeach  
                                     <tr>

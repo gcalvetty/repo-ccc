@@ -44,8 +44,7 @@
                                     <tr>                                
                                         <th>#</th>
                                         <th class="col-lg-2">Fecha</th>
-                                        <th class="col-lg-2">Comportamiento</th>
-                                        <th class="col-lg-1">Tarjeta</th>
+                                        <th class="col-lg-2">Comportamiento</th>                                        
                                         <th class="col-lg-7">Observación</th>                                
                                     </tr>
                                 </thead>
@@ -54,29 +53,37 @@
                                     @foreach($comp as $Alumno)
                                     <?php
                                     $tipTar = "";
+                                    $tipMen = "";
                                     switch ($Alumno->tiptarj) {
                                         case "Sin Tarjeta":
+                                            $tipMem = "Sin Tarjeta";
                                             $tipTar = "success";
                                             break;
                                         case "Tarjeta Blanca":
+                                            $tipMem = "Tarjeta Blanca";
                                             $tipTar = "info";
                                             break;
                                         case "Tarjeta Amarilla":
+                                            $tipMem = "Tarjeta Amarilla";
                                             $tipTar = "warning";
                                             break;
                                         case "Tarjeta Roja":
+                                            $tipMem = "Tarjeta Roja";
                                             $tipTar = "danger";
                                             break;
                                     }
                                     ?>
-                                    <tr class="{{ $tipTar }}">
-                                        <td>{{ $cont++ }}</td>  
-                                        <td>{{ $Alumno->fec }}</td>                                          
-                                        <td>{{ $Alumno->tipcomp }}</td>
-                                        <td>{{ $Alumno->tiptarj }}</td>
-                                        <td>{{ $Alumno->obser }}</td>                                                                               
-                                        
-                                    </tr>
+                                    <tr class="{{ $tipTar }}" data-toggle="tooltip" data-placement="top" title="{{ $tipMem }}">
+                                        <td class="col-md-1">
+                                            <span class="label label-{{ $tipTar }}">
+                                                <span class="glyphicon glyphicon-tag {{ $tipTar }}" aria-hidden="true"></span> 
+                                            </span>
+                                        </td>
+                                        <td class="col-md-2">{{ sis_ccc\libreriaCCC\fncCCC::getDateAttribute($Alumno->fec) }}</td>                                          
+                                        <td class="col-md-4" style="text-align:left;">
+                                            {{ $Alumno->tipcomp }}</td>                                        
+                                        <td class="col-md-5 text-md-justify"><p class="text-justify">{{ strip_tags($Alumno->obser) }}</p></td>
+                                    </tr>                                    
                                     @endforeach    
                                 </tbody>                 
                             </table>

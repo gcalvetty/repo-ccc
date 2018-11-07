@@ -62,39 +62,26 @@
                                     <?php if($errors->has('com_tit')): ?><span class="help-block"><strong><?php echo e($errors->first('com_tit')); ?></strong></span>
                                     <?php endif; ?>
                                 </div>
-                            </div>    
+                            </div> 
 
-
-
-                            <div class="form-group col-md-12 has-feedback <?php echo e($errors->has('com_fec') ? ' has-error' : ''); ?> "
-                                 v-bind:class="{'': true, 'has-error': errors.has('com_fec') }">
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon1">
-                                        <i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" 
-                                           name="com_fec"     
-                                           v-model ="com_fec"
-                                           placeholder="Fecha DD/MM/YYYY"                                           
-                                           v-validate.initial="com_fec" 
-                                           data-vv-rules="required|date_format:DD/MM/YYYY" 
-                                           data-vv-delay="200" 
-                                           v-bind:class="{'': true, 'has-error': errors.has('com_fec') }"                                           
-                                           >
-                                    
-                                    <datepicker name="com_fec"     
-                                           v-model ="com_fec"
-                                           placeholder="Fecha DD/MM/YYYY"                                           
-                                           v-validate.initial="com_fec" 
-                                           data-vv-rules="required|date_format:DD/MM/YYYY" 
-                                           data-vv-delay="200" 
-                                           v-bind:class="{'': true, 'has-error': errors.has('com_fec') }" ></datepicker>
-                                    <span class="glyphicon  form-control-feedback" aria-hidden="true" 
-                                          v-bind:class="{'': true, 'glyphicon-remove': errors.has('com_fec') }"></span>
-                                    <?php if($errors->has('com_tit')): ?><span class="help-block"><strong><?php echo e($errors->first('com_fec')); ?></strong></span>
-                                    <?php endif; ?>
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback <?php echo e($errors->has('fec') ? ' has-error' : ''); ?>" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon10">
+                                          <i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                        <vuejs-datepicker id="fec" name="fec" 
+                                                          :value="state.date" 
+                                                          :format="customFormatter" 
+                                                          :language="es"
+                                                          data-vv-rules="required"
+                                                          placeholder="Seleccionar Fecha" 
+                                                          v-model="fec"></vuejs-datepicker>
+                                    </div>
+                                    <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
+                                    <?php if($errors->has('fec')): ?><span class="help-block"><strong><?php echo e($errors->first('fec')); ?></strong></span><?php endif; ?>
+                                    <p v-if="errors.has('fec:required')">Fecha Requerida</p>
                                 </div>
-                            </div>                           
-
+                            </div>  
                             <div class="box-footer clearfix">                        
                                 <input type="submit" class="btn btn-primary" value="Guardar">                             
                             </div>

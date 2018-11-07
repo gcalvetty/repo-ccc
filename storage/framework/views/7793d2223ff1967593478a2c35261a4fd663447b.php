@@ -53,8 +53,8 @@
                                     <?php $__currentLoopData = $ListaC; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Comu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <td class="col-md-1"><?php echo e($Comu->com_id); ?></td>  
-                                        <td class="col-md-4"><?php echo e($Comu->com_titulo); ?></td>
-                                        <td class="col-md-4 text-justify"><?php echo e($Comu->com_desc); ?></td>                                    
+                                        <td class="col-md-4"><p class="text-justify"><?php echo e($Comu->com_titulo); ?></p></td>
+                                        <td class="col-md-4"><p class="text-justify"><?php echo e($Comu->com_desc); ?></p></td>                                    
                                         <td class="col-md-3"><?php echo e($Comu->com_fec); ?></td> 
                                     </tr>                                
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
@@ -85,7 +85,7 @@
                                     <?php $__currentLoopData = $ListaA; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Act): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <td class="col-md-1"><?php echo e($Act->act_id); ?></td>  
-                                        <td class="col-md-8"><?php echo e($Act->act_titulo); ?></td>                                    
+                                        <td class="col-md-8"><p class="text-justify"><?php echo e($Act->act_titulo); ?></p></td>                                    
                                         <td class="col-md-3"><?php echo e($Act->act_fec); ?></td> 
                                     </tr>                                
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
@@ -124,7 +124,7 @@
                                         <td class="col-md-1"><?php echo e($cont++); ?></td> 
                                         <td class="col-md-2"><?php echo e($Alumno->tar_fec_ini); ?></td> 
                                         <td class="col-md-3"><?php echo e($Alumno->tar_materia); ?></td>
-                                        <td class="col-md-6 tar_desc text-justify"><?php echo e($Alumno->tar_desc); ?></td>                                                               
+                                        <td class="col-md-6"><p class="text-justify"><?php echo e($Alumno->tar_desc); ?></p></td>                                                               
                                     </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
@@ -189,7 +189,7 @@
                                         <td class="col-md-2"><?php echo e(sis_ccc\libreriaCCC\fncCCC::getDateAttribute($Alumno->fec)); ?></td>                                          
                                         <td class="col-md-4" style="text-align:left;">
                                             <?php echo e($Alumno->tipcomp); ?></td>                                        
-                                        <td class="col-md-5 text-md-justify"><?php echo e(strip_tags($Alumno->obser)); ?></td>
+                                        <td class="col-md-5 text-md-justify"><p class="text-justify"><?php echo e(strip_tags($Alumno->obser)); ?></p></td>
                                     </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
                                     <tr>

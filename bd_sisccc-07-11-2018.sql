@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: bd_sisccc
 Target Host: localhost
 Target Database: bd_sisccc
-Date: 07/11/2018 14:32:46
+Date: 07/11/2018 14:33:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;

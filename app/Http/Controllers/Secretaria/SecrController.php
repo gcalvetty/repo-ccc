@@ -146,9 +146,9 @@ class SecrController extends Controller {
     /*
      * ---- Acciones de Calendario de Actividades
      */
-    public function store(Request $request) {        
+    public function store(Request $request) {               
         $func = new fGECN;        
-        $fec = $func::setDateAttribute($request->act_fec);               
+        $fec = $func::setDateAttribute($request->act_fec); 
         $this->validate($request, [
             'act_tit'  => ' required',
             'act_fec' => 'required'

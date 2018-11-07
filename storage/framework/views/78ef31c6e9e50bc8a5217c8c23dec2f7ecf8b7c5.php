@@ -44,8 +44,7 @@
                                     <tr>                                
                                         <th>#</th>
                                         <th class="col-lg-2">Fecha</th>
-                                        <th class="col-lg-2">Comportamiento</th>
-                                        <th class="col-lg-1">Tarjeta</th>
+                                        <th class="col-lg-2">Comportamiento</th>                                        
                                         <th class="col-lg-7">Observación</th>                                
                                     </tr>
                                 </thead>
@@ -54,29 +53,37 @@
                                     <?php $__currentLoopData = $comp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Alumno): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php
                                     $tipTar = "";
+                                    $tipMen = "";
                                     switch ($Alumno->tiptarj) {
                                         case "Sin Tarjeta":
+                                            $tipMem = "Sin Tarjeta";
                                             $tipTar = "success";
                                             break;
                                         case "Tarjeta Blanca":
+                                            $tipMem = "Tarjeta Blanca";
                                             $tipTar = "info";
                                             break;
                                         case "Tarjeta Amarilla":
+                                            $tipMem = "Tarjeta Amarilla";
                                             $tipTar = "warning";
                                             break;
                                         case "Tarjeta Roja":
+                                            $tipMem = "Tarjeta Roja";
                                             $tipTar = "danger";
                                             break;
                                     }
                                     ?>
-                                    <tr class="<?php echo e($tipTar); ?>">
-                                        <td><?php echo e($cont++); ?></td>  
-                                        <td><?php echo e($Alumno->fec); ?></td>                                          
-                                        <td><?php echo e($Alumno->tipcomp); ?></td>
-                                        <td><?php echo e($Alumno->tiptarj); ?></td>
-                                        <td><?php echo e($Alumno->obser); ?></td>                                                                               
-                                        
-                                    </tr>
+                                    <tr class="<?php echo e($tipTar); ?>" data-toggle="tooltip" data-placement="top" title="<?php echo e($tipMem); ?>">
+                                        <td class="col-md-1">
+                                            <span class="label label-<?php echo e($tipTar); ?>">
+                                                <span class="glyphicon glyphicon-tag <?php echo e($tipTar); ?>" aria-hidden="true"></span> 
+                                            </span>
+                                        </td>
+                                        <td class="col-md-2"><?php echo e(sis_ccc\libreriaCCC\fncCCC::getDateAttribute($Alumno->fec)); ?></td>                                          
+                                        <td class="col-md-4" style="text-align:left;">
+                                            <?php echo e($Alumno->tipcomp); ?></td>                                        
+                                        <td class="col-md-5 text-md-justify"><p class="text-justify"><?php echo e(strip_tags($Alumno->obser)); ?></p></td>
+                                    </tr>                                    
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
                                 </tbody>                 
                             </table>

@@ -41,8 +41,7 @@
             window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?>
         </script>
     </head>
-    <body class="sidebar-mini skin-green wysihtml5-supported"> 
-
+    <body class="sidebar-mini skin-green wysihtml5-supported">
         <div class="wrapper">
             @if (Auth::guest())       		
             @else     
@@ -69,6 +68,7 @@
         @if((Route::current()->getName() == 'Secr.actividades'))        
             <script src="/jquery/moment.js" type="text/javascript"></script>                   
             <script src="/jquery/vee-validate.js" type="text/javascript"></script>
-            <script src="/jquery/ccc-secretaria-actividad.js" type="text/javascript"></script>            
+            <script src="/jquery/vue-datepicker/vuejs-datepicker.min.js" type="text/javascript"></script>
+            <script src="/jquery/ccc-secretaria-actividad.js" type="module"></script>                     
         @endif    
     </body>
