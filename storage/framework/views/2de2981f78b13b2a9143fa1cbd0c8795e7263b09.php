@@ -65,16 +65,10 @@
         <script src="/jquery/axios.js"></script>
         <script src="/jquery/toastr.js" type="text/javascript"></script>
 
-
-
         <!-- fullCalendar 2.2.5 -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
         <script src="/plugins/fullcalendar/fullcalendar.min.js"></script>
         <!-- Page specific script -->
-
-        
-
-
 
         <?php if(Route::current()->getName() == 'Prof.actividades'): ?>                  
         <script src="/jquery/ccc-profesor-actividad.js" type="text/javascript"></script>        
@@ -141,6 +135,5 @@
         </script>
         
         <?php endif; ?>
-
 
     </body>
