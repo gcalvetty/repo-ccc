@@ -1,21 +1,21 @@
-@extends('layouts_sisccc.pagsis')
-@section('titulo','Administración - Profesores')	
-@section('usuccc')
-{{ $usuactivo }}
-@endsection
-@section('usuico')
+<?php $__env->startSection('titulo','Administración - Profesores'); ?>	
+<?php $__env->startSection('usuccc'); ?>
+<?php echo e($usuactivo); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('usuico'); ?>
 <i class="fa fa-desktop  fa-2x"></i>
-@endsection
-@section('usuico-peq')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('usuico-peq'); ?>
 <i class="fa fa-desktop fa-lg"></i>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('sis_menu_lateral')
-@include('layouts_administracion.partials.menu')
-@endsection
+<?php $__env->startSection('sis_menu_lateral'); ?>
+<?php echo $__env->make('layouts_administracion.partials.menu', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
 
 
-@section('sis_contenido')
+<?php $__env->startSection('sis_contenido'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">    	
     <!-- Content Header (Page header) -->
@@ -25,7 +25,8 @@
             <small>Bienvenido!!!</small>
         </h1> 
 
-        {!! Breadcrumbs::render() !!}
+        <?php echo Breadcrumbs::render(); ?>
+
     </section>  
 
 
@@ -47,12 +48,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($Lista as $Docente)
+                                <?php $__currentLoopData = $Lista; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Docente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td>{{ $Docente->id }}</td>                                      
-                                    <td>{{ $Docente->ape_paterno.' '.$Docente->ape_materno.' '.$Docente->nombre }}</td>
+                                    <td><?php echo e($Docente->id); ?></td>                                      
+                                    <td><?php echo e($Docente->ape_paterno.' '.$Docente->ape_materno.' '.$Docente->nombre); ?></td>
                                 </tr>
-                                @endforeach  
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
 
                                 </tfoot>
                         </table>
@@ -72,11 +73,12 @@
 </div>
 <!-- /.content-wrapper -->
 <footer class="main-footer">     
-    {!! Html::footer('siscccConfig.pie') !!}
-</footer>
-@endsection
+    <?php echo Html::footer('siscccConfig.pie'); ?>
 
-@section('menu-configuracion')
+</footer>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('menu-configuracion'); ?>
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
@@ -95,4 +97,6 @@
 <!-- Add the sidebar's background. This div must be placed
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts_sisccc.pagsis', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

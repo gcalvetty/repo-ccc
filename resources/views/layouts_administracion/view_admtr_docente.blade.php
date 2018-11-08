@@ -1,5 +1,5 @@
 @extends('layouts_sisccc.pagsis_docentes')
-@section('titulo','Dirección')
+@section('titulo','Administración Docente')
 @section('usuccc')
 {{ $usuactivo }}
 @endsection
@@ -80,7 +80,7 @@
                             </tr>
                             @endforeach  
 
-                            </tbody>
+                            </tfoot>
                     </table>
                 </div> 
             </section>
@@ -125,7 +125,7 @@
                             </tr>
                             @endforeach  
 
-                            </tbody>
+                            </tfoot>
                     </table>
                 </div> 
             </section>
@@ -169,7 +169,7 @@
                             </tr>
                             @endforeach  
 
-                            </tbody>
+                            </tfoot>
                     </table>
                 </div> 
             </section>
@@ -217,7 +217,7 @@
                             </tr>
                             @endforeach  
 
-                            </tbody>
+                            </tfoot>
                     </table>
                 </div> 
             </section>
@@ -260,7 +260,7 @@
 
                             </tr>
                             @endforeach  
-                            </tbody>
+                            </tfoot>
                     </table>
                 </div> 
             </section>

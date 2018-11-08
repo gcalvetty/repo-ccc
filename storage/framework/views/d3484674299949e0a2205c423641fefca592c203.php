@@ -1,24 +1,24 @@
-@extends('layouts_sisccc.pagsis')
-@section('titulo','Administración')	
-@section('usuccc')
-{{ $usuactivo }}
-@endsection
-@section('usuico')
+<?php $__env->startSection('titulo','Administración'); ?>	
+<?php $__env->startSection('usuccc'); ?>
+<?php echo e($usuactivo); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('usuico'); ?>
 <i class="fa fa-desktop  fa-2x"></i>
-@endsection
-@section('usuico-peq')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('usuico-peq'); ?>
 <i class="fa fa-desktop fa-lg"></i>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('sis_menu_lateral')
-@include('layouts_administracion.partials.menu')
-@endsection
+<?php $__env->startSection('sis_menu_lateral'); ?>
+<?php echo $__env->make('layouts_administracion.partials.menu', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
 
-@section('sis_alm_inscritos')
-@include('layouts_sisccc.partials.pagsis_alm_insc')
-@endsection
+<?php $__env->startSection('sis_alm_inscritos'); ?>
+<?php echo $__env->make('layouts_sisccc.partials.pagsis_alm_insc', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
 
-@section('sis_contenido')
+<?php $__env->startSection('sis_contenido'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">    	
     <!-- Content Header (Page header) -->
@@ -28,7 +28,7 @@
             <small>Bienvenido!!!</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{ route('Admtr.Reg')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="<?php echo e(route('Admtr.Reg')); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">Escritorio</li>
         </ol>
     </section>    
@@ -111,21 +111,21 @@
             </div>
         </div>
 
-        @if(isset($CantAlm))
-        @yield('sis_alm_inscritos')
-        @endif
+        <?php if(isset($CantAlm)): ?>
+        <?php echo $__env->yieldContent('sis_alm_inscritos'); ?>
+        <?php endif; ?>
 
         <div class="row">
-            @if ($CantAlm["totalAlum"] == 0)
+            <?php if($CantAlm["totalAlum"] == 0): ?>
             <div class="col-md-12">
-                <h3 style="text-align: center">No se tiene alumnos Inscritos en la Gestión - {{ $Gestion}}</h3>
+                <h3 style="text-align: center">No se tiene alumnos Inscritos en la Gestión - <?php echo e($Gestion); ?></h3>
             </div>
-            @else            
+            <?php else: ?>            
             <div class="col-md-8">
                 <!-- AREA CHART -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Alumnos Inscritos por Día - Gestión {{ $Gestion }}</h3>
+                        <h3 class="box-title">Alumnos Inscritos por Día - Gestión <?php echo e($Gestion); ?></h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>                
@@ -146,7 +146,7 @@
                 <!-- DONUT CHART -->
                 <div class="box box-danger dona">
                     <div class="box-header with-border">
-                        <h3 class="box-title">% de Alumnos Inscritos - Gestión {{ $Gestion }}</h3>
+                        <h3 class="box-title">% de Alumnos Inscritos - Gestión <?php echo e($Gestion); ?></h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -157,7 +157,7 @@
                     <div class="box-body">
                         <canvas id="pieChart" style="height:350px"></canvas>
                         <hr>
-                        <div class="alert alert-info" role="alert">Total de Alumnos: <span class="total">{{$CantAlm["totalAlum"]}}</span> </div>
+                        <div class="alert alert-info" role="alert">Total de Alumnos: <span class="total"><?php echo e($CantAlm["totalAlum"]); ?></span> </div>
                     </div>
                     
                     <!-- /.box-body -->
@@ -165,7 +165,7 @@
                 <!-- /.box -->
             </div>
             
-            @endif
+            <?php endif; ?>
             
         </div>
     </section>
@@ -176,11 +176,12 @@
 </div>
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-    {!! Html::footer('siscccConfig.pie') !!}
-</footer>
-@endsection
+    <?php echo Html::footer('siscccConfig.pie'); ?>
 
-@section('menu-configuracion')
+</footer>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('menu-configuracion'); ?>
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
@@ -199,4 +200,6 @@
 <!-- Add the sidebar's background. This div must be placed
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts_sisccc.pagsis', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
