@@ -69,7 +69,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon10">
                                           <i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                        <vuejs-datepicker id="fec" name="fec" 
+                                          <vuejs-datepicker id="fec" name="fec" 
                                                           :value="state.date" 
                                                           :format="customFormatter" 
                                                           :language="es"
