@@ -1,5 +1,5 @@
 import esGECN from '/jquery/vue-datepicker/es.js';  
-        
+
            
 const config = {
     errorBagName: 'errors',
@@ -21,7 +21,7 @@ const app = new Vue({
         return {
             com_tit: "",            
             listado: "",
-            fec: "", 
+            fec: 0, 
             date2:"",                                                           
             es: esGECN,
             state: {

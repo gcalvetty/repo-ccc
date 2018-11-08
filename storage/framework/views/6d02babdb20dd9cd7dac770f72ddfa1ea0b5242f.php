@@ -69,12 +69,12 @@
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon10">
                                           <i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                        <vuejs-datepicker id="fec" name="fec" 
+                                          <vuejs-datepicker id="fec" name="fec" 
                                                           :value="state.date" 
                                                           :format="customFormatter" 
                                                           :language="es"
                                                           data-vv-rules="required"
-                                                          placeholder="Seleccionar Fecha" 
+                                                          placeholder=" Seleccionar Fecha" 
                                                           v-model="fec"></vuejs-datepicker>
                                     </div>
                                     <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
@@ -82,8 +82,8 @@
                                     <p v-if="errors.has('fec:required')">Fecha Requerida</p>
                                 </div>
                             </div>  
-                            <div class="box-footer clearfix">                        
-                                <input type="submit" class="btn btn-primary" value="Guardar">                             
+                            <div class="box-footer clearfix">                                                       
+                                <button type="submit" class="btn btn-primary" v-bind:disabled="fec==0">Guardar</button>                            
                             </div>
                         </form>
                     </div>

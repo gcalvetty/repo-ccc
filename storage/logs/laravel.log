@@ -3610,3 +3610,7 @@ esbot\\carbon\\src\\Carbon\\Carbon.php:909)
 #24 D:\\CCC\\sitio\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #25 {main}
 "} 
+[2018-11-08 14:30:18] local.INFO: El Usuario regencia@ccc.edu.bo Logeado!!!   
+[2018-11-08 16:17:56] local.INFO: El Usuario regencia@ccc.edu.bo Logeado!!!   
+[2018-11-08 17:14:10] local.INFO: El Usuario regencia@ccc.edu.bo Logeado!!!   
+[2018-11-08 17:14:37] local.INFO: El Usuario secretaria1@ccc.edu.bo Logeado!!!   
