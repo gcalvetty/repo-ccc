@@ -46,20 +46,8 @@
             <div class="box-body">
 
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-4"> 
-                        <div class="small-box bg-blue">
-                            <div class="inner">
-                                <h3>Coordinador</h3>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-code-fork"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Ingresar  <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>                 
-                    </div>
-
-                    <div class="col-xs-12 col-sm-6 col-md-4"> 
-                        <div class="small-box bg-teal">
+                    <div class="col-xs-12 col-sm-6 col-md-6"> 
+                        <div class="small-box bg-yellow">
                             <div class="inner">
                                 <h3>Docentes</h3>
                             </div>
@@ -70,8 +58,8 @@
                         </div>                  
                     </div>
 
-                    <div class="col-xs-12 col-sm-6 col-md-4"> 
-                        <div class="small-box bg-maroon">
+                    <div class="col-xs-12 col-sm-6 col-md-6"> 
+                        <div class="small-box bg-aqua">
                             <div class="inner">
                                 <h3>Estudiantes</h3>
                             </div>
@@ -83,8 +71,8 @@
                     </div>
 
 
-                    <div class="col-xs-12 col-sm-6 col-md-3"> 
-                        <div class="small-box bg-aqua">
+                    <div class="col-xs-12 col-sm-6 col-md-4"> 
+                        <div class="small-box bg-maroon">
                             <div class="inner">
                                 <h3>Secreatría</h3>
                             </div>
@@ -95,7 +83,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-12 col-sm-6 col-md-3"> 
+                    <div class="col-xs-12 col-sm-6 col-md-4"> 
                         <div class="small-box bg-green">
                             <div class="inner">
                                 <h3>Regencia</h3>
@@ -105,21 +93,9 @@
                             </div>
                             <a href="#" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>
                         </div>                 
-                    </div>
+                    </div>                    
 
-                    <div class="col-xs-12 col-sm-6 col-md-3">                         
-                        <div class="small-box bg-yellow">
-                            <div class="inner">
-                                <h3>Capellania</h3>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-puzzle-piece"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-6 col-md-3"> 
+                    <div class="col-xs-12 col-sm-6 col-md-4"> 
                         <div class="small-box bg-blue-gradient">
                             <div class="inner">
                                 <h3>Psicología</h3>
@@ -130,8 +106,6 @@
                             <a href="#" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>
                         </div>                 
                     </div>
-
-
                 </div>
 
             </div>

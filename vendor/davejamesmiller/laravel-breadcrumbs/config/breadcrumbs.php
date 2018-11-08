@@ -21,9 +21,9 @@ return [
     |
     | Or a custom view, e.g. '_partials/breadcrumbs'.
     |
-     */
+    */
 
-    'view'                                     => 'breadcrumbs::bootstrap3',
+    'view' => 'breadcrumbs::bootstrap4',
 
     /*
     |--------------------------------------------------------------------------
@@ -35,9 +35,9 @@ return [
     | - base_path('routes/breadcrumbs.php')
     | - glob(base_path('breadcrumbs/*.php'))
     |
-     */
+    */
 
-    'files'                                    => base_path('routes/breadcrumbs.php'),
+    'files' => base_path('routes/breadcrumbs.php'),
 
     /*
     |--------------------------------------------------------------------------
@@ -46,16 +46,16 @@ return [
     |
     | Determine when to throw an exception.
     |
-     */
+    */
 
     // When route-bound breadcrumbs are used but the current route doesn't have a name (UnnamedRouteException)
-    'unnamed-route-exception'                  => true,
+    'unnamed-route-exception' => true,
 
     // When route-bound breadcrumbs are used and the matching breadcrumb doesn't exist (InvalidBreadcrumbException)
     'missing-route-bound-breadcrumb-exception' => true,
 
     // When a named breadcrumb is used but doesn't exist (InvalidBreadcrumbException)
-    'invalid-named-breadcrumb-exception'       => true,
+    'invalid-named-breadcrumb-exception' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -64,12 +64,12 @@ return [
     |
     | Subclass the default classes for more advanced customisations.
     |
-     */
+    */
 
     // Manager
-    'manager-class'                            => DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
+    'manager-class' => DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
 
     // Generator
-    'generator-class'                          => DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
+    'generator-class' => DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
 
 ];

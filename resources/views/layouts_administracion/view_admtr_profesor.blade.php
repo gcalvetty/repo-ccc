@@ -1,5 +1,5 @@
 @extends('layouts_sisccc.pagsis')
-@section('titulo','Administración-Profesores')	
+@section('titulo','Administración - Profesores')	
 @section('usuccc')
 {{ $usuactivo }}
 @endsection
