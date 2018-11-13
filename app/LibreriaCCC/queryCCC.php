@@ -101,12 +101,13 @@ order by curso asc, fec Desc
         return $lisComTipCom;
     }
 
-    public static function listComunicado($tipo) {
-        $limAux = ($tipo == 0) ? "  " : " and com_tipo=" . $tipo;
+    public static function listComunicado($tipo, $limite) {
+        $tipAux = ($tipo == 0) ? "  " : " and com_tipo=" . $tipo;
+        $limAux = ($limite > 0) ? " Limit " . $limite : "";
         $lisComunicado = DB::select('Select *
                 from comunicado as c, comunicado_tipo as ct
-                where c.com_tipo = ct.comt_id  ' . $limAux . '  
-                order by com_fec Desc');
+                where c.com_tipo = ct.comt_id  ' . $tipAux . '  
+                order by com_fec Desc ' . $limAux);
         return $lisComunicado;
     }
 

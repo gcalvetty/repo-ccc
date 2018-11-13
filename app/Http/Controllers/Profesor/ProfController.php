@@ -18,7 +18,7 @@ class ProfController extends Controller {
     function __get($a) {
         $this->idUser = Auth::user()->id;
         $this->user     = fGECN::obt_nombre();       
-        $this->lisCom   = qGECN::listComunicado(0);//1 = docentes - 2 = alumnos
+        $this->lisCom   = qGECN::listComunicado(0, 5);//1 = docentes - 2 = alumnos
         $this->lisAct   = qGECN::listActividad(5);       
         
         $this->curDoc = DB::select('select Distinct(pm.grd_id) from prof_materia pm where pm.user_id=' . $this->idUser);

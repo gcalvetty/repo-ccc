@@ -29,18 +29,18 @@ class DirController extends Controller
         $lGECNcnt = $sql::listAlumnXAul($request);
         $Niveles  = Grd_Nivel::get();
         $user     = fGECN::obt_nombre();
-        $lgestion = self::$gyear;
+        $lgestion = self::$gyear;               
 
-        $lisCom = $sql::listComunicado(0);
+        $lisCom = $sql::listComunicado(0,5); // tipo, cantidad
         $lisAct = $sql::listActividad(5);
 
         return view('layouts_direccion/view_dir', [
             'usuactivo' => $user,
             'Lista'     => $lGECN,
             'Niveles'   => $Niveles,
+            'Grd'       => $request->grd_nivel,
             'CantAlm'   => $lGECNcnt,
             'Gestion'   => $lgestion,
-
             'ListaC'    => $lisCom,
             'ListaA'    => $lisAct,
         ]);
@@ -92,6 +92,7 @@ class DirController extends Controller
             'l1'        => $listDoc_Sen,
             'l2'        => $listDoc_Pri,
             'l3'        => $listDoc_Sec,
+            'Grd'       => 0,
         ]);
     }
 
@@ -142,6 +143,7 @@ class DirController extends Controller
         return view('layouts_direccion/view_dir_agenda', [
             'usuactivo' => $user,
             'Niveles'   => $Niveles,
+            'Grd'       => 0,
         ]);
     }
 
@@ -156,6 +158,7 @@ class DirController extends Controller
         return view('layouts_direccion/view_dir_actividades', [
             'usuactivo' => $user,
             'Niveles'   => $Niveles,
+            'Grd'       => 0,
         ]);
     }
 
@@ -167,19 +170,20 @@ class DirController extends Controller
         $sql     = new qGECN;
         $user    = fGECN::obt_nombre();
         $Niveles = Grd_Nivel::get();
-        $lComTip = $sql::listComTipo();
-
+        $lComTip = $sql::listComTipo();       
+        
         return view('layouts_direccion/view_dir_comunicado', [
             'usuactivo'   => $user,
             'Niveles'     => $Niveles,
             'ListaComTip' => $lComTip,
+            'Grd'       => 0,
         ]);
     }
 
     public function mostrarComunicado()
     {
         $sql    = new qGECN;
-        $lisCom = $sql::listComunicado(0);
+        $lisCom = $sql::listComunicado(0,0); // tipo, cantidad 0 = todos
         return $lisCom;
     }
 

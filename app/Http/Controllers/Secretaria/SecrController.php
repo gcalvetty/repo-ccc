@@ -29,7 +29,7 @@ class SecrController extends Controller {
         $user = fGECN::obt_nombre();
         $lgestion = self::$gyear;
         
-        $lisCom  = $sql::listComunicado(0);
+        $lisCom  = $sql::listComunicado(0,5);// tipo, cantidad
         $lisAct  = $sql::listActividad(5);
 
 

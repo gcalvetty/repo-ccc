@@ -41,8 +41,7 @@
             window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?>
         </script>
     </head>
-    <body class="sidebar-mini skin-green wysihtml5-supported"> 
-
+    <body class="sidebar-mini skin-green wysihtml5-supported">
         <div class="wrapper">
             @if (Auth::guest())       		
             @else     
@@ -51,20 +50,19 @@
             @yield('sis_menu_lateral')
             @yield('sis_contenido')
             @yield('menu-configuracion')            
-        </div>      
-
-
+        </div> 
         <!-- jQuery 3.1.1 -->
-        <script src="/jquery/jquery-3.1.1.min.js"></script>    
+        <script src="/jquery/jquery-3.1.1.min.js"></script> 
         <!-- jQuery UI 1.11.4 -->
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-        <script src="/plugins/jQueryUI/jquery-ui.js" type="text/javascript"></script>
-
+        
         <!-- Bootstrap 3.3.6 -->
         <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/dist/js/app.min.js"></script>
+        <script src="/dist/js/ccc-escritorio.js"></script>
         <script src="/jquery/vue.js"></script>
         <script src="/jquery/axios.js"></script>
-        <script src="/jquery/toastr.js" type="text/javascript"></script>
+        <script src="/jquery/toastr.js" type="text/javascript"></script>        
 
         @if((Route::current()->getName() == 'Dir.com'))        
             <script src="/jquery/moment.js" type="text/javascript"></script>                   

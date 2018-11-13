@@ -19,7 +19,7 @@ class EstuController extends Controller {
         $this->user     = fGECN::obt_nombre();        
         $this->Tar      = qGECN::listTarEst($this->alum,5);
         $this->comprt   = qGECN::listCompEst($this->alum,5);  
-        $this->lisCom   = qGECN::listComunicado(2);
+        $this->lisCom   = qGECN::listComunicado(2,0); // tipo, cantidad 
         $this->lisAct   = qGECN::listActividad(3);
         $this->almAct   = qGECN::almAct($this->alum);                
    }

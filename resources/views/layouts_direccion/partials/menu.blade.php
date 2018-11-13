@@ -11,24 +11,24 @@
                 <p>@yield('usuccc')</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Conectado</a>
             </div>
-        </div>
+        </div>       
         
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">Menú del Director</li>
-            <li class="active">
+            <li class="<?php echo ((Route::current()->getName() == 'Dir.Reg'))? "active":"";?>">
                 <a href="{{route('Dir.Reg')}}">
                     <i class="fa fa-dashboard"></i> <span>Escritorio</span>            
                 </a>
             </li>
             
-            <li>
+            <li class="<?php echo ((Route::current()->getName() == 'Dir.Doc'))? "active":"";?>">
                 <a href="{{route('Dir.Doc')}}">
                     <i class="fa fa-id-card-o"></i> <span>Plantel Docente</span>                    
                 </a>
             </li> 
             
-            <li class="treeview">
+            <li class="treeview <?php echo ($Grd > 0)? "active":"";?>">
                 <a href="#">
                     <i class="fa fa-th"></i> <span>Alumnos</span>
                     <span class="pull-right-container">
@@ -37,7 +37,7 @@
                 </a>
                 <ul class="treeview-menu">
                     @foreach($Niveles as $Nivel)                         
-                    <li>
+                    <li class="<?php echo ($Grd == $Nivel->grd_nivel_id)? "active":"";?>">
                         <a href="{{ route('Dir.Reg')}}/nivel/{{ $Nivel->grd_nivel_id }}"> {{ $Nivel->grd_nivel_nombre }}
                             <span class="pull-right-container">
                                 <small class="label pull-right bg-green">({{ count($Nivel->Cursos) }})</small>
@@ -48,22 +48,14 @@
                 </ul>
             </li>             
             
-            <li>
+            <li class="<?php echo ((Route::current()->getName() == 'Dir.com'))? "active":"";?>">
                 <a href="{{ route('Dir.com') }}">
-                    <i class="fa fa-comments-o"></i> <span>Comunicado</span>                    
+                    <i class="fa fa-comments-o"></i>  <span>Comunicado</span>                     
                 </a>
             </li> 
-            
            
-              
-            <li class="hidden">
-                <a href="{{ route('Dir.agenda') }}">
-                    <i class="fa fa-calendar"></i><span>Agenda</span>
-                    
-                </a>
-            </li>
             
-            <li>
+             <li class="<?php echo ((Route::current()->getName() == 'Dir.actividades'))? "active":"";?>">
                 <a href="{{ route('Dir.actividades') }}">
                     <i class="fa  fa-calendar-check-o"></i> <span>Calendario de Actividades</span>                    
                 </a>

@@ -37,10 +37,9 @@
     </section> 
 
     <section class="content">
-       
+        @if($Grd == null)
         @yield('sis_alm_inscritos')
-        
-<div class="row">
+        <div class="row">
             <section class="col-lg-6 connectedSortable ui-sortable">
                 <div class="box box-warning">
                     <div class="box-header ui-sortable-handle" style="cursor: move;">
@@ -103,6 +102,7 @@
                 </div>
             </section>
         </div>
+        @endif
         <div class="row">
             <div class="col-xs-12">
 
