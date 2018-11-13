@@ -96,7 +96,7 @@
                 <div class="box box-success">
                     <div class="box-header ui-sortable-handle" style="cursor: move;">
                         <i class="fa fa-thumb-tack"></i>
-                        <h3 class="box-title">Comunicados</h3>                        
+                        <h3 class="box-title">Actividades</h3>                        
                     </div>
                     <div class="box-body">
                         <div class="table-responsive">
@@ -104,9 +104,9 @@
                                 <thead> 
                                     <tr>
                                         <th>#</th>                                         
-                                        <th>Titulo</th>
-                                        <th>Fecha</th>                                 
-                                        <th>Accion</th> 
+                                        <th>Fecha</th> 
+                                        <th>Titulo</th>          
+                                        <th>Acción</th> 
                                     </tr> 
                                 </thead>
                                 <tbody v-for="com in listado">

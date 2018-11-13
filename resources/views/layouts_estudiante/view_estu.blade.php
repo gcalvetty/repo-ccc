@@ -42,20 +42,20 @@
                         <div class="tarea">
                             <table class="table table-condensed table-hover table-striped">
                                 <thead>
-                                    <tr>
-                                        <th>#</th>                                         
+                                    <tr>                                        
+                                        <th>Fecha</th>                                         
                                         <th>Titulo</th>
                                         <th>Descripción</th> 
-                                        <th>Fecha</th>                                                                          
+                                                                                                                  
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($ListaC as $Comu)
                                     <tr>
-                                        <td class="col-md-1">{{ $Comu->com_id }}</td>  
-                                        <td class="col-md-4"><p class="text-justify">{{ $Comu->com_titulo }}</p></td>
-                                        <td class="col-md-4"><p class="text-justify">{{ $Comu->com_desc }}</p></td>                                    
-                                        <td class="col-md-3">{{ $Comu->com_fec }}</td> 
+                                        <td class="col-md-2 col-sm-2">{{ sis_ccc\libreriaCCC\fncCCC::getDateAttribute($Comu->com_fec) }}</td> 
+                                        <td class="col-md-5 col-sm-5"><p class="text-justify">{{ $Comu->com_titulo }}</p></td>
+                                        <td class="col-md-5 col-sm-5"><p class="text-justify">{{ $Comu->com_desc }}</p></td>                                    
+                                         
                                     </tr>                                
                                     @endforeach 
 
@@ -76,17 +76,15 @@
                             <table class="table table-condensed table-hover table-striped">
                                 <thead>
                                     <tr>
-                                        <th>#</th>                                         
-                                        <th>Titulo</th>                                     
-                                        <th>Fecha</th>                                                                          
+                                        <th>Fecha</th>                                         
+                                        <th>Titulo</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($ListaA as $Act)
-                                    <tr>
-                                        <td class="col-md-1">{{ $Act->act_id }}</td>  
-                                        <td class="col-md-8"><p class="text-justify">{{ $Act->act_titulo }}</p></td>                                    
-                                        <td class="col-md-3">{{ $Act->act_fec }}</td> 
+                                    <tr>                                        
+                                        <td class="col-md-2 col-sm-2">{{ sis_ccc\libreriaCCC\fncCCC::getDateAttribute($Act->act_fec) }}</td> 
+                                        <td class="col-md-10 col-sm-10">{{ $Act->act_titulo }}</td>
                                     </tr>                                
                                     @endforeach 
 
@@ -110,21 +108,18 @@
                         <div class="tarea">
                             <table class="table table-condensed table-hover table-striped">
                                 <thead>
-                                    <tr>                                
-                                        <th>#</th>
+                                    <tr>              
                                         <th>Fecha</th>
                                         <th>Materia</th>
                                         <th>Descripción</th>                                
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php $cont = 1 ?>
+                                <tbody>                                    
                                     @foreach($tareas as $Alumno)
-                                    <tr>                   
-                                        <td class="col-md-1">{{ $cont++ }}</td> 
-                                        <td class="col-md-2">{{ $Alumno->tar_fec_ini }}</td> 
-                                        <td class="col-md-3">{{ $Alumno->tar_materia }}</td>
-                                        <td class="col-md-6"><p class="text-justify">{{ $Alumno->tar_desc }}</p></td>                                                               
+                                    <tr>                                                          
+                                        <td class="col-md-2 col-sm-2">{{ sis_ccc\libreriaCCC\fncCCC::getDateAttribute($Alumno->tar_fec_ini) }}</td> 
+                                        <td class="col-md-4 col-sm-4">{{ $Alumno->tar_materia }}</td>
+                                        <td class="col-md-6 col-sm-4"><p class="text-justify">{{ $Alumno->tar_desc }}</p></td>                                                               
                                     </tr>
                                     @endforeach
                                     <tr>
