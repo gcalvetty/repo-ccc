@@ -67,9 +67,10 @@
         <script src="/jquery/toastr.js" type="text/javascript"></script>
 
         <?php if((Route::current()->getName() == 'Secr.actividades')): ?>        
-            <script src="/jquery/moment.js" type="text/javascript"></script>                   
-            <script src="/jquery/vee-validate.js" type="text/javascript"></script>
-            <script src="/jquery/vue-datepicker/vuejs-datepicker.min.js" type="text/javascript"></script>
-            <script src="/jquery/ccc-secretaria-actividad.js" type="module"></script>                     
+        <script src="/jquery/moment.js" type="text/javascript"></script>                   
+        <script src="/jquery/vee-validate.js" type="text/javascript"></script>
+        <script src="/jquery/vue-datepicker/vuejs-datepicker.min.js" type="text/javascript"></script>  
+        <script src="/jquery/vue-paginate/vue-paginate-0.9.0.js" type="text/javascript"></script>
+        <script src="/jquery/ccc-secretaria-actividad.js" type="module"></script>        
         <?php endif; ?>    
     </body>

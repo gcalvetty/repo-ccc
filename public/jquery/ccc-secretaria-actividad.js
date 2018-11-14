@@ -1,5 +1,5 @@
 import esGECN from '/jquery/vue-datepicker/es.js';  
-
+Vue.component('paginate', VuejsPaginate);
            
 const config = {
     errorBagName: 'errors',
@@ -8,6 +8,7 @@ const config = {
     strict: true
 };
 Vue.use(VeeValidate, config);
+
 const app = new Vue({
     el: '#Secr_actividad',
     components: {
@@ -26,8 +27,9 @@ const app = new Vue({
             es: esGECN,
             state: {
                 date: '',                          
-                disabledDates:{ days:[0] },                
+                disabledDates:{ days:[0], },                
             },
+            paginate: ['listado'],
         }
     },
     methods: {
@@ -63,7 +65,11 @@ const app = new Vue({
                 toastr.warning('Actividad Eliminada!!!' + response.data);
             })            
         },
-        // --------------
+        // -------------- paginacion
+        clickCallback: function(pageNum) {
+            console.log(pageNum)
+        },
+        // -------------- validacion
         validateBeforeSubmit(e) {
            /* 
            var valFec = this.$validator.validateAll()

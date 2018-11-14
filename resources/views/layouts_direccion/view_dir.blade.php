@@ -49,23 +49,20 @@
                     <div class="box-body">
                         <table class="table table-bordered table-striped">
                             <thead>
-                                <tr>
-                                    <th>#</th>                                         
+                                <tr>                                                                        
+                                    <th>Fecha</th> 
                                     <th>Titulo</th>
-                                    <th>Descripción</th> 
-                                    <th>Fecha</th>                                                                          
+                                    <th>Descripción</th>                                                                                                              
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($ListaC as $Comu)
-                                <tr>
-                                    <td>{{ $Comu->com_id }}</td>  
+                                <tr>                                    
+                                    <td>{{ sis_ccc\libreriaCCC\fncCCC::getDateAttribute($Comu->com_fec) }}</td> 
                                     <td>{{ $Comu->com_titulo }}</td>
-                                    <td>{{ $Comu->com_desc }}</td>                                    
-                                    <td>{{ $Comu->com_fec }}</td> 
-                                </tr>                                
-                                @endforeach 
-
+                                    <td>{{ $Comu->com_desc }}</td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -82,17 +79,16 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>#</th>                                         
+                                    <th>Fecha</th>  
                                     <th>Titulo</th>                                     
-                                    <th>Fecha</th>                                                                          
+                                                                                                            
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($ListaA as $Act)
                                 <tr>
-                                    <td>{{ $Act->act_id }}</td>  
+                                    <td>{{ sis_ccc\libreriaCCC\fncCCC::getDateAttribute($Act->act_fec) }}</td> 
                                     <td>{{ $Act->act_titulo }}</td>                                    
-                                    <td>{{ $Act->act_fec }}</td> 
                                 </tr>                                
                                 @endforeach 
 

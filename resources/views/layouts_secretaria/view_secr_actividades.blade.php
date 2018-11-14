@@ -42,7 +42,7 @@
                     <div class="box-body">
 
                         <form v-on:submit.prevent="validateBeforeSubmit" method="post">
-                            
+
 
                             <div class="form-group col-md-12 has-feedback {{ $errors->has('com_tit') ? ' has-error' : '' }} "
                                  v-bind:class="{'': true, 'has-error': errors.has('com_tit') }">
@@ -68,8 +68,8 @@
                                 <div class="form-group has-feedback {{ $errors->has('fec') ? ' has-error' : '' }}" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon10">
-                                          <i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                          <vuejs-datepicker id="fec" name="fec" 
+                                            <i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                        <vuejs-datepicker id="fec" name="fec" 
                                                           :value="state.date" 
                                                           :format="customFormatter" 
                                                           :language="es"
@@ -102,18 +102,16 @@
                         <div class="table-responsive">
                             <table id="simple" class="table table-stripe table-hover">
                                 <thead> 
-                                    <tr>
-                                        <th>#</th>                                         
+                                    <tr>                                                                               
                                         <th>Fecha</th> 
                                         <th>Titulo</th>          
                                         <th>Acción</th> 
                                     </tr> 
                                 </thead>
                                 <tbody v-for="com in listado">
-                                    <tr scope="row">
-                                        <td>@{{ com.act_id}}</td>                                        
-                                        <td>@{{ com.act_titulo }}</td>                                        
-                                        <td>@{{ com.act_fec}}</td>                                        
+                                    <tr scope="row">                                        
+                                        <td>@{{ com.act_fec}}</td>
+                                        <td>@{{ com.act_titulo }}</td>                                                                                                                        
                                         <td>
                                             <button type="button" class="btn btn-danger" v-on:click.prevent="eliminarComunicado(com)">
                                                 <i class="fa fa-trash-o"> </i>
@@ -122,6 +120,7 @@
                                     </tr>    
                                 </tbody>
                             </table>
+                           
                         </div>
                     </div>
                 </div>   

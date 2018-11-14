@@ -7,7 +7,7 @@
   "author": "GECN",
   "license": "ISC",
   "directories": {
-    "test": "tests"
+  "test": "tests"
   },
   "scripts": {
     "dev": "npm run development",
@@ -33,6 +33,7 @@
     "ajv": "^6.5.4",
     "imagemin": "^6.0.0",
     "vue-button-effect": "0.0.3",
+    "vue-paginate": "^3.6.0",
     "vuejs-datepicker": "^0.9.29"
   }
 }
