@@ -1,5 +1,4 @@
-import esGECN from '/jquery/vue-datepicker/es.js';  
-
+import esGECN from '/jquery/vue-datepicker/es.js';
            
 const config = {
     errorBagName: 'errors',
@@ -22,6 +21,7 @@ const app = new Vue({
             com_tit: "",            
             listado: "",
             fec: 0, 
+            fec2: 0, 
             date2:"",                                                           
             es: esGECN,
             state: {
@@ -43,13 +43,16 @@ const app = new Vue({
         crearActividad: function () {
             var urlGuaCom = "acc_calactividad";
             var fecGECN = moment(String(this.fec)).format('D/MM/YYYY');
+            var fecfinGECN = moment(String(this.fec2)).format('D/MM/YYYY');
             axios.post(urlGuaCom, {
                 act_tit: this.com_tit,                
-                act_fec: fecGECN
+                act_fec: fecGECN,
+                act_fecfin: fecfinGECN,
             }).then(response => {
                 this.getAct();
                 this.com_tit = '';                
                 this.fec = '';
+                this.fec2 = '';
                 toastr.info('Actividad Guardada!!!');
             }).catch(error => {
                 this.errors = error.response.data

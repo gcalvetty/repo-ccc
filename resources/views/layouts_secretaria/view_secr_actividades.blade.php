@@ -74,7 +74,7 @@
                                                           :format="customFormatter" 
                                                           :language="es"
                                                           data-vv-rules="required"
-                                                          placeholder=" Seleccionar Fecha" 
+                                                          placeholder=" Fecha Inicial" 
                                                           v-model="fec"></vuejs-datepicker>
                                     </div>
                                     <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec') }"></span>
@@ -82,8 +82,28 @@
                                     <p v-if="errors.has('fec:required')">Fecha Requerida</p>
                                 </div>
                             </div>  
+                            
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback {{ $errors->has('fec2') ? ' has-error' : '' }}" v-bind:class="{'': true, 'has-error': errors.has('fec2') }">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon10">
+                                          <i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                          <vuejs-datepicker id="fec2" name="fec2" 
+                                                          :value="state.date" 
+                                                          :format="customFormatter" 
+                                                          :language="es"
+                                                          data-vv-rules="required"
+                                                          placeholder=" Fecha Final" 
+                                                          v-model="fec2"></vuejs-datepicker>
+                                    </div>
+                                    <span class="glyphicon  form-control-feedback" aria-hidden="true" v-bind:class="{'': true, 'glyphicon-remove': errors.has('fec2') }"></span>
+                                    @if ($errors->has('fec2'))<span class="help-block"><strong>{{ $errors->first('fec2') }}</strong></span>@endif
+                                    <p v-if="errors.has('fec2:required')">Fecha Requerida</p>
+                                </div>
+                            </div>  
+                            
                             <div class="box-footer clearfix">                                                       
-                                <button type="submit" class="btn btn-primary" v-bind:disabled="fec==0">Guardar</button>                            
+                                <button type="submit" class="btn btn-primary" v-bind:disabled="fec==0 || fec2==0">Guardar</button>                            
                             </div>
                         </form>
                     </div>
@@ -102,18 +122,18 @@
                         <div class="table-responsive">
                             <table id="simple" class="table table-stripe table-hover">
                                 <thead> 
-                                    <tr>
-                                        <th>#</th>                                         
+                                    <tr>                                                                                
                                         <th>Fecha</th> 
                                         <th>Titulo</th>          
                                         <th>Acción</th> 
                                     </tr> 
                                 </thead>
                                 <tbody v-for="com in listado">
-                                    <tr scope="row">
-                                        <td>@{{ com.act_id}}</td>                                        
-                                        <td>@{{ com.act_titulo }}</td>                                        
-                                        <td>@{{ com.act_fec}}</td>                                        
+                                    <tr scope="row">                                        
+                                        <td v-if="com.act_fec!=com.act_fecfin">@{{ com.act_fecini2}}. <b>al</b> @{{ com.act_fecfin2}}.</td>
+                                        <td v-else>@{{ com.act_fecini2}}.</td>
+                                        <td>@{{ com.act_titulo }}</td>
+                                        
                                         <td>
                                             <button type="button" class="btn btn-danger" v-on:click.prevent="eliminarComunicado(com)">
                                                 <i class="fa fa-trash-o"> </i>

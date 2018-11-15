@@ -108,8 +108,7 @@ class SecrController extends Controller {
 
     public function verActividades() {
         $user = fGECN::obt_nombre();
-        $Niveles = Grd_Nivel::get();
-        
+        $Niveles = Grd_Nivel::get();       
         
         return view('layouts_secretaria/view_secr_actividades', [
             'usuactivo' => $user,
@@ -148,15 +147,18 @@ class SecrController extends Controller {
      */
     public function store(Request $request) {               
         $func = new fGECN;        
-        $fec = $func::setDateAttribute($request->act_fec); 
+        $fec  = $func::setDateAttribute($request->act_fec); 
+        $fec2 = $func::setDateAttribute($request->act_fecfin); 
         $this->validate($request, [
             'act_tit'  => ' required',
             'act_fec' => 'required'
         ]);
+        
         DB::table('cal_actividad')->insert(
                 [                    
                     'act_titulo' => $request->act_tit,
-                    'act_fec' => $fec
+                    'act_fec' => $fec,
+                    'act_fecfin' => $fec2,
                     ]
         );
         return;
