@@ -126,9 +126,11 @@ order by curso asc, fec Desc
     }
 
     public static function listActividad2() {
-        $lisActividad = DB::select('Select *, DATE_FORMAT(act_fec,"%d de %b") AS act_fecini2, DATE_FORMAT(act_fecfin,"%d de %b") AS act_fecfin2
+        /*$lisActividad = DB::select('Select *, DATE_FORMAT(act_fec,"%d de %b") AS act_fecini2, DATE_FORMAT(act_fecfin,"%d de %b") AS act_fecfin2
                 from cal_actividad as c         
-                order by act_fec DESC ')->paginate(4);
+                order by act_fec DESC ')->paginate(4);*/
+        $users = DB::table('users')->paginate(15);
+        dd($users);
         return [
                 'paginate'=>[
                     'total' => $lisActividad->total(),
