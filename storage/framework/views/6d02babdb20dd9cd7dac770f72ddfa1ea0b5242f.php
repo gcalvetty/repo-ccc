@@ -40,10 +40,7 @@
                         <h3 class="box-title">Asignar Actividad</h3>                        
                     </div>
                     <div class="box-body">
-
                         <form v-on:submit.prevent="validateBeforeSubmit" method="post">
-                            
-
                             <div class="form-group col-md-12 has-feedback <?php echo e($errors->has('com_tit') ? ' has-error' : ''); ?> "
                                  v-bind:class="{'': true, 'has-error': errors.has('com_tit') }">
                                 <div class="input-group">
@@ -68,11 +65,11 @@
                                 <div class="form-group has-feedback <?php echo e($errors->has('fec') ? ' has-error' : ''); ?>" v-bind:class="{'': true, 'has-error': errors.has('fec') }">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon10">
-                                          <i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                          <vuejs-datepicker id="fec" name="fec" 
+                                            <i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                        <vuejs-datepicker id="fec" name="fec" 
                                                           :value="state.date" 
                                                           :format="customFormatter" 
-                                                          :language="es"
+                                                          :language="es"                                                                                                                     
                                                           data-vv-rules="required"
                                                           placeholder=" Fecha Inicial" 
                                                           v-model="fec"></vuejs-datepicker>
@@ -82,16 +79,16 @@
                                     <p v-if="errors.has('fec:required')">Fecha Requerida</p>
                                 </div>
                             </div>  
-                            
+
                             <div class="col-md-12">
                                 <div class="form-group has-feedback <?php echo e($errors->has('fec2') ? ' has-error' : ''); ?>" v-bind:class="{'': true, 'has-error': errors.has('fec2') }">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon10">
-                                          <i class="fa fa-calendar-o" aria-hidden="true"></i></span>
-                                          <vuejs-datepicker id="fec2" name="fec2" 
+                                            <i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                        <vuejs-datepicker id="fec2" name="fec2" 
                                                           :value="state.date" 
                                                           :format="customFormatter" 
-                                                          :language="es"
+                                                          :language="es"                                                                                                                    
                                                           data-vv-rules="required"
                                                           placeholder=" Fecha Final" 
                                                           v-model="fec2"></vuejs-datepicker>
@@ -101,7 +98,7 @@
                                     <p v-if="errors.has('fec2:required')">Fecha Requerida</p>
                                 </div>
                             </div>  
-                            
+
                             <div class="box-footer clearfix">                                                       
                                 <button type="submit" class="btn btn-primary" v-bind:disabled="fec==0 || fec2==0">Guardar</button>                            
                             </div>
@@ -133,11 +130,10 @@
                                         <td v-if="com.act_fec!=com.act_fecfin">{{ com.act_fecini2}}. <b>al</b> {{ com.act_fecfin2}}.</td>
                                         <td v-else>{{ com.act_fecini2}}.</td>
                                         <td>{{ com.act_titulo }}</td>
-                                        
                                         <td>
                                             <button type="button" class="btn btn-danger" v-on:click.prevent="eliminarComunicado(com)">
                                                 <i class="fa fa-trash-o"> </i>
-                                            </button>
+                                            </button>                                            
                                         </td>
                                     </tr>    
                                 </tbody>
@@ -148,8 +144,6 @@
             </div>
         </div>
     </section> 
-    <!-- /.content -->
-
 </div>
 <!-- /.content-wrapper -->
 <footer class="main-footer">

@@ -134,11 +134,11 @@ class SecrController extends Controller {
     /*
      * ---- Calendario de Actividades
      */
-    
-    
     public function mostrarCalActividad() {
         $sql = new qGECN;
-        $lisCom  = $sql::listActividad2();         
+        $lisCom  = $sql::listActividad2();
+        
+        
         return $lisCom;
     }
     

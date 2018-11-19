@@ -21,7 +21,8 @@ const app = new Vue({
             com_tit: "",            
             listado: "",
             fec: 0, 
-            fec2: 0, 
+            fec2: 0,
+            fectxtAux: '',
             date2:"",                                                           
             es: esGECN,
             state: {
@@ -51,20 +52,25 @@ const app = new Vue({
             }).then(response => {
                 this.getAct();
                 this.com_tit = '';                
-                this.fec = '';
-                this.fec2 = '';
-                toastr.info('Actividad Guardada!!!');
+                this.fec = '';          
+                this.fec2 = '';                
+                document.getElementById('fec').value = '';
+                document.getElementById('fec2').value = '';
+                toastr.info('Actividad Guardada!!!'+ this.fec2);
             }).catch(error => {
                 this.errors = error.response.data
-            });
-            
-        },
-        eliminarComunicado: function (com) {            
+            });            
+        }, 
+        fectxt:function(f1,f2){
+            if(f1 !== f2){ this.fectxtAux = f1+ " ->> "+f2; } else { this.fectxtAux = f1; }
+            return this.fectxtAux;
+        },        
+        eliminarComunicado: function (com) {
             var urlAct = "acc_calactividad/" + com.act_id;
             axios.delete(urlAct).then(response => {
                 this.getAct();
                 toastr.warning('Actividad Eliminada!!!' + response.data);
-            })            
+            });            
         },
         // --------------
         validateBeforeSubmit(e) {

@@ -13,6 +13,7 @@ use sis_ccc\libreriaCCC\fncCCC as fGECN;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 
+
 class queryCCC {
 
     public static $gyear = "";
@@ -127,8 +128,18 @@ order by curso asc, fec Desc
     public static function listActividad2() {
         $lisActividad = DB::select('Select *, DATE_FORMAT(act_fec,"%d de %b") AS act_fecini2, DATE_FORMAT(act_fecfin,"%d de %b") AS act_fecfin2
                 from cal_actividad as c         
-                order by act_fec DESC ');
-        return $lisActividad;
+                order by act_fec DESC ')->paginate(4);
+        return [
+                'paginate'=>[
+                    'total' => $lisActividad->total(),
+                    'current_page' => $lisActividad->currentPage(),
+                    'per_page' => $lisActividad->perPage(),
+                    'last_page' => $lisActividad->lastPage(),
+                    'from' => $lisActividad->firstPage(),
+                    'to' => $lisActividad->lastPage(),
+                ],
+            $lisActividad,
+                ];
     }
 
     /*
